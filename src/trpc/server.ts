@@ -16,22 +16,17 @@ import { createTRPCContext } from "~/server/api/trpc";
 import { transformer } from "./shared";
 
 /**
- * This function is used to create a tRPC context with headers.
- * It's defined as an async function to ensure proper handling of async context.
+ * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
+ * handling a tRPC call from a React Server Component.
  */
-async function createContextWithHeaders() {
-  const heads = new Headers(await headers());
+const createContext = cache(() => {
+  const heads = new Headers(headers());
   heads.set("x-trpc-source", "rsc");
 
   return createTRPCContext({
     headers: heads,
   });
-}
-
-/**
- * Caching the creation of the tRPC context.
- */
-const cachedCreateContext = cache(createContextWithHeaders);
+});
 
 export const api = createTRPCProxyClient<AppRouter>({
   transformer,
@@ -42,12 +37,13 @@ export const api = createTRPCProxyClient<AppRouter>({
         (op.direction === "down" && op.result instanceof Error),
     }),
     /**
-     * Custom RSC link for invoking procedures without HTTP requests.
+     * Custom RSC link that lets us invoke procedures without using http requests. Since Server
+     * Components always run on the server, we can just call the procedure as a function.
      */
     () =>
       ({ op }) =>
         observable((observer) => {
-          cachedCreateContext()
+          createContext()
             .then((ctx) => {
               return callProcedure({
                 procedures: appRouter._def.procedures,
