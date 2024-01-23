@@ -26,9 +26,9 @@ export default async function Home() {
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             target="_blank"
           >
-            <h3 className="text-2xl font-bold">David's Sauces →</h3>
+            <h3 className="text-2xl font-bold">David&apos;s Sauces →</h3>
             <div className="text-lg">
-              Learn more about David's cost-effective sauces.
+              Learn more about David&apos;s cost-effective sauces.
             </div>
           </Link>
         </div>
