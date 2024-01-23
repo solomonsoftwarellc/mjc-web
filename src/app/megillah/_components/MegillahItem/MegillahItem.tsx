@@ -8,17 +8,19 @@ function MegillahItem({
     id: number;
     issue: number;
     releaseDate: Date | null;
-    pdfPath: string | null;
+    iframe: string | null;
     thumbnailPath: string | null;
   };
 }) {
-  const date = new Date(megillah.releaseDate);
+  const date = megillah.releaseDate ? new Date(megillah.releaseDate) : null;
 
-  const formattedDate = date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  const formattedDate = date
+    ? date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })
+    : "No date recorded";
 
   const title = `Issue #${megillah.issue} - ${formattedDate}`;
 

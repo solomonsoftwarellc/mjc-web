@@ -1,63 +1,50 @@
 "use-client";
 
 import React, { useEffect } from "react";
-import { useCallback, useState } from "react";
-import { useResizeObserver } from "@wojtekmaj/react-hooks";
-import { pdfjs, Document, Page } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import { Button } from "~/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-} from "~/components/ui/dialog";
-import type { PDFDocumentProxy } from "pdfjs-dist";
-import { Skeleton } from "~/components/ui/skeleton";
-import { ArrowRightCircle, ArrowLeftCircle, XSquareIcon } from "lucide-react";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+import { XSquareIcon } from "lucide-react";
 
 function MegillahModal({
-  pdf,
-  setPdf,
+  iframe,
+  setIframe,
 }: {
-  pdf: string;
-  setPdf: React.Dispatch<React.SetStateAction<string | undefined>>;
+  iframe: string;
+  setIframe: React.Dispatch<React.SetStateAction<string | null>>;
 }) {
-  const [open, setOpen] = React.useState(!!pdf);
-
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [documentLoaded, setDocumentLoaded] = React.useState(false);
 
   useEffect(() => {
-    setOpen(!!pdf);
-  }, [pdf]);
+    window.scrollTo({ top: 0 });
+  }, []);
 
-  function changePage(offset) {
-    setPageNumber((prevPageNumber) => prevPageNumber + offset);
-  }
+  // Function to handle the "Escape" keypress
+  const handleEscapeKey = (event: KeyboardEvent) => {
+    if (event.key === "Escape" || event.keyCode === 27) {
+      // Perform the action you want when the "Escape" key is pressed
+      setIframe(null);
+    }
+  };
 
-  function previousPage() {
-    changePage(-1);
-  }
+  // Add the event listener when the component mounts
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscapeKey);
 
-  function nextPage() {
-    changePage(1);
-  }
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
 
-  function onDocumentLoadSuccess({
-    numPages: nextNumPages,
-  }: PDFDocumentProxy): void {
-    setNumPages(nextNumPages);
-    setPageNumber(1);
+  function onIframeLoadSuccess() {
+    setDocumentLoaded(true);
   }
 
   return (
     <>
       <iframe
-        src="https://drive.google.com/file/d/1GxE9jpVFEUPj_DS9LxnMNPrcFMsao7yS/preview"
+        src={iframe}
         allowFullScreen
         allow="autoplay"
         style={{
@@ -68,77 +55,34 @@ function MegillahModal({
         }}
         width={"100%"}
         height={"100%"}
-        onLoad={() => {
-          console.log("Loaded!");
-        }}
-      ></iframe>
+        onLoad={onIframeLoadSuccess}
+        className="google-drive-iframe"
+      />
+
       <Button
-        className="absolute left-4 top-4 z-50"
+        className={`absolute left-4 top-4 z-50 ${documentLoaded ? "" : "hidden"} bg-red-500`}
         onClick={() => {
-          setPdf(undefined);
+          setIframe(null);
         }}
       >
         <XSquareIcon className="mr-2 h-4 w-4" />
         Close
       </Button>
-    </>
-  );
 
-  return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent
-        className="flex flex-col items-center justify-center"
+      <div
+        className={` ${documentLoaded ? "" : "hidden"} `}
         style={{
-          minHeight: window.innerHeight - 100,
+          width: 24,
+          height: 24,
+          position: "absolute",
+          top: 18,
+          right: 18,
+          zIndex: 55,
+          backgroundColor: "#000",
         }}
-      >
-        <DialogHeader></DialogHeader>
-
-        <div className="Example__container__document flex-1">
-          <iframe
-            src="https://drive.google.com/file/d/1GxE9jpVFEUPj_DS9LxnMNPrcFMsao7yS/preview"
-            allowFullScreen
-            allow="autoplay"
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              zIndex: 50,
-            }}
-          ></iframe>
-        </div>
-
-        <DialogFooter>
-          <div className="flex flex-col">
-            <p>
-              Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
-            </p>
-
-            <div className="flex flex-row justify-between">
-              <button
-                type="button"
-                disabled={pageNumber <= 1}
-                onClick={previousPage}
-              >
-                <ArrowLeftCircle />
-              </button>
-              <button
-                type="button"
-                disabled={pageNumber >= numPages}
-                onClick={nextPage}
-              >
-                <ArrowRightCircle />
-              </button>
-            </div>
-          </div>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+      />
+    </>
   );
 }
 
 export default MegillahModal;
-
-function MegillahModalSkeleton() {
-  return <Skeleton className=" h-full w-full flex-1" />;
-}

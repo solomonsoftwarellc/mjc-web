@@ -11,30 +11,30 @@ function MegillaPageClient({
     id: number;
     issue: number;
     releaseDate: Date | null;
-    pdfPath: string | null;
+    iframe: string | null;
     thumbnailPath: string | null;
   }[];
 }) {
-  const [pdf, setPdf] = useState<string>();
+  const [iframe, setIframe] = useState<string | null>(null);
 
   return (
     <>
-      <div className="container flex flex-col gap-12 px-4 py-16 ">
+      <div className="container flex flex-col gap-12 px-4 py-8 ">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {megillahs.map((megillah) => (
             <button
               key={megillah.id}
               onClick={() => {
-                setPdf(`${megillah.pdfPath}.pdf`);
+                setIframe(megillah.iframe);
               }}
-              disabled={!megillah.pdfPath}
+              disabled={!megillah.iframe}
             >
               <MegillahItem megillah={megillah} />
             </button>
           ))}
         </div>
       </div>
-      {pdf && <MegillahModal pdf={pdf}  setPdf={setPdf}/>}
+      {iframe && <MegillahModal iframe={iframe} setIframe={setIframe} />}
     </>
   );
 }
