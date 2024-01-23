@@ -18,3 +18,11 @@ model Post {
 
     @@index([name])
 }
+
+model Megillah {
+    id            Int       @id @default(autoincrement())
+    issue         Int
+    releaseDate   DateTime?
+    pdfPath       String?
+    thumbnailPath String?
+}
