@@ -16,16 +16,11 @@ export default async function Home() {
             href="/megillah"
           >
             <h3 className="text-2xl font-bold">Megillah →</h3>
-            <div className="text-lg">A lot of pictures of Lucci.</div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">David&apos;s Sauces →</h3>
             <div className="text-lg">
-              Learn more about David&apos;s cost-effective sauces.
+              Megillah is made possible with the help of generous donations,
+              volunteer writers and volunteer editors. All who are interested in
+              making a donation or placing an ad in Megillah are encouraged to
+              reach out to an MYC representative for more information.
             </div>
           </Link>
         </div>
