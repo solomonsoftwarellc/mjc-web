@@ -10,6 +10,14 @@ const config = {
     config.resolve.alias.canvas = false;
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: "/news",
+        destination: "https://kanissanews.com",
+      },
+    ];
+  },
 };
 
 export default config;

@@ -47,16 +47,10 @@ function MegillahModal({
         src={iframe}
         allowFullScreen
         allow="autoplay"
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          zIndex: 40,
-        }}
         width={"100%"}
         height={"100%"}
         onLoad={onIframeLoadSuccess}
-        className="google-drive-iframe"
+        className="absolute left-0 top-0 z-40"
       />
 
       <Button

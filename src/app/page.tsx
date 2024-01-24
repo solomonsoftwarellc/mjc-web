@@ -1,4 +1,6 @@
+import { LoaderIcon } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export default async function Home() {
   return (
@@ -11,6 +13,18 @@ export default async function Home() {
           Official Website
         </h1>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
+          <Link
+            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+            href="https://kanissanews.com/"
+          >
+            <h3 className="text-2xl font-bold">Kanissa News →</h3>
+            <div className="text-lg">
+              If you would like your Celebration and Picture listed in the Shira
+              News or Shalom Week, please email to kanissanews@gmail.com, or
+              holondon@aol.com, whatsapp/text to (917) 859 - 0269 by Wednesday
+              Night
+            </div>
+          </Link>
           <Link
             className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
             href="/megillah"
