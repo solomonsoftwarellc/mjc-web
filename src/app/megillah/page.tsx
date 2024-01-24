@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { api } from "~/trpc/server";
 import MegillaPageClient from "./_components/MegillahPageClient/MegillaPageClient";
 import Link from "next/link";
