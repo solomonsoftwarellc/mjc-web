@@ -19,10 +19,8 @@ export default async function Home() {
           >
             <h3 className="text-2xl font-bold">Kanissa News →</h3>
             <div className="text-lg">
-              If you would like your Celebration and Picture listed in the Shira
-              News or Shalom Week, please email to kanissanews@gmail.com, or
-              holondon@aol.com, whatsapp/text to (917) 859 - 0269 by Wednesday
-              Night
+              Weekly newsletter featuring prayer times and events of the United
+              Mashadi Jewish Community of America.
             </div>
           </Link>
           <Link
@@ -31,10 +29,9 @@ export default async function Home() {
           >
             <h3 className="text-2xl font-bold">Megillah →</h3>
             <div className="text-lg">
-              Megillah is made possible with the help of generous donations,
-              volunteer writers and volunteer editors. All who are interested in
-              making a donation or placing an ad in Megillah are encouraged to
-              reach out to an MYC representative for more information.
+              Collection of magazines published by the Mashadi Youth Committee,
+              featuring photo and written content related to the United Mashadi
+              Jewish Community of America.
             </div>
           </Link>
         </div>
