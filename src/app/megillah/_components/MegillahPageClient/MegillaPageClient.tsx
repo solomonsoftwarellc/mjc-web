@@ -15,19 +15,19 @@ function MegillaPageClient({
     thumbnailPath: string | null;
   }[];
 }) {
-
   return (
     <>
       <div className="container flex flex-col gap-12 px-4 py-8 ">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-          {megillahs.map((megillah) => (
-            (
-              megillah.url 
-              ?  <Link target="_blank" href={megillah.url} key={megillah.id}>
-                  <MegillahItem megillah={megillah} />
-                </Link> : <MegillahItem megillah={megillah} key={megillah.id} />
-            )    
-          ))}
+          {megillahs.map((megillah) =>
+            megillah.url ? (
+              <Link target="_blank" href={megillah.url} key={megillah.id}>
+                <MegillahItem megillah={megillah} />
+              </Link>
+            ) : (
+              <MegillahItem megillah={megillah} key={megillah.id} />
+            ),
+          )}
         </div>
       </div>
     </>
