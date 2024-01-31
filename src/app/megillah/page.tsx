@@ -5,7 +5,6 @@ import MegillaPageClient from "./_components/MegillahPageClient/MegillaPageClien
 import Link from "next/link";
 
 export default async function Megillah() {
-  // Megillahs
   const megillahs = await api.megillah.index.query();
 
   return (
