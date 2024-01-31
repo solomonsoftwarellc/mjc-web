@@ -24,7 +24,7 @@ function MegillahItem({
   const title = `Issue #${megillah.issue} - ${formattedDate}`;
 
   const src = megillah.thumbnailPath
-    ? `${megillah.thumbnailPath}.png`
+    ? `${megillah.thumbnailPath}.JPG`
     : "/thumbnails/default.png";
 
   return (
