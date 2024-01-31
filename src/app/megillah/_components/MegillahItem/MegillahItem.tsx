@@ -8,7 +8,6 @@ function MegillahItem({
     id: number;
     issue: number;
     releaseDate: Date | null;
-    iframe: string | null;
     thumbnailPath: string | null;
   };
 }) {

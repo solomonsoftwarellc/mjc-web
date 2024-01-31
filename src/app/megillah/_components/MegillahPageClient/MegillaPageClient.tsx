@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import MegillahItem from "../MegillahItem/MegillahItem";
-import MegillahModal from "../MegillahModal/MegillahModal";
+import Link from "next/link";
 
 function MegillaPageClient({
   megillahs,
@@ -11,30 +11,25 @@ function MegillaPageClient({
     id: number;
     issue: number;
     releaseDate: Date | null;
-    iframe: string | null;
+    url: string | null;
     thumbnailPath: string | null;
   }[];
 }) {
-  const [iframe, setIframe] = useState<string | null>(null);
 
   return (
     <>
       <div className="container flex flex-col gap-12 px-4 py-8 ">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {megillahs.map((megillah) => (
-            <button
-              key={megillah.id}
-              onClick={() => {
-                setIframe(megillah.iframe);
-              }}
-              disabled={!megillah.iframe}
-            >
-              <MegillahItem megillah={megillah} />
-            </button>
+            (
+              megillah.url 
+              ?  <Link target="_blank" href={megillah.url} key={megillah.id}>
+                  <MegillahItem megillah={megillah} />
+                </Link> : <MegillahItem megillah={megillah} key={megillah.id} />
+            )    
           ))}
         </div>
       </div>
-      {iframe && <MegillahModal iframe={iframe} setIframe={setIframe} />}
     </>
   );
 }

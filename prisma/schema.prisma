@@ -23,6 +23,6 @@ model Megillah {
     id            Int       @id @default(autoincrement())
     issue         Int
     releaseDate   DateTime?
-    iframe        String?
+    url        String?
     thumbnailPath String?
 }
