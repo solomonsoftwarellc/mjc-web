@@ -168,9 +168,9 @@ export default function SignupSlugPage() {
   }, [slug, router, currentPage]);
 
   // Handle the form submission for images/videos
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
     console.log("handleSubmit called");
-
+    e.preventDefault();
     try {
       // Handle Images Upload
       console.log("images", images.length);
@@ -191,10 +191,13 @@ export default function SignupSlugPage() {
           }
         });
 
-        const imageRes = await fetch("http://localhost:3001/upload", {
-          method: "POST",
-          body: imageFormData,
-        });
+        const imageRes = await fetch(
+          "https://cd.phantomcheckerapi.com/upload",
+          {
+            method: "POST",
+            body: imageFormData,
+          },
+        );
 
         if (!imageRes.ok) {
           const errorText =
@@ -236,10 +239,13 @@ export default function SignupSlugPage() {
           );
         });
 
-        const videoRes = await fetch("http://localhost:3001/upload-video", {
-          method: "POST",
-          body: videoFormData,
-        });
+        const videoRes = await fetch(
+          "https://cd.phantomcheckerapi.com/upload-video",
+          {
+            method: "POST",
+            body: videoFormData,
+          },
+        );
 
         if (!videoRes.ok) {
           const errorText =

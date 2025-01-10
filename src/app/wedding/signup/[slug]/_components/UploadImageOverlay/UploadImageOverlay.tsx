@@ -22,7 +22,7 @@ type UploadModalProps = {
   setImages: React.Dispatch<React.SetStateAction<ImageWithMetadata[]>>;
   videoFiles: VideoWithMetadata[];
   setVideoFiles: React.Dispatch<React.SetStateAction<VideoWithMetadata[]>>;
-  handleSubmit: () => void;
+  handleSubmit: (e: React.FormEvent) => void;
   uploadStatus: string | null;
 };
 
@@ -109,48 +109,15 @@ export default function UploadModal({
         }),
       );
 
-      // Process videos to extract metadata
-      const processedVideos = await Promise.all(
-        vidFiles.map(async (file) => {
-          const metadata: VideoWithMetadata = { file };
+      // Process videos
+      const processedVideos: VideoWithMetadata[] = vidFiles.map((file) => ({
+        file,
+        timestamp: new Date(file.lastModified),
+      }));
 
-          try {
-            // Create a video element to get metadata
-            const video = document.createElement("video");
-            const url = URL.createObjectURL(file);
-
-            const metadataLoaded = new Promise<void>((resolve) => {
-              video.onloadedmetadata = () => {
-                metadata.duration = video.duration;
-                resolve();
-              };
-            });
-
-            video.src = url;
-            await metadataLoaded;
-
-            // Clean up
-            URL.revokeObjectURL(url);
-
-            // Use file's lastModified date for timestamp
-            metadata.timestamp = new Date(file.lastModified);
-          } catch (error) {
-            console.error("Error processing video metadata:", error);
-            metadata.timestamp = new Date(file.lastModified);
-          }
-
-          return metadata;
-        }),
-      );
-
-      console.log("processedImages", processedImages);
-      console.log("processedVideos", processedVideos);
       setImages(processedImages);
       setVideoFiles(processedVideos);
-      handleSubmit();
     }
-
-    // Trigger form submission
   };
 
   // Add handler for background clicks
@@ -299,26 +266,11 @@ export default function UploadModal({
                     {videoFiles.map((video, index) => (
                       <div
                         key={`video-${index}`}
-                        className="relative aspect-video"
+                        className="relative rounded-lg bg-gray-100 p-2"
                       >
-                        <video
-                          src={URL.createObjectURL(video.file)}
-                          className="h-full w-full rounded-lg object-cover"
-                          controls
-                          onLoadedMetadata={() => {
-                            URL.revokeObjectURL(
-                              URL.createObjectURL(video.file),
-                            );
-                          }}
-                        />
-                        {/* Add metadata display if desired */}
-                        {(video.timestamp ?? video.duration) && (
-                          <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-1 text-xs text-white">
-                            {video.timestamp?.toLocaleString()}
-                            {video.duration &&
-                              ` - ${Math.round(video.duration)}s`}
-                          </div>
-                        )}
+                        <p className="text-sm text-gray-600">
+                          Selected video: {video.file.name}
+                        </p>
                         <button
                           type="button"
                           onClick={() =>
@@ -348,6 +300,14 @@ export default function UploadModal({
             </div>
           )}
 
+          <button
+            type="submit"
+            className="w-full justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium
+                       text-white shadow-sm hover:bg-blue-700 focus:outline-none
+                       focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            Upload Media
+          </button>
           {uploadStatus && (
             <div className="text-center text-sm text-black">{uploadStatus}</div>
           )}
