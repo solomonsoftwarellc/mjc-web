@@ -165,26 +165,17 @@ export default function MediaDisplay({
         })}
       </div>
 
-      {/* Simplified Pagination Controls */}
-      <div className="flex items-center justify-center gap-4 pt-8">
-        <button
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="rounded-lg bg-white/10 px-4 py-2 font-semibold hover:bg-white/20 disabled:opacity-50"
-        >
-          Previous
-        </button>
-
-        <span className="text-sm">Page {currentPage}</span>
-
-        <button
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={!hasMore}
-          className="rounded-lg bg-white/10 px-4 py-2 font-semibold hover:bg-white/20 disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div>
+      {/* Replace Pagination Controls with Load More button */}
+      {hasMore && combinedMedia.length > 0 && (
+        <div className="flex justify-center pt-8">
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            className="rounded-lg bg-white/10 px-6 py-3 font-semibold hover:bg-white/20 disabled:opacity-50"
+          >
+            Load More
+          </button>
+        </div>
+      )}
 
       {/* Add Modal */}
       {selectedMedia && (

@@ -93,17 +93,17 @@ export default function SignupSlugPage() {
     const imagesRef = collection(db, "weddings", slug, "images");
     const videosRef = collection(db, "weddings", slug, "videos");
 
-    // Create queries with ordering and limits
+    // Update queries to use currentPage for pagination
     const imagesQuery = query(
       imagesRef,
       orderBy("timestamp", "desc"),
-      limit(ITEMS_PER_PAGE / 2),
+      limit(currentPage * (ITEMS_PER_PAGE / 2)),
     );
 
     const videosQuery = query(
       videosRef,
       orderBy("timestamp", "desc"),
-      limit(ITEMS_PER_PAGE / 2),
+      limit(currentPage * (ITEMS_PER_PAGE / 2)),
     );
 
     // Add logic to check if there's more data
@@ -111,12 +111,12 @@ export default function SignupSlugPage() {
       const nextImagesQuery = query(
         imagesRef,
         orderBy("timestamp", "desc"),
-        limit(ITEMS_PER_PAGE / 2 + 1),
+        limit((currentPage + 1) * (ITEMS_PER_PAGE / 2)),
       );
       const nextVideosQuery = query(
         videosRef,
         orderBy("timestamp", "desc"),
-        limit(ITEMS_PER_PAGE / 2 + 1),
+        limit((currentPage + 1) * (ITEMS_PER_PAGE / 2)),
       );
 
       const [imagesSnap, videosSnap] = await Promise.all([
@@ -124,10 +124,11 @@ export default function SignupSlugPage() {
         getDocs(nextVideosQuery),
       ]);
 
-      setHasMore(
-        imagesSnap.docs.length > ITEMS_PER_PAGE / 2 ||
-          videosSnap.docs.length > ITEMS_PER_PAGE / 2,
-      );
+      const nextPageHasData =
+        imagesSnap.docs.length > currentPage * (ITEMS_PER_PAGE / 2) ||
+        videosSnap.docs.length > currentPage * (ITEMS_PER_PAGE / 2);
+
+      setHasMore(nextPageHasData);
     };
 
     const unsubscribeImages = onSnapshot(
@@ -279,18 +280,6 @@ export default function SignupSlugPage() {
     return null;
   }
 
-  /**
-   *  EXACT styles from your Megillah page snippet:
-   *
-   *  <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-   *    <div className="flex w-full flex-1 flex-row items-center justify-start pl-4 pr-4 pt-4">
-   *      <Link className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20" href="/">
-   *        <h3 className="text-2xl font-bold">Home</h3>
-   *      </Link>
-   *    </div>
-   *    ...
-   *  </main>
-   */
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
       {/* Header Link */}
