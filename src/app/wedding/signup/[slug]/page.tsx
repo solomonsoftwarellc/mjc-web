@@ -63,7 +63,6 @@ type VideoWithMetadata = {
   duration?: number;
 };
 
-// Add these constants at the top
 const ITEMS_PER_PAGE = 50;
 
 export default function SignupSlugPage() {
@@ -85,7 +84,6 @@ export default function SignupSlugPage() {
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
-    // Check if slug is allowed
     if (!allowedSlugs.includes(slug)) {
       router.replace("/404");
       return;
@@ -94,7 +92,6 @@ export default function SignupSlugPage() {
     const imagesRef = collection(db, "weddings", slug, "images");
     const videosRef = collection(db, "weddings", slug, "videos");
 
-    // Update queries to use currentPage for pagination
     const imagesQuery = query(
       imagesRef,
       orderBy("timestamp", "desc"),
@@ -107,7 +104,6 @@ export default function SignupSlugPage() {
       limit(currentPage * (ITEMS_PER_PAGE / 2)),
     );
 
-    // Add logic to check if there's more data
     const checkHasMore = async () => {
       const nextImagesQuery = query(
         imagesRef,
@@ -168,12 +164,9 @@ export default function SignupSlugPage() {
     };
   }, [slug, router, currentPage]);
 
-  // Handle the form submission for images/videos
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async () => {
     console.log("handleSubmit called");
-    e.preventDefault();
     try {
-      // Handle Images Upload
       console.log("images", images.length);
       console.log("videoFiles", videoFiles.length);
       if (images.length > 0) {
@@ -181,7 +174,6 @@ export default function SignupSlugPage() {
         imageFormData.append("name", name);
         imageFormData.append("slug", slug);
 
-        // Add each image and its metadata
         images.forEach((imageData, index) => {
           imageFormData.append("images", imageData.file);
           if (imageData.timestamp) {
@@ -222,7 +214,6 @@ export default function SignupSlugPage() {
         }
       }
 
-      // Handle Videos Upload
       if (videoFiles.length > 0) {
         const videoFormData = new FormData();
         videoFormData.append("name", name);
@@ -268,8 +259,7 @@ export default function SignupSlugPage() {
       setImages([]);
       setVideoFiles([]);
 
-      // Optionally close the modal on success
-      // setIsModalOpen(false);
+      setIsModalOpen(false);
       setUploadStatus(null);
     } catch (error) {
       if (error instanceof Error) {
@@ -282,14 +272,12 @@ export default function SignupSlugPage() {
     }
   };
 
-  // If slug is not allowed, return null or your custom 404
   if (!allowedSlugs.includes(slug)) {
     return null;
   }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#efe6dd] to-[#efe6dd] text-[#b8966f]">
-      {/* Header Link */}
       <div className="flex w-full flex-1 flex-row items-center justify-start pl-4 pr-4 pt-4">
         <Link
           className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
@@ -299,7 +287,6 @@ export default function SignupSlugPage() {
         </Link>
       </div>
 
-      {/* Main Container */}
       <div className="container flex flex-col gap-12 px-4 py-8">
         <div className="flex justify-center">
           <Image
@@ -312,7 +299,6 @@ export default function SignupSlugPage() {
           />
         </div>
 
-        {/* Overlay for Upload (opens immediately) */}
         <UploadModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
@@ -326,7 +312,6 @@ export default function SignupSlugPage() {
           uploadStatus={uploadStatus}
         />
 
-        {/* Display previously uploaded media */}
         <MediaDisplay
           fetchedImages={fetchedImages}
           fetchedVideos={fetchedVideos}

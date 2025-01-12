@@ -45,20 +45,15 @@ export default function MediaDisplay({
   setCurrentPage,
   hasMore,
 }: MediaDisplayProps) {
-  // Add state for modal
   const [selectedMedia, setSelectedMedia] = React.useState<
     FirestoreImageDoc | FirestoreVideoDoc | null
   >(null);
-  // Add selected index state
   const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
 
-  // Merge & sort by timestamp descending
   const combinedMedia = [...fetchedImages, ...fetchedVideos].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
   );
 
-  // Add navigation functions
-  // Add navigation functions
   const handleNavigate = (direction: "prev" | "next", e: React.MouseEvent) => {
     e.stopPropagation();
     const newIndex =
@@ -69,7 +64,6 @@ export default function MediaDisplay({
     setSelectedMedia(combinedMedia[newIndex] ?? null);
   };
 
-  // Update onClick to include index
   const handleMediaClick = (
     item: FirestoreImageDoc | FirestoreVideoDoc,
     index: number,
@@ -113,7 +107,6 @@ export default function MediaDisplay({
                       </span>
                     )
                   ) : isVideo ? (
-                    // VIDEO
                     <div className="relative h-full w-full">
                       {item.thumbnail ? (
                         <img
@@ -128,7 +121,6 @@ export default function MediaDisplay({
                           </p>
                         </div>
                       )}
-                      {/* Play button overlay */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="rounded-full bg-black/50 p-3">
                           <svg
@@ -152,7 +144,6 @@ export default function MediaDisplay({
                 </div>
               </div>
 
-              {/* You can display name / timestamp below the item */}
               <div className="text-center text-sm">
                 <p className="font-semibold">{item.name}</p>
                 <p className="text-xs text-gray-400">
@@ -175,7 +166,6 @@ export default function MediaDisplay({
         </div>
       )}
 
-      {/* Add Modal */}
       {selectedMedia && (
         <dialog
           className="fixed inset-0 z-50 h-full w-full bg-black/90 p-4 md:p-8"
@@ -183,7 +173,6 @@ export default function MediaDisplay({
           onClick={() => setSelectedMedia(null)}
         >
           <div className="relative flex h-full items-center justify-center">
-            {/* Previous Button */}
             <button
               onClick={(e) => handleNavigate("prev", e)}
               className="absolute left-2 z-10 rounded-full bg-black/50 p-2 text-white hover:bg-black/70 md:left-8"
@@ -205,7 +194,6 @@ export default function MediaDisplay({
               </svg>
             </button>
 
-            {/* Media Content */}
             {"variants" in selectedMedia ? (
               <img
                 src={selectedMedia.variants[0]}
@@ -229,7 +217,6 @@ export default function MediaDisplay({
               </div>
             ) : null}
 
-            {/* Next Button */}
             <button
               onClick={(e) => handleNavigate("next", e)}
               className="absolute right-2 z-10 rounded-full bg-black/50 p-2 text-white hover:bg-black/70 md:right-8"
@@ -252,7 +239,6 @@ export default function MediaDisplay({
             </button>
           </div>
 
-          {/* Close button */}
           <button
             onClick={() => setSelectedMedia(null)}
             className="absolute right-4 top-4 rounded-full bg-black/50 p-2 text-white hover:bg-black/70"
