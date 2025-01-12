@@ -20,6 +20,7 @@ import { db } from "firebaseConfig";
 // Import your two components
 import UploadModal from "./_components/UploadImageOverlay/UploadImageOverlay";
 import MediaDisplay from "./_components/UserGallery/UserGallery";
+import Image from "next/image";
 
 // Allowed slugs
 const allowedSlugs = ["david-charlotte", "test-slug", "another-one"];
@@ -287,22 +288,29 @@ export default function SignupSlugPage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#efe6dd] to-[#efe6dd] text-[#b8966f]">
       {/* Header Link */}
       <div className="flex w-full flex-1 flex-row items-center justify-start pl-4 pr-4 pt-4">
         <Link
           className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
           href="/"
         >
-          <h3 className="text-2xl font-bold">Home</h3>
+          <h3 className="text-2xl font-bold text-[#b8966f]">Home</h3>
         </Link>
       </div>
 
       {/* Main Container */}
       <div className="container flex flex-col gap-12 px-4 py-8">
-        <h1 className="text-center text-3xl font-bold">
-          Share Your Media - {slug}
-        </h1>
+        <div className="flex justify-center">
+          <Image
+            src={`/wedding/${slug}.png`}
+            alt={`${slug} wedding banner`}
+            width={800}
+            height={200}
+            className="w-[60%] object-contain px-4 sm:w-[40%] md:w-[30%] lg:w-[20%]"
+            priority
+          />
+        </div>
 
         {/* Overlay for Upload (opens immediately) */}
         <UploadModal

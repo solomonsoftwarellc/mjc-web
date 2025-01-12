@@ -80,7 +80,6 @@ export default function MediaDisplay({
 
   return (
     <div className="container flex flex-col gap-12 px-4 py-8">
-      <h2 className="text-2xl font-bold">Uploaded Media</h2>
       {fetchError && (
         <p className="text-red-500">Error loading: {fetchError}</p>
       )}
@@ -96,7 +95,7 @@ export default function MediaDisplay({
               className="flex flex-col items-center justify-center gap-4"
             >
               <div
-                className="relative aspect-square w-full cursor-pointer overflow-hidden rounded-xl border border-white/20 transition-transform hover:scale-[1.02]"
+                className="relative aspect-square w-full cursor-pointer overflow-hidden transition-transform hover:scale-[1.02]"
                 onClick={() => handleMediaClick(item, index)}
               >
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -165,7 +164,6 @@ export default function MediaDisplay({
         })}
       </div>
 
-      {/* Replace Pagination Controls with Load More button */}
       {hasMore && combinedMedia.length > 0 && (
         <div className="flex justify-center pt-8">
           <button

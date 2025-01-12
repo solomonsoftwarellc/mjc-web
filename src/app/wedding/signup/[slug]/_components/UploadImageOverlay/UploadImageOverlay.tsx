@@ -26,10 +26,6 @@ type UploadModalProps = {
   uploadStatus: string | null;
 };
 
-/**
- * UploadModal
- * Renders an overlay for uploading images and videos.
- */
 export default function UploadModal({
   onClose,
   isOpen,
@@ -42,7 +38,6 @@ export default function UploadModal({
   handleSubmit,
   uploadStatus,
 }: UploadModalProps) {
-  // Combine the handle for changes to images/videos into one function
   const handleMediaChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const files = Array.from(e.target.files);
@@ -135,15 +130,15 @@ export default function UploadModal({
       onClick={handleBackgroundClick}
     >
       {/* Modal Content */}
-      <div className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-xl">
+      <div className="w-full max-w-2xl rounded-lg bg-[#efe6dd] p-6 shadow-xl">
         <div className="flex items-center justify-between">
-          <h2 className="mb-4 text-2xl font-bold text-gray-800">
+          <h2 className="mb-4 text-2xl font-bold text-[#b8966f]">
             Upload Media
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="text-[#b8966f] hover:text-[#96785a]"
           >
             <span className="sr-only">Close Modal</span>✕
           </button>
@@ -153,7 +148,7 @@ export default function UploadModal({
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-[#b8966f]"
             >
               Your Name
             </label>
@@ -163,27 +158,27 @@ export default function UploadModal({
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="mt-1 block w-full rounded-md border-gray-300 text-black shadow-sm
-                         focus:border-blue-500 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-md border-[#b8966f] bg-[#efe6dd] text-[#b8966f] shadow-sm
+                         focus:border-[#b8966f] focus:ring-[#b8966f]"
               placeholder="Enter your name"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-[#b8966f]">
               Upload Photos &amp; Videos
             </label>
             <div
               className="mt-1 flex justify-center rounded-md border-2 border-dashed
-                            border-gray-300 px-6 pb-6 pt-5"
+                            border-[#b8966f] px-6 pb-6 pt-5"
             >
               <div className="space-y-1 text-center">
-                <div className="flex text-sm text-gray-600">
+                <div className="flex text-sm text-[#b8966f]">
                   <label
                     htmlFor="media-upload"
-                    className="relative cursor-pointer rounded-md bg-white font-medium text-blue-600
-                               focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500
-                               focus-within:ring-offset-2 hover:text-blue-500"
+                    className="relative cursor-pointer rounded-md bg-[#efe6dd] font-medium text-[#b8966f]
+                               focus-within:outline-none focus-within:ring-2 focus-within:ring-[#b8966f]
+                               focus-within:ring-offset-2 hover:text-[#96785a]"
                   >
                     <span>Upload media</span>
                     <input
@@ -197,7 +192,7 @@ export default function UploadModal({
                   </label>
                   <p className="pl-1">or drag and drop</p>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-[#b8966f]">
                   Images (PNG, JPG, GIF) &amp; Videos (MP4, MOV)
                 </p>
               </div>
@@ -207,7 +202,7 @@ export default function UploadModal({
           {/* Preview Section */}
           {(images.length > 0 || videoFiles.length > 0) && (
             <div>
-              <h4 className="text-sm font-medium text-gray-700">
+              <h4 className="text-sm font-medium text-[#b8966f]">
                 Selected files:
               </h4>
 
@@ -302,17 +297,20 @@ export default function UploadModal({
 
           <button
             type="submit"
-            className="w-full justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium
-                       text-white shadow-sm hover:bg-blue-700 focus:outline-none
-                       focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full justify-center rounded-md bg-[#b8966f] px-4 py-2 text-sm font-medium
+                       text-white shadow-sm hover:bg-[#96785a] focus:outline-none
+                       focus:ring-2 focus:ring-[#b8966f] focus:ring-offset-2"
           >
             Upload Media
           </button>
           {uploadStatus && (
-            <div className="text-center text-sm text-black">{uploadStatus}</div>
+            <div className="text-center text-sm text-[#b8966f]">
+              {uploadStatus}
+            </div>
           )}
         </form>
       </div>
     </div>
   );
 }
+  
