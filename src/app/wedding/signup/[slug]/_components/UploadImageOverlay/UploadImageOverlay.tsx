@@ -173,30 +173,32 @@ export default function UploadModal({
               className="mt-1 flex justify-center rounded-md border-2 border-dashed
                           border-[#b8966f] px-6 pb-6 pt-5"
             >
-              <div className="space-y-1 text-center">
-                <div className="flex text-sm text-[#b8966f]">
-                  <label
-                    htmlFor="media-upload"
-                    className="relative cursor-pointer rounded-md bg-[#efe6dd] font-medium text-[#b8966f]
+              <label
+                htmlFor="media-upload"
+                className="w-full cursor-pointer space-y-1 text-center"
+              >
+                <div className="flex justify-center text-sm text-[#b8966f]">
+                  <span
+                    className="relative rounded-md bg-[#efe6dd] font-medium text-[#b8966f]
                              focus-within:outline-none focus-within:ring-2 focus-within:ring-[#b8966f]
                              focus-within:ring-offset-2 hover:text-[#96785a]"
                   >
-                    <span>Upload media</span>
-                    <input
-                      id="media-upload"
-                      type="file"
-                      multiple
-                      accept="image/*,video/*"
-                      onChange={handleMediaChange}
-                      className="sr-only"
-                    />
-                  </label>
+                    Upload media
+                  </span>
                   <p className="pl-1">or drag and drop</p>
                 </div>
                 <p className="text-xs text-[#b8966f]">
                   Images (PNG, JPG, GIF) &amp; Videos (MP4, MOV)
                 </p>
-              </div>
+                <input
+                  id="media-upload"
+                  type="file"
+                  multiple
+                  accept="image/*,video/*"
+                  onChange={handleMediaChange}
+                  className="sr-only"
+                />
+              </label>
             </div>
           </div>
 
