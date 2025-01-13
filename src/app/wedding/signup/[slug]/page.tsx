@@ -277,8 +277,8 @@ export default function SignupSlugPage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#efe6dd] to-[#efe6dd] text-[#b8966f]">
-      <div className="flex w-full flex-1 flex-row items-center justify-start pl-4 pr-4 pt-4">
+    <main className="flex min-h-screen flex-col items-start bg-gradient-to-b from-[#efe6dd] to-[#efe6dd] text-[#b8966f]">
+      <div className="flex h-12 w-full flex-row items-center justify-start pl-4 pr-4 pt-4">
         <Link
           className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
           href="/"
@@ -287,16 +287,20 @@ export default function SignupSlugPage() {
         </Link>
       </div>
 
-      <div className="container flex flex-col gap-12 px-4 py-8">
-        <div className="flex justify-center">
+      <div className="container mx-auto flex flex-col gap-12 px-4 py-8">
+        <div className="flex flex-col items-center justify-center space-y-4">
           <Image
             src={`/wedding/${slug}.png`}
             alt={`${slug} wedding banner`}
             width={800}
             height={200}
-            className="w-[60%] object-contain px-4 sm:w-[40%] md:w-[30%] lg:w-[20%]"
+            className="w-[60%] object-contain transition-all duration-300 sm:w-[40%] md:w-[30%] lg:w-[20%]"
             priority
           />
+          <h2 className="text-center text-2xl font-bold tracking-tight">
+            Charlotte &amp; David Kalaty&apos;s Wedding
+          </h2>
+          <p className="text-center text-lg">January 19th 2025</p>
         </div>
 
         <UploadModal
