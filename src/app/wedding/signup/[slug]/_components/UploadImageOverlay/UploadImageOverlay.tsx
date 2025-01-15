@@ -40,6 +40,7 @@ export default function UploadModal({
 }: UploadModalProps) {
   const isFirstRender = useRef(true);
   const processingFiles = useRef(false);
+  const hasUploaded = useRef(false);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -47,8 +48,9 @@ export default function UploadModal({
       return;
     }
 
-    if (!processingFiles.current) {
+    if (!processingFiles.current && !hasUploaded.current) {
       if (images.length > 0 || videoFiles.length > 0) {
+        hasUploaded.current = true;
         void handleSubmit();
       }
     }
@@ -60,6 +62,8 @@ export default function UploadModal({
     if (!e.target.files?.length) return;
 
     processingFiles.current = true;
+    hasUploaded.current = false;
+
     const files = Array.from(e.target.files);
 
     const imageFiles = files.filter((file) => file.type.startsWith("image/"));

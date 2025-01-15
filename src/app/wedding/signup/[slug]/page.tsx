@@ -165,10 +165,7 @@ export default function SignupSlugPage() {
   }, [slug, router, currentPage]);
 
   const handleSubmit = async () => {
-    console.log("handleSubmit called");
     try {
-      console.log("images", images.length);
-      console.log("videoFiles", videoFiles.length);
       if (images.length > 0) {
         const imageFormData = new FormData();
         imageFormData.append("name", name);
