@@ -52,9 +52,14 @@ export default function UploadModal({
       if (images.length > 0 || videoFiles.length > 0) {
         hasUploaded.current = true;
         void handleSubmit();
+
+        // clear the images and video files
+        setImages([]);
+        setVideoFiles([]);
+        onClose();
       }
     }
-  }, [images, videoFiles, handleSubmit]);
+  }, [images, videoFiles, handleSubmit, onClose, setImages, setVideoFiles]);
 
   const handleMediaChange = async (
     e: React.ChangeEvent<HTMLInputElement>,
