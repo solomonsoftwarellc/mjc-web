@@ -16,6 +16,7 @@ import {
   limit,
 } from "firebase/firestore";
 import { db } from "firebaseConfig";
+import { Metadata } from "next";
 
 // Import your two components
 import UploadModal from "./_components/UploadImageOverlay/UploadImageOverlay";
