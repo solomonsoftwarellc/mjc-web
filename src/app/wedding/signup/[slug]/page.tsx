@@ -172,84 +172,94 @@ export default function SignupSlugPage() {
 
   const handleSubmit = async () => {
     try {
-      if (images.length > 0) {
-        const imageFormData = new FormData();
-        imageFormData.append("name", name);
-        imageFormData.append("slug", slug);
+      try {
+        if (images.length > 0) {
+          const imageFormData = new FormData();
+          imageFormData.append("name", name);
+          imageFormData.append("slug", slug);
 
-        images.forEach((imageData, index) => {
-          imageFormData.append("images", imageData.file);
-          if (imageData.timestamp) {
-            imageFormData.append(
-              `imageMetadata_${index}`,
-              JSON.stringify({ timestamp: imageData.timestamp.toISOString() }),
-            );
-          }
-        });
+          images.forEach((imageData, index) => {
+            imageFormData.append("images", imageData.file);
+            if (imageData.timestamp) {
+              imageFormData.append(
+                `imageMetadata_${index}`,
+                JSON.stringify({
+                  timestamp: imageData.timestamp.toISOString(),
+                }),
+              );
+            }
+          });
 
-        await fetch("https://cd.phantomcheckerapi.com/upload", {
-          method: "POST",
-          body: imageFormData,
-        });
+          await fetch("https://cd.phantomcheckerapi.com/upload", {
+            method: "POST",
+            body: imageFormData,
+          });
 
-        // if (!imageRes.ok) {
-        //   const errorText =
-        //     typeof imageRes.statusText === "object"
-        //       ? JSON.stringify(imageRes.statusText)
-        //       : imageRes.statusText;
-        //   setUploadStatus(`Image upload error: ${errorText}`);
-        //   return;
-        // }
+          // if (!imageRes.ok) {
+          //   const errorText =
+          //     typeof imageRes.statusText === "object"
+          //       ? JSON.stringify(imageRes.statusText)
+          //       : imageRes.statusText;
+          //   setUploadStatus(`Image upload error: ${errorText}`);
+          //   return;
+          // }
 
-        // const imageData = (await imageRes.json()) as {
-        //   error?: { message: string } | string;
-        // };
-        // if (imageData.error) {
-        //   const errorMessage =
-        //     typeof imageData.error === "object"
-        //       ? imageData.error.message
-        //       : imageData.error;
-        //   setUploadStatus(`Image upload error: ${errorMessage}`);
-        //   return;
-        // }
+          // const imageData = (await imageRes.json()) as {
+          //   error?: { message: string } | string;
+          // };
+          // if (imageData.error) {
+          //   const errorMessage =
+          //     typeof imageData.error === "object"
+          //       ? imageData.error.message
+          //       : imageData.error;
+          //   setUploadStatus(`Image upload error: ${errorMessage}`);
+          //   return;
+          // }
+        }
+      } catch (error) {
+        console.log(error, "error images");
       }
 
-      if (videoFiles.length > 0) {
-        const videoFormData = new FormData();
-        videoFormData.append("name", name);
-        videoFormData.append("slug", slug);
+      try {
+        if (videoFiles.length > 0) {
+          const videoFormData = new FormData();
+          videoFormData.append("name", name);
+          videoFormData.append("slug", slug);
 
-        // Add each video and its metadata
-        videoFiles.forEach((videoData, index) => {
-          videoFormData.append("videos", videoData.file);
-          videoFormData.append(
-            `videoMetadata_${index}`,
-            JSON.stringify({
-              timestamp: videoData.timestamp?.toISOString(),
-              duration: videoData.duration,
-            }),
-          );
-        });
+          // Add each video and its metadata
+          videoFiles.forEach((videoData, index) => {
+            videoFormData.append("videos", videoData.file);
+            videoFormData.append(
+              `videoMetadata_${index}`,
+              JSON.stringify({
+                timestamp: videoData.timestamp?.toISOString(),
+                duration: videoData.duration,
+              }),
+            );
+          });
 
-        await fetch("https://cd.phantomcheckerapi.com/upload-video", {
-          method: "POST",
-          body: videoFormData,
-        });
+          await fetch("https://cd.phantomcheckerapi.com/upload-video", {
+            method: "POST",
+            body: videoFormData,
+          });
 
-        // if (!videoRes.ok) {
-        //   const errorText =
-        //     typeof videoRes.statusText === "object"
-        //       ? JSON.stringify(videoRes.statusText)
-        //       : videoRes.statusText;
-        //   setUploadStatus(`Video upload error: ${errorText}`);
-        //   return;
-        // }
+          // if (!videoRes.ok) {
+          //   const errorText =
+          //     typeof videoRes.statusText === "object"
+          //       ? JSON.stringify(videoRes.statusText)
+          //       : videoRes.statusText;
+          //   setUploadStatus(`Video upload error: ${errorText}`);
+          //   return;
+          // }
 
-        // const videoData = (await videoRes.json()) as { success: boolean };
-        // if (!videoData.success) {
-        //   setUploadStatus("Video upload failed.");
-        //   return;
-        // }
+          // const videoData = (await videoRes.json()) as { success: boolean };
+          // if (!videoData.success) {
+          //   setUploadStatus("Video upload failed.");
+          //   return;
+          // }
+        }
+      } catch (error) {
+        console.log(error, "error videos");
       }
 
       // setUploadStatus("Success! Uploaded media.");
