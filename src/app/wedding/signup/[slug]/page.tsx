@@ -270,7 +270,9 @@ export default function SignupSlugPage() {
     }
 
     try {
-      const collectionName = type === "image" ? "images" : "videos";
+      console.log(type);
+      const collectionName = type === "image" ? "images" : "images";
+      console.log("Deleting", docData.id, "from", collectionName, "in", slug);
       const docRef = doc(db, "weddings", slug, collectionName, docData.id);
       await deleteDoc(docRef);
 
