@@ -208,27 +208,26 @@ export default function SignupSlugPage() {
 
       try {
         if (videoFiles.length > 0) {
-          const videoFormData = new FormData();
-          videoFormData.append("name", name);
-          videoFormData.append("slug", slug);
-
-          videoFiles.forEach((videoData, index) => {
+          for (const videoData of videoFiles) {
+            const videoFormData = new FormData();
+            videoFormData.append("name", name);
+            videoFormData.append("slug", slug);
             videoFormData.append("videos", videoData.file);
             videoFormData.append(
-              `videoMetadata_${index}`,
+              "videoMetadata_0",
               JSON.stringify({
                 timestamp: videoData.timestamp?.toISOString(),
                 duration: videoData.duration,
               }),
             );
-          });
 
-          uploadPromises.push(
-            fetch("https://cd.phantomcheckerapi.com/upload-video", {
-              method: "POST",
-              body: videoFormData,
-            }),
-          );
+            uploadPromises.push(
+              fetch("https://cd.phantomcheckerapi.com/upload-video", {
+                method: "POST",
+                body: videoFormData,
+              }),
+            );
+          }
         }
       } catch (error) {}
 
