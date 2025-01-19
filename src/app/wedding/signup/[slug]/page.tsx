@@ -298,7 +298,9 @@ export default function SignupSlugPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight">
             Charlotte &amp; David Kalaty&apos;s Wedding
           </h2>
-          <p className="text-center text-lg">January 19th 2025</p>
+          <p className="text-center font-['Times_New_Roman'] text-lg">
+            January 19, 2025
+          </p>
         </div>
 
         <UploadModal
