@@ -254,6 +254,7 @@ export default function SignupSlugPage() {
       setIsModalOpen(false);
       // setUploadStatus(null);
     } catch (error) {
+      console.log(error);
       if (error instanceof Error) {
         console.error(error);
         setUploadStatus(`Upload failed: ${error.message}`);
