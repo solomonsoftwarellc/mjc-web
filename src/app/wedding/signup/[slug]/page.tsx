@@ -24,7 +24,12 @@ import MediaDisplay from "./_components/UserGallery/UserGallery";
 import Image from "next/image";
 
 // Allowed slugs
-const allowedSlugs = ["david-charlotte", "test-slug", "another-one"];
+const allowedSlugs = [
+  "david-charlotte",
+  "test-slug",
+  "another-one",
+  "another-one2",
+];
 
 type FirestoreImageDoc = {
   name: string;
