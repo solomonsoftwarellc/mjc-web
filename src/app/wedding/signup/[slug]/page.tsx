@@ -89,6 +89,8 @@ export default function SignupSlugPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
+  const [isUploading, setIsUploading] = useState(false);
+
   useEffect(() => {
     if (!allowedSlugs.includes(slug)) {
       router.replace("/404");
@@ -172,6 +174,7 @@ export default function SignupSlugPage() {
 
   const handleSubmit = async () => {
     try {
+      setIsUploading(true);
       setUploadStatus("Uploading media...");
 
       const uploadPromises = [];
@@ -229,7 +232,6 @@ export default function SignupSlugPage() {
         }
       } catch (error) {}
 
-      // Wait for all uploads to complete
       await Promise.all(uploadPromises);
 
       setUploadStatus("Success! Uploaded media.");
@@ -237,10 +239,13 @@ export default function SignupSlugPage() {
       setVideoFiles([]);
       setIsModalOpen(false);
 
-      // Clear success message after a delay
-      setTimeout(() => setUploadStatus(null), 3000);
+      setTimeout(() => {
+        setUploadStatus(null);
+        setIsUploading(false);
+      }, 3000);
     } catch (error) {
       console.error("Upload error:", error);
+      setIsUploading(false);
       if (error instanceof Error) {
         setUploadStatus(`Upload failed: ${error.message}`);
       } else {
@@ -255,6 +260,15 @@ export default function SignupSlugPage() {
 
   return (
     <main className="flex min-h-screen flex-col items-start bg-gradient-to-b from-[#efe6dd] to-[#efe6dd] text-[#b8966f]">
+      {isUploading && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60">
+          <div className="flex flex-col items-center space-y-4">
+            <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#b8966f] border-t-transparent"></div>
+            <p className="text-lg font-semibold text-[#b8966f]">Uploading...</p>
+          </div>
+        </div>
+      )}
+
       <div className="flex h-12 w-full flex-row items-center justify-start pl-4 pr-4 pt-4">
         <Link
           className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
