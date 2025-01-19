@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import {
   collection,
   onSnapshot,
@@ -16,7 +17,6 @@ import {
   limit,
 } from "firebase/firestore";
 import { db } from "firebaseConfig";
-import { Metadata } from "next";
 
 // Import your two components
 import UploadModal from "./_components/UploadImageOverlay/UploadImageOverlay";
@@ -182,13 +182,10 @@ export default function SignupSlugPage() {
           }
         });
 
-        const imageRes = await fetch(
-          "https://cd.phantomcheckerapi.com/upload",
-          {
-            method: "POST",
-            body: imageFormData,
-          },
-        );
+        await fetch("https://cd.phantomcheckerapi.com/upload", {
+          method: "POST",
+          body: imageFormData,
+        });
 
         // if (!imageRes.ok) {
         //   const errorText =
@@ -229,13 +226,10 @@ export default function SignupSlugPage() {
           );
         });
 
-        const videoRes = await fetch(
-          "https://cd.phantomcheckerapi.com/upload-video",
-          {
-            method: "POST",
-            body: videoFormData,
-          },
-        );
+        await fetch("https://cd.phantomcheckerapi.com/upload-video", {
+          method: "POST",
+          body: videoFormData,
+        });
 
         // if (!videoRes.ok) {
         //   const errorText =
