@@ -43,6 +43,19 @@ export default function UploadModal({
   const hasUploaded = useRef(false);
 
   useEffect(() => {
+    const savedName = localStorage.getItem("uploaderName");
+    if (savedName) {
+      setName(savedName);
+    }
+  }, [setName]);
+
+  useEffect(() => {
+    if (name) {
+      localStorage.setItem("uploaderName", name);
+    }
+  }, [name]);
+
+  useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
