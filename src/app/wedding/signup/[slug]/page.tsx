@@ -15,6 +15,8 @@ import {
   query,
   orderBy,
   limit,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 import { db } from "firebaseConfig";
 
@@ -32,6 +34,7 @@ const allowedSlugs = [
 ];
 
 type FirestoreImageDoc = {
+  id?: string;
   name: string;
   fileName: string;
   cfImageId: string;
@@ -48,6 +51,7 @@ type VideoStatus =
   | string;
 
 type FirestoreVideoDoc = {
+  id?: string;
   name: string;
   fileName: string;
   videoUid: string;
@@ -139,9 +143,10 @@ export default function SignupSlugPage() {
     const unsubscribeImages = onSnapshot(
       imagesQuery,
       (snapshot) => {
-        const docs = snapshot.docs.map(
-          (doc) => doc.data() as FirestoreImageDoc,
-        );
+        const docs = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as FirestoreImageDoc),
+        }));
         setFetchedImages(docs);
       },
       (error: FirestoreError) => {
@@ -153,9 +158,10 @@ export default function SignupSlugPage() {
     const unsubscribeVideos = onSnapshot(
       videosQuery,
       (snapshot) => {
-        const docs = snapshot.docs.map(
-          (doc) => doc.data() as FirestoreVideoDoc,
-        );
+        const docs = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as FirestoreVideoDoc),
+        }));
         setFetchedVideos(docs);
       },
       (error: FirestoreError) => {
@@ -253,6 +259,30 @@ export default function SignupSlugPage() {
     }
   };
 
+  const handleDelete = async (
+    type: "image" | "video",
+    docData: FirestoreImageDoc | FirestoreVideoDoc,
+  ) => {
+    if (!docData.id) {
+      console.error("No document ID found");
+      setUploadStatus("Failed to delete item: No document ID");
+      return;
+    }
+
+    try {
+      const collectionName = type === "image" ? "images" : "videos";
+      const docRef = doc(db, "weddings", slug, collectionName, docData.id);
+      await deleteDoc(docRef);
+
+      setUploadStatus("Item deleted successfully");
+      setTimeout(() => setUploadStatus(null), 2000);
+    } catch (error) {
+      console.error("Delete error:", error);
+      setUploadStatus("Failed to delete item");
+      setTimeout(() => setUploadStatus(null), 2000);
+    }
+  };
+
   if (!allowedSlugs.includes(slug)) {
     return null;
   }
@@ -316,6 +346,7 @@ export default function SignupSlugPage() {
           setCurrentPage={setCurrentPage}
           hasMore={hasMore}
           itemsPerPage={ITEMS_PER_PAGE}
+          onDelete={handleDelete}
         />
       </div>
     </main>

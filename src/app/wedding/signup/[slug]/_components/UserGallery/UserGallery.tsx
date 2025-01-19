@@ -35,6 +35,10 @@ type MediaDisplayProps = {
   setCurrentPage: (page: number) => void;
   hasMore: boolean;
   itemsPerPage: number;
+  onDelete: (
+    type: "image" | "video",
+    docData: FirestoreImageDoc | FirestoreVideoDoc,
+  ) => Promise<void>;
 };
 
 export default function MediaDisplay({
@@ -44,6 +48,7 @@ export default function MediaDisplay({
   currentPage,
   setCurrentPage,
   hasMore,
+  onDelete,
 }: MediaDisplayProps) {
   const [selectedMedia, setSelectedMedia] = React.useState<
     FirestoreImageDoc | FirestoreVideoDoc | null
@@ -68,6 +73,7 @@ export default function MediaDisplay({
     item: FirestoreImageDoc | FirestoreVideoDoc,
     index: number,
   ) => {
+    console.log(item);
     setSelectedMedia(item);
     setSelectedIndex(index);
   };
@@ -86,7 +92,7 @@ export default function MediaDisplay({
           return (
             <div
               key={index}
-              className="flex flex-col items-center justify-center gap-4"
+              className="group relative flex flex-col items-center justify-center gap-4"
             >
               <div
                 className="relative aspect-square w-full cursor-pointer overflow-hidden transition-transform hover:scale-[1.02]"
@@ -150,6 +156,50 @@ export default function MediaDisplay({
                   {new Date(item.timestamp).toLocaleString()}
                 </p>
               </div>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  void onDelete("image", item as FirestoreImageDoc);
+                }}
+                className="absolute right-2 top-2 rounded-full bg-red-500 p-2 text-white"
+                aria-label="Delete image"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  void onDelete("video", item as FirestoreVideoDoc);
+                }}
+                className="absolute right-2 top-2 rounded-full bg-red-500 p-2 text-white"
+                aria-label="Delete video"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
             </div>
           );
         })}
