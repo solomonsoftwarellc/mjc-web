@@ -2,12 +2,24 @@
 
 import React from "react";
 
-type FirestoreImageDoc = {
+type BaseGalleryDoc = {
   name: string;
   fileName: string;
+  timestamp: string;
+  type: "image" | "video";
+};
+
+type GalleryImageDoc = BaseGalleryDoc & {
+  type: "image";
   cfImageId: string;
   variants: string[];
-  timestamp: string;
+};
+
+type GalleryVideoDoc = BaseGalleryDoc & {
+  type: "video";
+  videoUid: string;
+  status: VideoStatus;
+  thumbnail?: string | null;
 };
 
 type VideoStatus =
@@ -18,18 +30,8 @@ type VideoStatus =
     }
   | string;
 
-type FirestoreVideoDoc = {
-  name: string;
-  fileName: string;
-  videoUid: string;
-  status: VideoStatus;
-  thumbnail?: string | null;
-  timestamp: string;
-};
-
 type MediaDisplayProps = {
-  fetchedImages: FirestoreImageDoc[];
-  fetchedVideos: FirestoreVideoDoc[];
+  galleryItems: (GalleryImageDoc | GalleryVideoDoc)[];
   fetchError: string | null;
   currentPage: number;
   setCurrentPage: (page: number) => void;
@@ -38,19 +40,18 @@ type MediaDisplayProps = {
 };
 
 export default function MediaDisplay({
-  fetchedImages,
-  fetchedVideos,
+  galleryItems,
   fetchError,
   currentPage,
   setCurrentPage,
   hasMore,
 }: MediaDisplayProps) {
   const [selectedMedia, setSelectedMedia] = React.useState<
-    FirestoreImageDoc | FirestoreVideoDoc | null
+    GalleryImageDoc | GalleryVideoDoc | null
   >(null);
   const [selectedIndex, setSelectedIndex] = React.useState<number>(0);
 
-  const combinedMedia = [...fetchedImages, ...fetchedVideos].sort(
+  const sortedMedia = [...galleryItems].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
   );
 
@@ -58,14 +59,14 @@ export default function MediaDisplay({
     e.stopPropagation();
     const newIndex =
       direction === "prev"
-        ? (selectedIndex - 1 + combinedMedia.length) % combinedMedia.length
-        : (selectedIndex + 1) % combinedMedia.length;
+        ? (selectedIndex - 1 + sortedMedia.length) % sortedMedia.length
+        : (selectedIndex + 1) % sortedMedia.length;
     setSelectedIndex(newIndex);
-    setSelectedMedia(combinedMedia[newIndex] ?? null);
+    setSelectedMedia(sortedMedia[newIndex] ?? null);
   };
 
   const handleMediaClick = (
-    item: FirestoreImageDoc | FirestoreVideoDoc,
+    item: GalleryImageDoc | GalleryVideoDoc,
     index: number,
   ) => {
     setSelectedMedia(item);
@@ -79,9 +80,9 @@ export default function MediaDisplay({
       )}
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-        {combinedMedia.map((item, index) => {
-          const isImage = "variants" in item;
-          const isVideo = "videoUid" in item;
+        {sortedMedia.map((item, index) => {
+          const isImage = item.type === "image";
+          const isVideo = item.type === "video";
 
           return (
             <div
@@ -155,7 +156,7 @@ export default function MediaDisplay({
         })}
       </div>
 
-      {hasMore && combinedMedia.length > 0 && (
+      {hasMore && sortedMedia.length > 0 && (
         <div className="flex justify-center pt-8">
           <button
             onClick={() => setCurrentPage(currentPage + 1)}
@@ -194,14 +195,14 @@ export default function MediaDisplay({
               </svg>
             </button>
 
-            {"variants" in selectedMedia ? (
+            {selectedMedia.type === "image" ? (
               <img
                 src={selectedMedia.variants[0]}
                 alt={selectedMedia.fileName}
                 className="max-h-[90vh] max-w-[90vw] object-contain"
                 onClick={(e) => e.stopPropagation()}
               />
-            ) : "videoUid" in selectedMedia ? (
+            ) : selectedMedia.type === "video" ? (
               <div
                 className="relative w-full max-w-4xl md:w-[80vw]"
                 onClick={(e) => e.stopPropagation()}

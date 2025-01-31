@@ -22,21 +22,28 @@ import { db } from "firebaseConfig";
 import UploadModal from "./_components/UploadImageOverlay/UploadImageOverlay";
 import MediaDisplay from "./_components/UserGallery/UserGallery";
 import Image from "next/image";
+import { Accounts } from "../../accounts";
 
 // Allowed slugs
-const allowedSlugs = [
-  "david-charlotte",
-  "test-slug",
-  "another-one",
-  "another-one2",
-];
 
-type FirestoreImageDoc = {
+type BaseGalleryDoc = {
   name: string;
   fileName: string;
+  timestamp: string;
+  type: "image" | "video";
+};
+
+type GalleryImageDoc = BaseGalleryDoc & {
+  type: "image";
   cfImageId: string;
   variants: string[];
-  timestamp: string;
+};
+
+type GalleryVideoDoc = BaseGalleryDoc & {
+  type: "video";
+  videoUid: string;
+  status: VideoStatus;
+  thumbnail?: string | null;
 };
 
 type VideoStatus =
@@ -81,8 +88,9 @@ export default function SignupSlugPage() {
   const [name, setName] = useState("");
   const [uploadStatus, setUploadStatus] = useState<string | null>(null);
 
-  const [fetchedImages, setFetchedImages] = useState<FirestoreImageDoc[]>([]);
-  const [fetchedVideos, setFetchedVideos] = useState<FirestoreVideoDoc[]>([]);
+  const [galleryItems, setGalleryItems] = useState<
+    (GalleryImageDoc | GalleryVideoDoc)[]
+  >([]);
   const [fetchError, setFetchError] = useState<string | null>(null);
 
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -91,84 +99,51 @@ export default function SignupSlugPage() {
 
   const [isUploading, setIsUploading] = useState(false);
 
+  const allowedSlugs = Object.keys(Accounts);
+
   useEffect(() => {
     if (!allowedSlugs.includes(slug)) {
       router.replace("/404");
       return;
     }
 
-    const imagesRef = collection(db, "weddings", slug, "images");
-    const videosRef = collection(db, "weddings", slug, "videos");
-
-    const imagesQuery = query(
-      imagesRef,
+    const galleryRef = collection(db, "weddings", slug, "gallery");
+    const galleryQuery = query(
+      galleryRef,
       orderBy("timestamp", "desc"),
-      limit(currentPage * (ITEMS_PER_PAGE / 2)),
-    );
-
-    const videosQuery = query(
-      videosRef,
-      orderBy("timestamp", "desc"),
-      limit(currentPage * (ITEMS_PER_PAGE / 2)),
+      limit(currentPage * ITEMS_PER_PAGE),
     );
 
     const checkHasMore = async () => {
-      const nextImagesQuery = query(
-        imagesRef,
+      const nextQuery = query(
+        galleryRef,
         orderBy("timestamp", "desc"),
-        limit((currentPage + 1) * (ITEMS_PER_PAGE / 2)),
-      );
-      const nextVideosQuery = query(
-        videosRef,
-        orderBy("timestamp", "desc"),
-        limit((currentPage + 1) * (ITEMS_PER_PAGE / 2)),
+        limit((currentPage + 1) * ITEMS_PER_PAGE),
       );
 
-      const [imagesSnap, videosSnap] = await Promise.all([
-        getDocs(nextImagesQuery),
-        getDocs(nextVideosQuery),
-      ]);
-
-      const nextPageHasData =
-        imagesSnap.docs.length > currentPage * (ITEMS_PER_PAGE / 2) ||
-        videosSnap.docs.length > currentPage * (ITEMS_PER_PAGE / 2);
-
+      const snap = await getDocs(nextQuery);
+      const nextPageHasData = snap.docs.length > currentPage * ITEMS_PER_PAGE;
       setHasMore(nextPageHasData);
     };
 
-    const unsubscribeImages = onSnapshot(
-      imagesQuery,
+    const unsubscribe = onSnapshot(
+      galleryQuery,
       (snapshot) => {
         const docs = snapshot.docs.map(
-          (doc) => doc.data() as FirestoreImageDoc,
+          (doc) => doc.data() as GalleryImageDoc | GalleryVideoDoc,
         );
-        setFetchedImages(docs);
+        setGalleryItems(docs);
       },
       (error: FirestoreError) => {
-        console.error("Error fetching Firestore images:", error);
-        setFetchError(error.message || "Failed to fetch images.");
-      },
-    );
-
-    const unsubscribeVideos = onSnapshot(
-      videosQuery,
-      (snapshot) => {
-        const docs = snapshot.docs.map(
-          (doc) => doc.data() as FirestoreVideoDoc,
-        );
-        setFetchedVideos(docs);
-      },
-      (error: FirestoreError) => {
-        console.error("Error fetching Firestore videos:", error);
-        setFetchError(error.message || "Failed to fetch videos.");
+        console.error("Error fetching gallery:", error);
+        setFetchError(error.message || "Failed to fetch media.");
       },
     );
 
     checkHasMore().catch(console.error);
 
     return () => {
-      unsubscribeImages();
-      unsubscribeVideos();
+      unsubscribe();
     };
   }, [slug, router, currentPage]);
 
@@ -288,10 +263,10 @@ export default function SignupSlugPage() {
             priority
           />
           <h2 className="text-center text-2xl font-bold tracking-tight">
-            Charlotte &amp; David Kalaty&apos;s Wedding
+            {Accounts[slug as keyof typeof Accounts].name}
           </h2>
           <p className="text-center font-['Times_New_Roman'] text-lg">
-            January 19, 2025
+            {Accounts[slug as keyof typeof Accounts].date}
           </p>
         </div>
 
@@ -309,8 +284,7 @@ export default function SignupSlugPage() {
         />
 
         <MediaDisplay
-          fetchedImages={fetchedImages}
-          fetchedVideos={fetchedVideos}
+          galleryItems={galleryItems}
           fetchError={fetchError}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
