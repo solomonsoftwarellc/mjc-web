@@ -233,12 +233,27 @@ export default function SignupSlugPage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-start bg-gradient-to-b from-[#efe6dd] to-[#efe6dd] text-[#b8966f]">
+    <main
+      className="flex min-h-screen flex-col items-start bg-gradient-to-b from-[#efe6dd] to-[#efe6dd]"
+      style={{ color: Accounts[slug as keyof typeof Accounts].textColor }}
+    >
       {isUploading && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60">
           <div className="flex flex-col items-center space-y-4">
-            <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#b8966f] border-t-transparent"></div>
-            <p className="text-lg font-semibold text-[#b8966f]">Uploading...</p>
+            <div
+              className="h-12 w-12 animate-spin rounded-full border-4 border-t-transparent"
+              style={{
+                borderColor: Accounts[slug as keyof typeof Accounts].textColor,
+              }}
+            ></div>
+            <p
+              className="text-lg font-semibold"
+              style={{
+                color: Accounts[slug as keyof typeof Accounts].textColor,
+              }}
+            >
+              Uploading...
+            </p>
           </div>
         </div>
       )}
@@ -248,7 +263,12 @@ export default function SignupSlugPage() {
           className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
           href="/"
         >
-          <h3 className="text-2xl font-bold text-[#b8966f]">Home</h3>
+          <h3
+            className="text-2xl font-bold"
+            style={{ color: Accounts[slug as keyof typeof Accounts].textColor }}
+          >
+            Home
+          </h3>
         </Link>
       </div>
 

@@ -1,6 +1,8 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import React, { useRef, useEffect } from "react";
+import { Accounts } from "~/app/wedding/accounts";
 
 type ImageWithMetadata = {
   file: File;
@@ -41,6 +43,7 @@ export default function UploadModal({
   const isFirstRender = useRef(true);
   const processingFiles = useRef(false);
   const hasUploaded = useRef(false);
+  const slug = useParams().slug;
 
   useEffect(() => {
     const savedName = localStorage.getItem("uploaderName");
@@ -155,13 +158,16 @@ export default function UploadModal({
     >
       <div className="w-full max-w-2xl rounded-lg bg-[#efe6dd] p-6 shadow-xl">
         <div className="flex items-center justify-between">
-          <h2 className="mb-4 text-2xl font-bold text-[#b8966f]">
+          <h2
+            className="mb-4 text-2xl font-bold"
+            style={{ color: Accounts[slug as keyof typeof Accounts].textColor }}
+          >
             Upload Media
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="text-[#b8966f] hover:text-[#96785a]"
+            style={{ color: Accounts[slug as keyof typeof Accounts].textColor }}
           >
             <span className="sr-only">Close Modal</span>✕
           </button>
@@ -171,7 +177,10 @@ export default function UploadModal({
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-[#b8966f]"
+              className="block text-sm font-medium"
+              style={{
+                color: Accounts[slug as keyof typeof Accounts].textColor,
+              }}
             >
               Your Name
             </label>
@@ -188,12 +197,20 @@ export default function UploadModal({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#b8966f]">
+            <label
+              className="block text-sm font-medium"
+              style={{
+                color: Accounts[slug as keyof typeof Accounts].textColor,
+              }}
+            >
               Upload Photos &amp; Videos
             </label>
             <div
               className="mt-1 flex justify-center rounded-md border-2 border-dashed
-                          border-[#b8966f] px-6 pb-6 pt-5"
+                          px-6 pb-6 pt-5"
+              style={{
+                borderColor: Accounts[slug as keyof typeof Accounts].textColor,
+              }}
             >
               <label
                 htmlFor="media-upload"
@@ -204,12 +221,29 @@ export default function UploadModal({
                     className="relative rounded-md bg-[#efe6dd] font-medium text-[#b8966f]
                              focus-within:outline-none focus-within:ring-2 focus-within:ring-[#b8966f]
                              focus-within:ring-offset-2 hover:text-[#96785a]"
+                    style={{
+                      color: Accounts[slug as keyof typeof Accounts].textColor,
+                      borderColor:
+                        Accounts[slug as keyof typeof Accounts].textColor,
+                    }}
                   >
                     Upload media
                   </span>
-                  <p className="pl-1">or drag and drop</p>
+                  <p
+                    className="pl-1"
+                    style={{
+                      color: Accounts[slug as keyof typeof Accounts].textColor,
+                    }}
+                  >
+                    or drag and drop
+                  </p>
                 </div>
-                <p className="text-xs text-[#b8966f]">
+                <p
+                  className="text-xs"
+                  style={{
+                    color: Accounts[slug as keyof typeof Accounts].textColor,
+                  }}
+                >
                   Images (PNG, JPG, GIF) &amp; Videos (MP4, MOV)
                 </p>
                 <input
@@ -225,7 +259,12 @@ export default function UploadModal({
           </div>
 
           {uploadStatus && (
-            <div className="text-center text-sm text-[#b8966f]">
+            <div
+              className="text-center text-sm"
+              style={{
+                color: Accounts[slug as keyof typeof Accounts].textColor,
+              }}
+            >
               {uploadStatus}
             </div>
           )}

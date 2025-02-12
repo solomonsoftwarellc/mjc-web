@@ -21,14 +21,7 @@ import { db } from "firebaseConfig";
 // Import your two components
 import MediaDisplay from "./_components/UserGallery/UserGallery";
 import Image from "next/image";
-
-// Allowed slugs
-const allowedSlugs = [
-  "david-charlotte",
-  "test-slug",
-  "another-one",
-  "another-one2",
-];
+import { Accounts } from "../../accounts";
 
 type FirestoreImageDoc = {
   name: string;
@@ -68,6 +61,8 @@ export default function SignupSlugPage() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+
+  const allowedSlugs = Object.keys(Accounts);
 
   useEffect(() => {
     if (!allowedSlugs.includes(slug)) {
@@ -155,13 +150,20 @@ export default function SignupSlugPage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-start bg-gradient-to-b from-[#efe6dd] to-[#efe6dd] text-[#b8966f]">
+    <main
+      className={`flex min-h-screen flex-col items-start bg-gradient-to-b from-[#efe6dd] to-[#efe6dd] text-[${Accounts[slug as keyof typeof Accounts].textColor}]`}
+    >
       <div className="flex h-12 w-full flex-row items-center justify-start pl-4 pr-4 pt-4">
         <Link
           className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
           href="/"
         >
-          <h3 className="text-2xl font-bold text-[#b8966f]">Home</h3>
+          <h3
+            className="text-2xl font-bold"
+            style={{ color: Accounts[slug as keyof typeof Accounts].textColor }}
+          >
+            Home
+          </h3>
         </Link>
       </div>
 
