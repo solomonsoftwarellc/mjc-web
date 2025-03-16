@@ -5,6 +5,12 @@ export const Accounts = {
     date: "January 19, 2025",
     textColor: "#b8966f",
   },
+  "lea-eman": {
+    name: "Lea & Eman Wedding",
+    slug: "lea-eman",
+    date: "January 19, 2025",
+    textColor: "#b8966f",
+  },
   "test-slug": {
     name: "Test Slug",
     slug: "test-slug",
