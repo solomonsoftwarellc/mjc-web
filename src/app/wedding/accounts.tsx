@@ -10,7 +10,7 @@ export const Accounts = {
     name: "Lea & Emanuel Mordekhai's Wedding",
     slug: "lea-eman",
     date: "March 23rd, 2025",
-    textColor: "#434435",
+    textColor: "#004d00",
     backgroundColor: "white",
   },
   "test-slug": {
