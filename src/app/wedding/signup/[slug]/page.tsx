@@ -234,8 +234,11 @@ export default function SignupSlugPage() {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-start bg-gradient-to-b from-[${Accounts[slug as keyof typeof Accounts].backgroundColor}] to-[${Accounts[slug as keyof typeof Accounts].backgroundColor}]`}
-      style={{ color: Accounts[slug as keyof typeof Accounts].textColor }}
+      className={`flex min-h-screen flex-col items-start bg-gradient-to-b`}
+      style={{
+        color: Accounts[slug as keyof typeof Accounts].textColor,
+        background: Accounts[slug as keyof typeof Accounts].backgroundColor,
+      }}
     >
       {isUploading && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60">

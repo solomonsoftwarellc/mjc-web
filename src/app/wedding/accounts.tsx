@@ -11,7 +11,7 @@ export const Accounts = {
     slug: "lea-eman",
     date: "March 23rd, 2025",
     textColor: "#434435",
-    backgroundColor: "#fffff0",
+    backgroundColor: "white",
   },
   "test-slug": {
     name: "Test Slug",
