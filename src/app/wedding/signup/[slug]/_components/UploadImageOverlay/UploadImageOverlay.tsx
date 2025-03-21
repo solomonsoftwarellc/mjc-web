@@ -156,7 +156,12 @@ export default function UploadModal({
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
       onClick={handleBackgroundClick}
     >
-      <div className="w-full max-w-2xl rounded-lg bg-[#efe6dd] p-6 shadow-xl">
+      <div
+        className={`w-full max-w-2xl rounded-lg p-6 shadow-xl`}
+        style={{
+          background: Accounts[slug as keyof typeof Accounts].backgroundColor,
+        }}
+      >
         <div className="flex items-center justify-between">
           <h2
             className="mb-4 text-2xl font-bold"
@@ -190,8 +195,8 @@ export default function UploadModal({
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="mt-1 block w-full rounded-md border-[#b8966f] bg-[#efe6dd] text-[#b8966f] shadow-sm
-                       focus:border-[#b8966f] focus:ring-[#b8966f]"
+              className={`mt-1 block w-full rounded-md border-[${Accounts[slug as keyof typeof Accounts].textColor}] bg-[${Accounts[slug as keyof typeof Accounts].backgroundColor}] text-[${Accounts[slug as keyof typeof Accounts].textColor}] shadow-sm
+                       focus:border-[${Accounts[slug as keyof typeof Accounts].textColor}] focus:ring-[${Accounts[slug as keyof typeof Accounts].textColor}]`}
               placeholder="Enter your name"
             />
           </div>
@@ -216,11 +221,13 @@ export default function UploadModal({
                 htmlFor="media-upload"
                 className="w-full cursor-pointer space-y-1 text-center"
               >
-                <div className="flex justify-center text-sm text-[#b8966f]">
+                <div
+                  className={`flex justify-center text-sm text-[${Accounts[slug as keyof typeof Accounts].textColor}]`}
+                >
                   <span
-                    className="relative rounded-md bg-[#efe6dd] font-medium text-[#b8966f]
-                             focus-within:outline-none focus-within:ring-2 focus-within:ring-[#b8966f]
-                             focus-within:ring-offset-2 hover:text-[#96785a]"
+                    className={`relative rounded-md bg-[${Accounts[slug as keyof typeof Accounts].backgroundColor}] font-medium text-[${Accounts[slug as keyof typeof Accounts].textColor}]
+                             focus-within:outline-none focus-within:ring-2 focus-within:ring-[${Accounts[slug as keyof typeof Accounts].textColor}]
+                             focus-within:ring-offset-2 hover:text-[${Accounts[slug as keyof typeof Accounts].textColor}]`}
                     style={{
                       color: Accounts[slug as keyof typeof Accounts].textColor,
                       borderColor:
