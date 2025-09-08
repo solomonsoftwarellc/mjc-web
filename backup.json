@@ -1,0 +1,740 @@
+{
+  "posts": [],
+  "megillahs": [
+    {
+      "id": 23,
+      "issue": 10,
+      "releaseDate": "1984-06-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2310%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=AnkpqHHxJDjsHtoqVb5RIV2XuplnObRfem9fa4MJv3olMiJHC32JTBIq1plNlWsIhZm0ds10pDxjo3UQkOXkOf%2FwqeOxaN42E3XWQw92Qb017hXnyx%2FbOLP78rGRbRoYD6HKlPTNj0bbU5rGy56K3qc36f9DWQim59a%2B7vl5v4Qzge%2Fpj%2BWWDSc1%2FoGdaT90lIWYNlacTvMriDoE8wTE606klsWkC552LL8FJ3YCEBxApzqpQP7udJxKz8fJFM0fBMWvl%2FlhGHm98KqWnF1KdXp0EclwKUGUowtK5SCWXrAhzSVVOmkE15qAKWl044ByV5nkSms2C82kuY0lRrPM8g%3D%3D",
+      "thumbnailPath": "/thumbnails/%2310.JPG"
+    },
+    {
+      "id": 30,
+      "issue": 17,
+      "releaseDate": "1985-12-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2317%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=ILWisEBkydETMBLUQIsR6YisMQVB2zzmUEDDdkcQ0bTWf3uatYd1xk1P7Cb7Gq9Wd5TlBiq9cZQOxM7gaEHN5aHIver5SJPJcLJ72luWbhMd3eAaa9%2BAGkYPVpL94r417SMb47HiTv1%2BQcWpdkJAGYWQU2JAwZho0raoeEFDAe%2FfMNkgtD0Yc7BQewHbBMnTHFxfm6MZwZnoeQMAjmZqz55zL4WYKc8ZVjhuU2Ch9d0F5WhGwfgxI2cH8SQN8tPHX1VNX60N7KtA6yMSmGyOvewKv8HkbvJDyomgXq7hdhBk42XE3Wr5gZkOhY8Pqyve1fA4%2BFV%2BNXWWpavUBP%2BRGA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2317.JPG"
+    },
+    {
+      "id": 31,
+      "issue": 18,
+      "releaseDate": "1986-02-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2318%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=b%2FbYF2%2F%2BYyDXFfFS4kiV50S0ElC4NWXxj%2FSmrnTuvP0vcnerXlwSRbSyIiAcp5xPECaXVAk5GeyzvviRimhZXA6rZEykkuuQutMZpKfBLWZ2sl6nWbg8YD0hlnnp%2BPt4XUK%2BUic%2BwPBWKQijefUcMGZcYSPVvqkEJCh%2FGhI4assD8ZPe3b66lY%2Fq6Kjf8ILGLqJrArvABpD1VZI%2FxnmnHJ1JP9gf4CR5MUFJDBBvJj5sdNgjhDFgRSj0m4IBbaB0SNUrMLsaJZUCF49Q6PIKiAuNfGfNwSTIzpuHyQk0rXWFmtlNKY7VLFLYH4n9HeTZtbvBSvX8z8WqRoQgWquEJQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2318.JPG"
+    },
+    {
+      "id": 100,
+      "issue": 87,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 33,
+      "issue": 20,
+      "releaseDate": null,
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2320%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=eNZ6B7H7l3i9zMururLcP3cehc80xjSTEMOFkQ4YwSeWyyDmxwR%2FGw7%2FULk9hpUwA2RHy06cjnxxBMNGIFaRLc%2F9ZwEJK%2FxGMFfYU8SuG7JUNk3m8IHRuE%2FaI%2BSU6je7g5h3nAx6qSBwBejWyoAjyZ1QEcUjzO6F3zwf%2F7GXs4Zd6RbpUrd%2Fc7rOH19ur4vSdBltjC3CrblBwIAStzGq9%2Bnx6DlzbXmBVOoyUh9vEJWvAFTPhwFeLH%2Fe3DpfLvyYYlcr6rBcb%2FbPoCgGhjLi%2FPeHyKKlntkO2ai0GLUDwcSFuLIqp8bhyzoj6muma9UahJqDWKBojggwfuzBs59fyQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2320.JPG"
+    },
+    {
+      "id": 18,
+      "issue": 5,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 34,
+      "issue": 21,
+      "releaseDate": "1986-09-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2321%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=kNkX1L3nlRUqxTQ8bYDuyEfBBHvBUwcSPciDvozh7o2nihROzWa5WyakJbey%2BVdQdquZNuwOdhLgBMSb8R0b6CAn6ytntN9lDyKXgfRz4xkOZvcDKrynGttpLUYsC3ONtbMhHu9PWwELmrk2txPT8Mxxizbnp0W8EyeoDud%2BRKAkhrfwSsyV9%2F9qcukWImhaHRjqPUxoj01hYR0igO3zFAOhfQxP1feweRHHky%2FC1oClxnWpeR6DAmqBAKKDtNcGa%2BT0sVOH5Jaz2xyGM2RwNQBYjisujf%2BblwVwyZkJizkbDR2iKwUVWqw%2BfAmLQvoSchus8iOsCfkW6XG1nqF98Q%3D%3D",
+      "thumbnailPath": "/thumbnails/%2321.JPG"
+    },
+    {
+      "id": 36,
+      "issue": 23,
+      "releaseDate": "1987-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2323%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=R4ITQNXUXyqJN%2B7k023MUrSUMy%2FiTMuRmcU8kG7wiD0sEnrpCavZmDnDcj0o10Clyt3Nj1JlPWfSV8P4ciLX34e9DS2spJOFqtYTELyK8L3DpndCl2qdX18EVhXxpGQPG5Qjy4MnQzlnmguzXnp6J%2BI8wjaCs%2FR7mD66Zi5rYpCBtMisv2rlT98cKW4lIeogHYUbbTjIb2%2BOBH%2B1nhCunuhSa6%2BPYROpmafIXZUuKimT17kUkUYfeqrN8AK8h%2F1oivOjrtuJOiKRuAmh3clKwkXlK%2F%2BsyfmgflmYq8cCCqOhEIlxFF2U6kA4DI%2FZR%2BqYAjUE%2B%2F9TsFkPbjHUGAwmnA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2323.JPG"
+    },
+    {
+      "id": 37,
+      "issue": 24,
+      "releaseDate": "1987-09-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2324%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=NbadtKSXvWJ7cKTMjbqg8ZtKs5CfxPTQhyinbkzrAp6qLVGmX%2Fxx1ZwrZW4IKE%2F4TxL1fgJE5hFAAUvT5UcKf2u3GggDDSm7gZSQNli521bUB6FE4Vuu9NFosdg%2FbwVuhYVV8sCAxLCwFBe9AmdLD6L52eqT7NJbUKwNrRkUNrLIrxxypb1chCBSbk6wftyKXi6RVm%2FUAZCLNTaDbOFZXSsoE0ETm%2FZXXL6Wya1HcyAbnLz468zMMGPNjzSjE3Xod1N0%2BcZbzxjdRcHWyShGl1AFTPP%2BaLd4JJbv8eQKT04wKEFY4BlzdW91arGkbBFFqJb%2FYElZ0Ci3rKQvFC0a0g%3D%3D",
+      "thumbnailPath": "/thumbnails/%2324.JPG"
+    },
+    {
+      "id": 38,
+      "issue": 25,
+      "releaseDate": "1988-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2325%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=QSOxoC1Qa4Pj92y5ueqzDRSvaREeR7Q5AzUrieAcSUCf%2BfLG2ZqzrF4JZ8hMbeJS75AQJ%2BNW0ZIMTwQ9ez%2FHbkJJwurpnca43rxt5t%2B7Wln8wSs5k1LdgIkdKWz27QENziuVoHsOolUYpc%2FQUyhbwYMHq5s87GdGksXsS5AX%2Fpv8%2FbVIstEU%2FnDUiT9YHNfuCjvRMRpvmtdIBIo2qbWtOGnEx3KcQuDrHB9fuI4Yfu3FpdPf7ScLsrUs49T2M25vL670ycLrIjOaZ3tAx1TlieuSgW6r8A3uCynnPFaYrUltTtaTQSKwv1Q4CUZgFkjV2mnPnzZ6y80B4oFZhmvXLQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2325.JPG"
+    },
+    {
+      "id": 39,
+      "issue": 26,
+      "releaseDate": "1988-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2326%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=c66gl3mkezfhzAV5qg%2FWGbSg1q6289dgGgnsmfZ8%2FeffviQHajBpitM1B3olrlKjK5tVLRLZO2AlQgT1DD9GQKZ9ETlkQSa5kL%2Bsj3obU7MI4JIbSK7ujuyqzH2Re77Srs%2FEY6mwjrGvJVFqlkaysK99lCGGuX5xyaHxmzGItRFqxdgbcZku3h8lq8foGjwVSqGC89KREmGRPpEvi1gDnsa%2B7JDZ2GKOcYBnfZ73z%2BdxHYQ39B45vpMxZxmNg23hsZqXXY4s06a0S1kbz%2BF%2BP%2FT2fWKcVxi5ZSK6jZjwVoCZz8kYKwIlzcs3IWuhMg9gQ4QBVtRAXJ4HsLpxfgPpDw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2326.JPG"
+    },
+    {
+      "id": 40,
+      "issue": 27,
+      "releaseDate": "1988-12-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2327%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=LNvJxg07jxlH3qGdaEH%2FItHHGs0blHj99XFrCSvCDy0nHOs1xqrQagYFNq68nzW%2BgaeI4MlI4tHV%2FEMm2UA%2BFHKLYojM1j5mDDSXJOPsa%2FIorWNajCOnjd91Ksw%2BneN4T9K5xjpweQd2H%2BY7iPDWkMnS5byU7aZhI6os8iFHdVGQHvT2FDRJsW%2B3n%2Bp8dAha%2Bpx%2FULyQwMGhgzNxwUjlQ6IWPdyukBAcWikqQbbB%2FNAH4RBw5P1DuXL1PHFTzJ2gCFeplYdZ3l1rKLp%2FxRAczsDh2Rb8AgRWfXnFmKqOnIN8K8kFZ%2BLLr4lEoq7%2BYr8f4MO0Gkf82GWKIYOZ34NXuQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2327.JPG"
+    },
+    {
+      "id": 101,
+      "issue": 88,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 102,
+      "issue": 89,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 103,
+      "issue": 90,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 104,
+      "issue": 104,
+      "releaseDate": "2024-04-01T04:00:00.000Z",
+      "url": "https://firebasestorage.googleapis.com/v0/b/megillah-353f7.appspot.com/o/megillah%2F%23104%20-%20Megillah.pdf?alt=media&token=3fc8c423-f203-44df-84a4-3f034a73eb76",
+      "thumbnailPath": "/thumbnails/%23104.jpg"
+    },
+    {
+      "id": 105,
+      "issue": 105,
+      "releaseDate": "2025-02-02T00:00:00.000Z",
+      "url": "https://firebasestorage.googleapis.com/v0/b/megillah-353f7.appspot.com/o/megillah%2F%23105%20Megillah%20.pdf?alt=media&token=c87acf45-1411-420c-9313-e554800a5de5",
+      "thumbnailPath": "/thumbnails/105.jpg"
+    },
+    {
+      "id": 25,
+      "issue": 12,
+      "releaseDate": "1985-01-01T05:00:00.000Z",
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 26,
+      "issue": 13,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 27,
+      "issue": 14,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 28,
+      "issue": 15,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 29,
+      "issue": 16,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 35,
+      "issue": 22,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 99,
+      "issue": 86,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 17,
+      "issue": 4,
+      "releaseDate": "1983-12-01T05:00:00.000Z",
+      "url": null,
+      "thumbnailPath": "/thumbnails/%234.JPG"
+    },
+    {
+      "id": 24,
+      "issue": 11,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 15,
+      "issue": 2,
+      "releaseDate": "1983-10-01T04:00:00.000Z",
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 51,
+      "issue": 38,
+      "releaseDate": "1992-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2338%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=JdaXP9Ee3FLwT1vl02E47Wm1%2F79UlUbSeU5bXzN3AiakkMawnHj3KmZYq6mWVKWWu%2BcDU7PYlN4q6%2BRAL8zNN49KNF2A33hJN3gUiIazUggxWSwVxXOpvEAZ0Qe9swrrHxCq8ZBQcbhmX7AYYtCGXNEjJ%2FwaJZ80xlq%2BDIupyAndaIx1ubF42AQOfLr%2B1p%2B8znOhbFkfO93A3lJ07ufqWxFgTQqaHsbawr%2BhuQz1jcjmJcQQTP4efn%2BgXlESZIjFLAeQV0clmOXuqv7aSUEVhJR8almc2grp8b%2BxBAKtRFgOqHT3oxu1HnFgVPaiRQO0EhyrBZNwATvmareFy4EHDw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2338.JPG"
+    },
+    {
+      "id": 53,
+      "issue": 40,
+      "releaseDate": "1993-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2340%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=Z%2FY5D0MC4Be7y8iKeQ9XXh7mJGj4yg9aGsGeajAWk2fZhhq2WqlNlr%2Bm2YTXPfOfX6vUtiiaVbDBoeaS4%2BjsJXBCx8b2zWfMvxzgZjmoplFTpPq2S4Ed7AqN%2FXAIP7D9QNw2MczVl%2BcSFMnMT98zzocBmCpWk5oaXzELX9aufV8mEZFgBUTRH4MOTMM0SnX%2Fc7xkE0HyI%2FKX54F5%2BgrEaG%2F62qWe1cTX32b4HsN1s0YzaJwjG09crz73umNfkBcn41hqxgZqP2XqQfROm9LLJpa78SyHO2F6gTPNnHBsku6KvU0PR1miH%2FlHoHxqH7m14xBrOcsqsy98AlItIzpEqw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2340.JPG"
+    },
+    {
+      "id": 57,
+      "issue": 44,
+      "releaseDate": "1994-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2344%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=dYrP8TpbZyJe%2FuWd3XWOLtJSeTxkVSMCqlWyx7wc0yBn47ZgRnZuw3M5qmrIPcSHrW5Mj02KM5vipdpBfF2KSVGIK7L%2Fy0Bw27xCt0TKUg866Eqf5Q%2BcCqEpfaND9J33ttpq%2FCcaA%2FyCClRz2hGl7MMuTRf4wKf%2FVT3JVUOkfU6d50DBKaV4zx8uNQjrOcCK5ewlBI3NSorDCCMZTAlytCaC40OprbWdal30hDwYpyO689zi%2FiN%2FDIK1OKkLfXXWeCkBBNKFht84DinQvyC8jZ1EDhOM%2FvvBh3pMmDdodnB8g%2FIZBzCaEqFoog%2FL3YhiTayY7lUhqOrIr35qb9w2Hw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2344.JPG"
+    },
+    {
+      "id": 75,
+      "issue": 62,
+      "releaseDate": "1998-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2362%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=fVrVpfys0bE264BryM5zrZxur7twfT8vAAwCv1wcuj4OesdRDr%2BGsABiU7c5p7cYEbzjxu00C5zvxAUXhsc7EucdMD5V%2FOxo%2F1KYNW2dzEabglc%2B1sI9Pb5xAoRPVuFlmfC8MumhQ8AT7grQQ9cHZbGMYt%2Fk8MKPOflYfe%2Fl4Wvl1Ww3PNNopatD7j1%2FTWJAyamUTnb4E0Ym9kzFXgBgS%2BJ4ephdngYkg3ez%2FiEeys9mXPOG0ebNA%2BcioLK1ki6Fd97OKmiE7W4rAWrKDsDbeqsDIX%2Fcs4Iv4vNszHIuphOsSEBQO8wo93QBEmF7hEPxVbpV80Yl8TK%2B5d3pyyKUaA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2362.JPG"
+    },
+    {
+      "id": 76,
+      "issue": 63,
+      "releaseDate": "1999-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2363%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=U2NWGbSalNMpHG4IIgxNkcM6y53AW1AGMQ5B1oWhpakZmH63msHOK6%2BolbbonzYnAbmWZo%2BhFXYTtuc0Ip0olE5jtqXczTQUcQ0hr7GMJSB1k7ZYszV5H7v0dwA8San3RSceWhHLszwt5sks6%2FVs5lRf82MXFoEvXWT12s2hA3foqhWTMUzYkwfev3jUNudFhZTJ9hQOQ7ti4jpyN1wMHkf3I%2B293lb5kM%2FTvM1oBJx9%2FRkKU%2B2p%2BVa1SDSFXgjnWH816deIRDDXivaKtiSWW2dNcWWgLdiDvAL4b4%2B3QTBdbliiiAaFmLF1ZdCTTB%2BBGU2ZpZb9jDxgv8zd1Jz3Mw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2363.JPG"
+    },
+    {
+      "id": 16,
+      "issue": 3,
+      "releaseDate": "1983-11-01T05:00:00.000Z",
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 90,
+      "issue": 77,
+      "releaseDate": "2002-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2377%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=mqu4oahKLqQWXxy7nQqrUQxdU2DqPHm6iKNUVgXFSmpNp8RSWaneJkiUwkg1lFtU58YBqJXyg4H1fQoGXeaDEZAOmmj8i0ANAVNJD%2Fa0RB%2B8nmJj5u28DtFLZjFfXVxfXMoLxEK1D14GHYHkFLYXdxqzv3%2FxenCdgX8t9ByQMYsQZC1skLNTbpmOSQw%2Br1O5joKzZOD4CYm8C%2BIiuqqX3zAx5PZBCjs2x69kkHLytUkzFbBP6lNhE%2Bqjywf%2FnQrvX%2BErZ3ZjA5afi3StP1%2B9itiXXzEp9H0JZfdZuC6UOjZZ3LIPcdwUPwSlw%2Fl2CIkrxmXUA%2FZFd7wF59jpS1%2BiKA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2377.JPG"
+    },
+    {
+      "id": 93,
+      "issue": 80,
+      "releaseDate": "2003-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2380%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=TBQN5w2EmIKdWvUabuQ2keQVZmJaOtPtrZ36JMOBClQODr68Fw7QxtO1mdIkyfKFUBqsnv4ZJIvytiJ%2Ba%2BSq4eEtqh%2B0naduUNc%2Bob9ZfNWTwIw7di2%2BwYd6edmV0GhjCo3PGhLCSJ38CDiqE9uQ%2BA20UggM1cWwwew5Jl0rnBY2E%2FyTvt7qhyFLn96oM4HCyFKGA4ox9zqWSdxyQ56xipOxpY94j0FK%2BfC8SE%2F2J9Vg7lL%2Fw2LI0Z08R6ywZ9IkbNmFA4TIvRpQbpyKIwlFCd%2FubcMPAnVaOx3LadDHTj9jPs8dV9T4DYO1Thhj1qv4RUA2UG%2BpWOnqoFvaHKO1kw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2380.JPG"
+    },
+    {
+      "id": 94,
+      "issue": 81,
+      "releaseDate": "2004-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2381%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=ex380C39%2FBaWFogtuIBEVdb%2BI9IXw965bisuDXSOxkpZ4rA08GI4t8sfnXWcrBsal8wJekBKLEYXngtC7vM1JAgUyIKECpZ6M45dZg9Y6MNWbsTFwbPucynKgvWBScclvV7Z%2BJXqyng2CpXp0XyWdarZmeFCXkxMTdqApqlVXn6P0Re%2BpqgbyjRmpIDxBoCgaw1oSFzQNL1pgd6SK9E4puSUEMJxcjduRc3HzlqdqJPvkFXToVWk%2BMLpV3ZR14woopmo5IepYam0BdhO30%2FAHCrL%2FwQktT44XLEJlr2lyovAI4H0kOwJXyuuefPi2y0J4jocTC3y5KOopp88U9nxbw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2381.JPG"
+    },
+    {
+      "id": 95,
+      "issue": 82,
+      "releaseDate": "2004-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2382%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=Ii0JCFQzkVQoT4XL4qMNhMji4hkTOP%2B4XG7QlD0JLRYMsV%2FFfeQ3g53Aff2gVGKjMvUe5I6wYTTKLBpdCWg%2FLMRL%2BYCFdHveBWlkkTBRMjZtTRt6AUq%2BqZ7xglKUQHmqCrwn9NKGT6yKvXia6doUgDRxu0y6KcLs30Bq3jyAj2qc%2B1FI6g6trkA5yAtRF3gfqQfeEPBzaJuoVgtiOIPkws9J5mRlmyYd1J69YIAkOtzLvcuTPlwtGNMIjnoHGYk6kpGNM7MX6MkcqK6kg8Bg1Wny4FFhlXqFYFcMdj%2BBVompoHeriif2O%2FmeHKl4Vok8eYPX7AT4l8dyY683b27E7w%3D%3D",
+      "thumbnailPath": "/thumbnails/%2382.JPG"
+    },
+    {
+      "id": 96,
+      "issue": 83,
+      "releaseDate": "2005-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2383%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=ECBxiKXG6bldk5xLwHlRJPwezgCTI6dkN5tIlZxpYiaXhOdiSNWvGy7V581hinBIFIsRiFW9rUARVkpdNE0mIi%2FtUiU9fwPqwu4KNybnXdVtSk06tEpxSouXA53EcwddzcrPIXMXJXfDmmfMYsieyYBI1vqUZ1PuhqVYEvacTk6GK%2FqE1AtKq%2BH0Du8CjeCToBT89E6%2FnOum%2BkqiJYZU56ASGM7YGeQmuFYsYzg3zukks0n2LUX2q%2FQDPR%2Frq6PHfh4YfrHEz9mR43BpOaAZhRas7Hi1oIdlZadKIDCaWndw7A5WNQGFvjnSfNhaCY55GCzl9iBEd7FAYm7ZpoNp1w%3D%3D",
+      "thumbnailPath": "/thumbnails/%2383.JPG"
+    },
+    {
+      "id": 20,
+      "issue": 7,
+      "releaseDate": null,
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 22,
+      "issue": 9,
+      "releaseDate": "1984-05-01T04:00:00.000Z",
+      "url": null,
+      "thumbnailPath": null
+    },
+    {
+      "id": 45,
+      "issue": 32,
+      "releaseDate": "1991-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2332%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=EdBQ46zR1s7BBxF8A1%2Fn83jKT3fhy9c03oPtLkDCCbcl%2F1iVeZy29mawc%2BaVgRXGJu7zd0dQmf%2BhUZMqfcK5w3plAw05gL7xC9jlGHpWZgBe1bIl7O6Za3TDXteSYCRBZiHwwhsr%2F%2FDQFb0ylgjru6WiiaXwnxRlrRlAeWF49a9cqNODP12KDm4WC7Rhnqu8w5AP2m3Jw9xaqtjUrHGE8g7cFDZEtfPGVQZFpLUFtqZ0%2FZAoYqZ2yQSlej6jjjv5C8mguD0gAGA5N3XI6UzjgbDq1IRnNkUspDQS%2FuanFSJebUocPO1wPa32fSfzpGFM7wXLu6YKNiIbEMmHZRx80g%3D%3D",
+      "thumbnailPath": "/thumbnails/%2332.JPG"
+    },
+    {
+      "id": 52,
+      "issue": 39,
+      "releaseDate": "1993-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2339%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=G3NzAlWnVxTtnZrZYisoAMPkg%2FP55iffPaOLos%2FRdYH%2B8UYsxyR9EwSmlZ47yFLSBhkzj9rYt%2Fj9QVK9a7xryZAULPQrEUDQ4relzEC6iY%2FBy%2FW0ebejotYtf6%2Bp%2FErb9Ju0Sb4PwfiKW6aS2AeDq%2FRc0ZfmaBVEJbmUp%2FGIRcem7v4HZYI4bUmlpnlfE7pQ09Lp6x2ZQ5AUoQw%2F6As4%2BG%2BJFJtlSx9zBcY1YicXNgxQTUWL%2Bv%2BgfVtkkpU1bAsILPQqVTQwYA7FUVcDu48rJSCoGckRztkqSbazSEx410J1X5UPIu1PzNen7JvOiL46Hp9vloGk1RmtlKfSMk45Ig%3D%3D",
+      "thumbnailPath": "/thumbnails/%2339.JPG"
+    },
+    {
+      "id": 54,
+      "issue": 41,
+      "releaseDate": "1993-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2341%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=nkjCSdgq3kLqFNl%2FjIBOoKefry0mIzpKTdV0DiFZCpeiHlehQ%2BHQGdpgzkZ0qDzO%2FDXrhFvfaEbk4iWg7ggTcvysJwIY%2FBCwNtcaHtZNyfCb9xkrAjqN2ng58lEO5eRS3N6Inoa4gwoRuJeN1gcXutQ8HUWff2jEcqI%2BgSvYQylHTbMN8k984HcqxFQCrZ4an2%2B2jZxiZiVNdKieYCD1G0sVWWDbEXQyO2%2F3fMkBmWCxSYjZPYhFSr5Iqa8FuWGsE7M1ZV71kW9HyRphmPWuKiK8JyjImSEc3C%2BUUQfjrZ1ZEV8BEeZaA7pLJhB2nB1lNoe6IY0rVTB8%2BiL3txZe4Q%3D%3D",
+      "thumbnailPath": "/thumbnails/%2341.JPG"
+    },
+    {
+      "id": 62,
+      "issue": 49,
+      "releaseDate": "1995-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2349%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=IVUjgLWXdKVHu8pd9rOU8gKQov4BZrsdOsLQfT1webVHmtUKDLo8twBpn2MBT9iZ46ma0CpFWet%2F7YAHIXdnL0oTo9WqVq0ODiQQKdXaHDPqSzBzJ68BvrN8BkcQhzIFuUqP10AG6eL%2BrqPKOOGHndANzGMSUcaZwnH2IyiWJMYUNbMLOWHFYVNlPRSfT1SzWNXPjEeox3T%2BsszrINEZ2HYVYb5sXoucLg0TXd9w95z3ZVN7fN37t9p43p0yQUiBxwDdXGasXZTFzSmP6nucSuFOrcWA9TKv%2FwOGblHQDTOhXBAPCUqC2Cb4ANxU3MP0tLXZoDq9p%2BztiGXww5vU6A%3D%3D",
+      "thumbnailPath": "/thumbnails/%2349.JPG"
+    },
+    {
+      "id": 63,
+      "issue": 50,
+      "releaseDate": "1995-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2350%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=GTw%2FFuj4k0IvfrA3MAUojNZQCUL2qcLw%2BMuNbRB6yelurMgVpSM9I7z2M1o64n7tfiA0sFivJN5pBLg6ot3rkcjzPT3CpZeU47bI3Ih%2BaIND1LZnyb7FFprXydfrgFahRW5598Y%2F2ZB1rUL%2FvxPLwshGMZ3F9bvrnhgHwf7nsyhceV9H8rKuf0Wv4TMMzpgYuODBT0tdAIH0GR9HnOkeEGu2Ewfif0wqLVGYMTVVJm%2FodBu%2B7uLbLmtMQxVl8wBr0nAn%2FBqOdJaV%2BXY8P0rvBzQZC7s%2FA6wUG%2FLllWOtPsHtkpEysePCiIP2IzTVOgFa2xEoLxljMriNb%2FPIUWCGew%3D%3D",
+      "thumbnailPath": "/thumbnails/%2350.JPG"
+    },
+    {
+      "id": 21,
+      "issue": 8,
+      "releaseDate": "1984-05-01T04:00:00.000Z",
+      "url": null,
+      "thumbnailPath": "/thumbnails/%238.JPG"
+    },
+    {
+      "id": 64,
+      "issue": 51,
+      "releaseDate": "1996-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2351%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=p5Ilu%2BhHICStc4l8owGWiWzvuD8kyzMFHy7jo7yEDkaw5oOikfGerA%2BDiZgj89x3luoLiNxe3r47nxP4I%2FW%2BEqbAsT8sagwaGjgFl7yNw0UQ2xXEtm42qMRZYU%2FmnlyH4%2BJkVdhEbHMaYFSEepwwwm5YCYpZdhVgC2FBpqSAiwvLsdDh2twzvisGYoq%2B1sGjrqp55vuCy0Luim5GNdavER2afogF2eiqGxB%2B1pw%2FOe8evuo%2Fgb9n3BZpX4EqojsTQ72%2FH6PphGjAeqY0OUiK1dKqMnci%2FSNEKHaUkrIqLJvn1iMw%2BoCkDE2OODokHxWXQMyxqEZ5yGHKTkuy32y5fw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2351.JPG"
+    },
+    {
+      "id": 97,
+      "issue": 84,
+      "releaseDate": "2005-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2384%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=FaiWXntr6ZcsmlvjtpjpA%2BIlh3RIhchMJy49QZNAqIVh%2FIkMlvzf3ihGw%2BcO1uF67nUsk6F60K2ob8uP%2Bbo3tR%2Fc4Qi6m4jpBPZtY5UesW4uMXGNzp8fOjUh3yHq6sU2ol3TXmxBpz7WXkBpNNt58mlvdkORf%2FIfBdR5UPyTeEHwtX3lBdh4tc3HDGXrNEqcYNVDyObq0YgTh%2BLkHNK6%2BUhRqfU634hlBcHeU%2FQVl%2FezbYRlT2RuVLlpSD%2FSIcSHO1DhCsyY%2FWisRFC7lTZ%2BGe2xU7xsTNFqZm02stE1pmHudww0Dmc3IEOmQgLmnJc5pADuZlLbnWmo244IlwU0CQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2384.JPG"
+    },
+    {
+      "id": 98,
+      "issue": 85,
+      "releaseDate": "2006-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2385%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=c2iSDY%2FdhOIdsfJ0DIDUmbaMOcn37FQLFe4khVTScQnkwE0SjzxgxNI5dGBVHM0D3diSqDo8pGoNnntZAhs4xs35RsDA74JP78rFV5BJ4iNTWus4xHA%2BGubfpbr%2FNNfb%2FP76u5FxjlJ83GFO2I4V%2FLdYdbyNwczXRxk5aCsG9d0h73K%2BjoU%2BA1NYoONVEQNgdTsxouo3eDp5EISIr6C31NmufEBNie%2BsxB1t2hJv1bbYcnYNBSbtTSOPvTT3n4GOXqCNV4uULXcMvSBpnpA64tEi91ziD2dwIvxy4VrJDwx%2FZJApBlQRDJluQnowZBwg7WKiP8b6dolF8ZYXrjPiBQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2385.JPG"
+    },
+    {
+      "id": 11,
+      "issue": 101,
+      "releaseDate": "2022-09-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/101E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=UO6lWQbo55yxXqgsH2Aj5BUt31louAJ%2FK94ynZLSrAD%2FtMjyvRnWI9Ud29snt5naw7Kmbqr%2BXo7SagsVZ4E%2B3yzxJvo03zZZH9CDzufwKnQDsjEWjT9GJsUkNKByLHVPPJBENpWD7KHwWMy6KGSOEXp2%2B7U4qvMasyuVPTwBwA8nqZZCXXXGiAXRZUZAg7Po70mVEgqE9B%2F8NG8a%2FZd%2FPQ62ghAJ0lP7Q6y4VCkFj4MuiR7EM6Pjmp%2BkQlphpr%2FsqszLAMYCHnjS1LUquFAOK%2BmSxkrmuSFJqK1ARo7txzFSqJUJGCZyVXg%2F7H8ZevR51GMKhCn02oTty%2FDnPXPP8Q%3D%3D",
+      "thumbnailPath": "/thumbnails/101.png"
+    },
+    {
+      "id": 4,
+      "issue": 94,
+      "releaseDate": "2009-11-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/94E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=J0beFQjkOzQ39Xp67UpZgg3OwoBIXp5%2FMBDDdc%2Fj6%2FmNj7EoYxqGZG7Lrw5Xf03A14fw2VNODz%2Bj2O2NEIz1%2BUPGJulIox3%2B%2BcfebNhmDCVgCASMpSWx3YxoyCwAHy1EBoKcm97lV0pZiX6oRml9%2BHri%2FP1326ca%2FKT%2FDImhKfo1tqdo6KXeTjyd%2BBele7zy%2B9nsUicqg5%2BGQLMsUkeQFxFPKPDqC1hFKKjf1kWfER4NjbHQJYvBulcGRN%2FrQC5fxu%2Fm2iQ8DUwPFs3e%2BUcqZtmkVWZiZd0%2BP5zgS6JroQTuwYABe8MV%2BjIoaSUn%2FIcpl7FTyl2acesHhvuvO1UlIA%3D%3D",
+      "thumbnailPath": null
+    },
+    {
+      "id": 42,
+      "issue": 29,
+      "releaseDate": "1989-11-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2329%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=hPhiy4HwRQ60sebYVlIwBvsvKSwizQCdlR1de2JnZtBEe9i%2FPvnIFgQ7Z9J8%2FJ9nv1iEGeInPQYhy5nbWAJzmffYhcj4SVqG%2BFqcSAdiH43hkcpJi4Cuzt71v1So2P7MStXKOhCAOF0Ibu24j7aR6xAtmdfPZjXoRQzoiA423AX51aYrKIDgntOaLJj5qDpXD7Ya3CztfECf09kTvsDe2v8jz2xqRbsmED4V4gFmDlS77V0Ope%2FyobY0l4IX1KJHviHjitLbm5xAIjIJHH0%2BhqInSthDPwtdKhcPpg8n9pR6l7fw1sFOIw559otG0Vpmr%2BAURFvGVz6wAgEKho1DwA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2329.JPG"
+    },
+    {
+      "id": 46,
+      "issue": 33,
+      "releaseDate": "1991-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2333%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=aLkiDQbhATVb796uRgj2VRRyN4y2wbXgjh1V9sA5HhtNdq51sgn%2BtOlUYnwU4CgwjOCHdOLk4SIVQYHJMJuEqNqxCV760XjWKFZz7BL6XygFbHA6%2F7CYgh4ogg4D9K1y80pIKE%2B8G8IU9ElCdi0N7OfnypC8md5xy0RyLgoAK%2Bz1f1v2Bdbuq74BP4jgJZk9a%2Bq7mCGCaErSeOkbUPQDI4%2BYXiNqqNHAXWuaneLmlhW%2FbUIqcx4XluINJdNa93zkd9GXmC9%2F%2Bm1qxhQP%2B%2BiERUE%2F6kBHewHAfSIj8iaBHu2%2FEP3SC5AaIMLAWr9BTF7WX4bYiZKSmVA%2Ffbd7WBpm9Q%3D%3D",
+      "thumbnailPath": "/thumbnails/%2333.JPG"
+    },
+    {
+      "id": 47,
+      "issue": 34,
+      "releaseDate": "1991-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2334%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=miKT48LLTcP9tO3XLYLbBhXDmaZHs9gujDD44C0jn5SM97Unhscr65GgI9tCjDY%2FlD17RvTWBM2FFlCCMdgeMdz0OTLzo8243R02T2leA40HOVxGzq1c6ARd%2B0WXWAjIxDkKp%2FUU6Lq2hih6Mv5rbTRzLtLMP0LEUDW2d23uybI8H0ug2BFZHJo9aow9Dj9CawopKek%2BC9JMxWeWOc8BQ9ILUdBdTtJh49Vsf7SiIh2YtjUmglRbTkyISdU4SoOjyQQPY5bedeeJx2wSEMTnWBxpzkOnf9IAKPpHJTxtQPwRepmLaAitRWY1G3iEPLP7RNlwrPDGUpFxzrwzrcpA0w%3D%3D",
+      "thumbnailPath": "/thumbnails/%2334.JPG"
+    },
+    {
+      "id": 48,
+      "issue": 35,
+      "releaseDate": "1992-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2335%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=qrAgkBlwoIEMl8AI%2BMv59sFyWQ%2B12qPXp9OXY1zWZlUXidWONHYFOVXVg2hXj9RQOaFY3rDwNFbn6%2BMlXGxN2bjFM24xKZGvaz9%2BGn5xuU2Kk5ZEV%2BNEojW2P8hNWN%2Bblt7ICMqTwJhWJ7RRAaKzgZfN9lmDcf1Hz5SJZSdVTlKR1vQD%2BlC4S3iZV0YbiTRXpwHIOC5cWuacIoX2fPKOdScP67dO2igtAy8tSF7sJYqRrPPP77aVPUQlfCz0fpUR9YP8DXMCEj%2FkAhjjicAshuYnDjgo9uWYIcWJ%2FryFu%2FMfQft9ocYc8%2B%2FdApslos178OwyAS%2F6iGpXNFd14gsh2w%3D%3D",
+      "thumbnailPath": "/thumbnails/%2335.JPG"
+    },
+    {
+      "id": 49,
+      "issue": 36,
+      "releaseDate": "1992-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2336%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=grVzmZxfv4EtHOpyHIj6SrnIpLiF7A0kuRHeyzrbFwn5apV5IBaKCYV6Q5ZIwxBjew9%2BG6wugtJc2wJ1v3jXxPjSUjqw7GkKNmJaxxSbf%2Bdl6j0f40PxkvGmqHiNqHabbcG%2Bhx2CHyRPNwXcTein%2F89%2FpVE6Oa%2FY2IimUcxUtH1QZAGL4Fz0OQ8xrPkh9gp1sffNHqhNllqwQ5N1UJupZiIN962KH8pPZgpti2fZH4FAgHvH83tuxxUy4W%2F02Hp1HKcATzWHomijv0p5WDdzP2Nd9wwSOWWwm5z7i4HXvykGBNKHjGeTyWWIuqU3NONx79YmpGJ8sSdYvJGzKKP2zg%3D%3D",
+      "thumbnailPath": "/thumbnails/%2336.JPG"
+    },
+    {
+      "id": 50,
+      "issue": 37,
+      "releaseDate": "1992-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2337%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=ehTgIl%2FmK9q%2FbwCzNlaRWJroR0Cq3yHHzkynIVHoueom55htef3tvbzYrsRQpG45TiVGwFM%2F%2FGbGJcypTvYs9Cn%2BDbaGmIPBg%2FRA3zVBQSMF%2Fmqo0wT06nekbnM814E6AJBDKUBB%2FyTfM122o6cZGM%2Bb2Ck4Xoex6bGjK96lMCO1xHNGjSZtV1Xn0QQ%2BfeEIAQzFOrRNQOhzbe7bZ0QD8x2tc11W1WxfTtNnCoGddsy5M0fATNMjy1F8FbtN2V%2BupgnO2eLQls6ojgeFm%2B6e0NdGa0ccEIyQucMxS01OcTWD8hVX9EikVU5avqXttfN8pveE73VP3V4TXlsAczNlyQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2337.JPG"
+    },
+    {
+      "id": 55,
+      "issue": 42,
+      "releaseDate": "1993-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2342%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=nZbwrTMSkkxhkAz05SSn%2FzPQx3a0LL%2FWRHLsqz1CR3Bxymz7Zom2u1SEQEG9KX%2BUDQpmKWiIHPEDH7y6eYkT6N7pDRoBABGqeepS5x0BvbsgB7npX1De5jt6Olz2wIBoS1a37I1AP57VQRujkPQ53tX54ULCpYP9QlAE5tIjQpbNMldTvZkndkYhEVst3ZAQnbPjQgQ5fqJ5Buplemka4Ldmw7p9a02kiP2KvIcymeGwUIqHUaRDQVvIGzDtyxcGRZu%2FMWgAwXPiCVVoW9ufP%2FXT9OIv6P17x%2FNe9iCI%2F67QLd%2FVvrVFxP16KvQ8woUfmfkWoQYCwBnnfq4sM8JcDA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2342.JPG"
+    },
+    {
+      "id": 56,
+      "issue": 43,
+      "releaseDate": "1994-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2343%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=LNtRvpE3KTa9vt7cgwzOSGw8CPBroVEYt4qe44lFp%2BPUoomPwf7e09Xiz3AzjFiqqfwYI8TuJ3sCr06cnEXubVZOJr8ti0X%2BuHjVoWh8aY2JPGLbEEz6hIsVVR%2BrCBuJe45jEr%2BPtq%2FEsvdUPjL4hcNp%2B1pzmW5kGBMfGCSD9HjxaCjjmGvim2ZN6fXVhd%2FTDkt0fA1nO6bY9dhPlc%2B%2FuHpykuF0ne%2B5AW40RP3hLNOVmVuMBf1gm6z%2BMw8ndGTO1didFqeHWdmnYn3xFEux1QEW1Coci4h%2B1Tq2547DwkL%2FRR1tZUwrDIQsMC43ID%2Bz4ZRBbWFLid8Be%2Ff9pXpJ7Q%3D%3D",
+      "thumbnailPath": "/thumbnails/%2343.JPG"
+    },
+    {
+      "id": 59,
+      "issue": 46,
+      "releaseDate": "1994-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2346%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=iFODLc%2B7UXKTb8reQvE7WUhPHNwrnpciI5KoT0HPfq0akHb1%2Fot1HWVJOcKBWp0NhtluQYeqkBO3ejL6dKL8Q8tAbic2q2vsx%2Byc2MOH3V18mKdiqOGZXU2msXx9YBsjivQ6N5WnLC1%2Fah0dzTDP2Q%2Fz%2F3U%2BSoPYqGBvY5DgrzZ9zxyca6BlaXHlo5KutIWaGTx7OvG7NHOgNWReTl1MKLTFfcAeF1pOblv%2Fu4X8kaA3r%2FeQNqaJjZb%2Fx0DhLMc%2FE%2B04GmF9rPMuuY3fLscK%2FC1mjikz3ICaapr1ZIW8DrPpcLMoiQWper8hYzqXdPN%2FQoni%2Bzc79tfPSaoMWRJx4w%3D%3D",
+      "thumbnailPath": "/thumbnails/%2346.JPG"
+    },
+    {
+      "id": 12,
+      "issue": 102,
+      "releaseDate": "2023-04-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/102E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=G76Wn5f7VFCfSULJ8QUmwrGjerNx5PlD1DAsCfmBWiW2WlG%2BxRuQy%2FQWDQUUMev%2FNqDs%2BcL%2FWOhRlsYo%2FEeTAtVHgqXf3OFtsEH6vj%2FMpATSA6w9%2BR%2B8FhDy%2BMWiCuehW0nn5FOGh%2FP7tkUOSzVBiw2fmieVtodiq9qCIYOKgm2p9QNgXzjXPjMeHp5VZW%2BtxLlWKYDtMInLo1MXg9nXKgs4jUet0eaRJ8W7LeFAxhu551heIql%2BRRj3sDj6UCaSFqFEwBD57zCKFnzsF341aH%2Fw39jAGsrppy7xuzs5k11kW8cnMuchfA1xsT1WYMARntQmC4ju1sGzm%2BZ7jC8TEw%3D%3D",
+      "thumbnailPath": "/thumbnails/102.png"
+    },
+    {
+      "id": 9,
+      "issue": 99,
+      "releaseDate": "2012-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/99E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=gC39dMK4IWVfiJ6sgFFoccJyTGlnXNozf0GHCixF53e9QynV028tftvUTg2ZjN3ZPHDgtGUekhYhcmpJKEazF3%2BfsTrX%2FyfC3lxbLQBEPkw3W92nUR7Tnjodn1wj8ivxMjJSvcz7lmbGLB%2FtQr6XGeusrtEx279NZvpRDKZI9ZwjA6LhjMdSC%2BZbptR%2BOdMf9MAPwcfN%2BHLtDNi7DNMDAvj62rBL1kJeZYmoW0mNL40705z%2BEKTSIGi%2BqVzKRbW2VhW%2FEtD1hMbR9Uj29hn7G4BJ1yXE0xSmS2mnd6RMs5n04DKmDB6CSeM9SOLZU2RuJ2EjGCk3AcjRm%2FQRHgEkSA%3D%3D",
+      "thumbnailPath": "/thumbnails/99.jpeg"
+    },
+    {
+      "id": 32,
+      "issue": 19,
+      "releaseDate": "1986-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2319%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=FcTFbPgnGlPi4vrxKlnKCu%2FhYSkitgxuiRebPfkDOk9C1xiGcWqgFx8zb29aVquBaeJ5M1h9yh%2FEU8q5bL92kDYIFYea%2Fs4h2eGmK1KcIV%2BLY5ycYqbbEmfyBGxd0%2BorIFSJYNmZkwQLu9qM4pqL34D8QPW%2B%2BP9xNIUuJhITHcguTZ54IbBPHW%2F4zwCIFF0Xgxh0OBOLgD6lsjTZ8mMwT78fca%2B4RwPtMpBakjF4%2FofSwwXXpBglwpPuFwZ4uA28HeMP4IDqgcwPP9SPuEMiEpVwRfFvgID3No5nJ0bux%2FeVSo%2FAPYb4fFD2BGxbuyamjMOxOAFMHPFjrwA6n97nkQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2319.JPG"
+    },
+    {
+      "id": 65,
+      "issue": 52,
+      "releaseDate": "1996-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2352%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=HhncorsM7l4Wr2VNzmQDgL4a95qlV%2FoFrSjy2mSeH28700qKDY2Nk0fcp0Rmoh%2FQHlj%2BPpJOcB5giySn3OoVtkICD0uvZTmDR1369SqzmMTpcFJsYMkQ3%2BoNa2MmpuPrMHOb0cMQjXFaiHTFqd1SHQP%2Bu%2BdYPqD1Hs1iAyWrHgXSAtm3kX1iKbgMNVgqNBYnKCJrCjD0UMdAzjGSS4vD2oIByaABDzZWyra7xGHIAv75iOCJGcaOfT9oxOY7eTq36nmLWs146muvlNzSyEcfraoTKbp511OfDMsfn8fyFKU90G9fuCO38ruEOWckuSOgic91pIXOfM5JvWGRWMUGJw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2352.JPG"
+    },
+    {
+      "id": 67,
+      "issue": 54,
+      "releaseDate": "1996-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2354%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=YTasrx2iY689PP5LKoCNvO2lTP8XFbrAKgwinRrWzPXlPDjbO4bN2tm8%2Bh1X4ClTBx%2FC5JuJFH9vuynVB4LRJTF181VHViylkfBq3tlhoP60jEILqRVu3WMicrT7FnZWvZAAj6z5xNrFel6iRVuwZdBWwUr5etwS7peYCdG1l%2BJ4xFSi%2FHdu30cANb64%2B5pA3FtPO%2FbBr9%2FPETtZC%2FmiUZqHKofazDWSdnTCQm5avZj9gfTEUt1QXmZ5M19ulgMdj%2BPl%2FDs%2ByMMt7rWL8omnwBlLnCxf3NJjNnA%2BnFtEeNq7IBzKdsGwQ9TqtLfYZOFMPqcsCBXGC7SsJTSqPSmhMA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2354.JPG"
+    },
+    {
+      "id": 68,
+      "issue": 55,
+      "releaseDate": "1997-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2355%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=deca17J912oWPKk4beBCTQCe%2B30UaaPBSdVs2y39HhLl3lhkvVkgBlQeP5NUF8UuufCriG3TAuAi3WmntMgLUNu7CV44n30KDP%2BheR1hIkib2kPINuF2vZ8jze%2BfTQ7%2BhArrqrjIpRt3rBFubZX2L2JhaYlOLEin4MBg%2BfGDo03ZrRxhmlq%2BdYiY2lEuK7p2hA7fOYhWyNgUynIh2cqr1vbcSCAUDAoxDFAsqzuQTD%2Bwn7v7tz5ybrP9eaFwOIlZOwcZSa6vniUXbBhns0qFV3vcFB8%2Bb%2FM%2BZ62BuDPxlxkBkC7eVo6EJrGB9eoTpwbjILiOmvy3e0ZoTwbXVTyjFg%3D%3D",
+      "thumbnailPath": "/thumbnails/%2355.JPG"
+    },
+    {
+      "id": 69,
+      "issue": 56,
+      "releaseDate": "1997-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2356%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=FPxJ9z1d847IsM3UPZw56fgW5nX9szcJrDL%2FHFlpdOdhlMerupCJ19AuqLSKeKFuaTh7C%2BwHlS9O%2BGM7wvNF44U%2FzNqS%2FRwF1TTMv8QLWhQa7NsOs%2Fpc%2B4aqmaIIFuvcvv0tliNg4FGoDJvfnYtxgdupSSEJEkSF6SlQ7r5psAdQbcyP9IxubV147j8%2B7qxR9fla%2BBXir8onqyYebyir8Qp3WCMI8CnfAsbiJRtRSwILD%2FbIWLViyWKMRXJMfmzg%2FG%2FInVS8NT35FwrWa%2F%2FSo2mq%2BpYYOK6rt35amohh7Tyeyk6DNRGL1ORaCxbuwYdQxgpczweizfXt3YgxkzTYRQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2356.JPG"
+    },
+    {
+      "id": 70,
+      "issue": 57,
+      "releaseDate": "1997-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2357%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=H8BGE6QJrHBp3u1L7KTFjvH5xdMjW%2Bvp3kG4bZSXvQR1GtBhSSaOVpS5k7sfG2F%2FtCXjmrOSQw7omebc7IynjHS9OTiwsriM8l5Jonlk0hDoAmqyd6xia4eVjuGbXJwSAQmbOjpLqViVTfylfD5365sl1JsZl%2FZftTUCFFOYjXHCCNcKPISAcxxlnpYVwtbkguqpzySyRcAFNFbd4UnBCfpXL3xovEGNGSYm%2B5hTomIwa2EREWJ5XZIN2k9fmL2zKTWc2tGBWxwaVXfuAgzjgBcDtjWMGLb01kNyL%2Bf7hXotjloo%2B3PcufI9bxbpoCMDsMy9jIWqtqZg1Pb4u7%2Ff%2BA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2357.JPG"
+    },
+    {
+      "id": 71,
+      "issue": 58,
+      "releaseDate": "1997-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2358%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=AwD%2BmANRBdmFfxBIDIfeU3CiWI%2FNxIog4mwLF5mqEtGAfkbmtHgxZCfwR81uvapSnsGDIzW3SZJ6I0gUq%2BJdA9O6pBElEh8oLSQUMN6rmB4lpKVUGu3F%2BMP74jxp4MYx8vpuN5lDIUYo34eeqjoQkeineqQhp%2BsbmhHZEjIHjX58FWOQ7nZ9K1mkU0BXsQpclFTHOgBWFLAzPd1579fMEnBfTbCeRD3YD9GICnfA7T3xlQ%2Fxbqwl1oyzoFEKuA3YNYnFkOuOd%2BWqZOzjpMoFcZrD%2BQOesqkH%2FsiXbNPCnFKGqw9LANzwFXPokUpBROE7guFEmcRhbpU7sNU3WrU%2BVw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2358.JPG"
+    },
+    {
+      "id": 72,
+      "issue": 59,
+      "releaseDate": "1998-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2359%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=rjCHQR3uPgztXNvmbrHJlDPl%2FUVrU%2BLA5k6Tb%2BDGj6WJQyYDRsQYhaujzLHVskEcIUUYf9wNmiEJNfK2sw9OocK%2FfKminG%2By38Z6jDoOcDjKoyTVs0QltJfH3%2BwGWXvrRRhuaeq7nPlQ5T2R62wR8DmrNU7xb5nHPfk9Q6U%2FTmI5YfM8b7i7I4V9pB8dFhx1fIkG5v5t8DscbU1kvN6ATmQS0bWLWXLLHiHv2n45VaE0sPxfjNVLjh3q3QuzQ5q1HOfrZZkzvcrkV7TlXCNKEvbKqiSwppZ30wiVBaW7DZN6%2FmkkwzdapuaLapnMwep07NnxW5KvbUdsppG9gNgtHw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2359.JPG"
+    },
+    {
+      "id": 19,
+      "issue": 6,
+      "releaseDate": "1984-02-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%236%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=mfI3sPkaF93dgNUnw2%2FfjZ6m5WsHKeM7dzSiHpidJlcvdxK3pLRX1MLo0wiBlZH9wr6JGl52Wp9n6NRdV56o50QxSJDQLkeYkiHLgoHzozX20rbfAJBFwVyJ6flz3niDAQF7bMAkSp%2FSLz3O8Lqhm8Kp1YGJchZwwMVdiq70CKD%2Bghb5080XCkovYvgS9fH28YmLppyz7onMLUldK44j1AwzHzNoSkmVTWh%2B%2FjdHVOJCHSJOYzlaXhzll3RIOR6E0yuvaQscNWYyIh2u4SfCTA%2FUbqZCtbxMeiATwbNJZPbm4JDbgcwSzuykV1iKmap7MR5Bowe0i3jhFDs2PPghFg%3D%3D",
+      "thumbnailPath": "/thumbnails/%236.JPG"
+    },
+    {
+      "id": 73,
+      "issue": 60,
+      "releaseDate": "1998-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2360%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=l6%2BwSfacKeWaFLYca%2FO6vrjl15MomJ8CRdn9rUpFwT6SePT%2FgfV%2BSvmNLXgUrJb2GZQouxoc%2FDGxEa3JffWttKSg23%2B8qytzFNw5PiQ6RkrNY1h51IO6uXYECzcrjK3vv6pBIbQ1wWCgMKnnzadMw1TfiPp8lC4x31ciUeNI8%2BWV1bZkfW9SNcSg9I4OwcLI7C609HeCfZViEV8s6N8CgiLDTZZEGkdB4TtsZqIppB7GKckmRTmQj62HOIxbQeVtLv%2FzDooKF4sHCF1g0IKKOKpfCo68CVV9JqtQgklCUW58GLGAxWdSTANPQ8eWdoCa2STYkUNEBuc3O3rZjCMr2Q%3D%3D",
+      "thumbnailPath": "/thumbnails/%2360.JPG"
+    },
+    {
+      "id": 14,
+      "issue": 1,
+      "releaseDate": "1983-09-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%231%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=bzQqGKWz87j8Hcdv8AvyrvejeHZwfGys1Bchh8MQ1%2FVRoZc6z5Lbmwfb559N1MkqU5xoVD%2FORFbCJ3mTGBp39CanhflC8%2FOqTD2vNDzFbYOIjW2IdfS0xp8%2B%2FN%2FI1UOdue8mjEm7mSz0BG%2BAtZWqTKI2NYkk5tA1nk1%2Bwc3dFozXKPPXep8%2FsbT%2ByR%2Bihjy6QuOd%2BdBhnE4OgJbo9gMz7GmfiuoaGUkqBpHVpEtoAOoszXxOka6xDrtrO%2BZdgBQT%2FooW6kb6UUzy1H8y9NiEsas9GMCq1TQ6ZYf0zmu%2BWAllnaif9fylPnV4XtbPlH1cDi%2F7zXdtl99HcZPrC3njbQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%231.JPG"
+    },
+    {
+      "id": 41,
+      "issue": 28,
+      "releaseDate": "1989-06-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2328%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=kDY8iSwS%2BDoSxmuvRrIyHSrV5Qd9QDgnX%2FyMtYT5b36UauvIWucyMx7Urcbz6k1beA6CKmZweLgjdaFzuFo3sRNx2nB3DcGf9g%2FAt9xKkHZeKJJPtl8BNX2PVDrg1gfKbzyIQoqaKrl%2FOEJuWnPHiGBHTrcSdYD2jZFUwWprtIVxgu6UNplGwOFdGeRhF7TOJX6j%2Ba9wW8ZGQ78bd5HmJqLCEfdAgTOclOlWsulzCswlNSBfIkl7NISL0oaammxCIn8BM6kSBrWSNTX7GwuNurIiQcmeD%2BD%2BR9h27Q%2FS01avDL5G6p2kQaX9bLf1odnu0ugGVluhionx2tV5fe4QDA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2328.JPG"
+    },
+    {
+      "id": 77,
+      "issue": 64,
+      "releaseDate": "1998-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2364%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=j11e8%2BgtP43t2GP5njpRm9MrSXjx1XP5Lx2GcacMINRPtQwq%2FppIcry0mA9D9zo1FiY%2Bq%2Bi%2BKvzVC0gHteYZWLXJkaVSy%2F1%2F9hcMH2n1swGD1CMe26t2%2Fx7OVoL4z2ZIddfNaRpTI3jdlayl9TS9sjX%2Ft93LZW03wAfHjjCq1u%2FElgKDxAWNzV4bK7Ex8BA4LMZk0dM%2BqIBFdD4654BE%2BNex8XTXrYsL2A5pTQgNopnRLqT4d%2F31FRj2MGN1ThnCpSDA7u%2Fme10eRxwjzxk1W1HHQfBORC2%2BsguckUcgsa9iQOcqE3wEkDJlSHoNjCQD6gRgDZzlryhn8n%2FBzyppjQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2364.JPG"
+    },
+    {
+      "id": 78,
+      "issue": 65,
+      "releaseDate": "1999-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2365%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=ACt6rPyDvCrkRLizbiqz6ojrQtVKhkHyy4QDLSVYDmdnOuLIGFjGF991Jrg92pu%2BSdvQrgK0KgFPdNI2bcvbz%2BcBacr5oq4iM4lCV2%2BQzDThynX3MSYSkd3%2FGNKWX5y8bBixwUlBq53NqKgF8Ak0ns%2F97bI%2FVgacwlWX2oagJR3QgH8uN4PN9%2BY887ayMcIKgqSYcNBJu0UsUnEQyDY5dFYoBQ%2Bb651ak9aquJw0EEbG9wCp5w3GZzsccwrOAluiuMkax4QiU5%2BPo7gtPqil5HNcfaLNDo4HddA2gn2AHyc9yGKKZ3npOFd9DTnOWXBQ%2FLHSPDyUji1K5NzhAXGOpw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2365.JPG"
+    },
+    {
+      "id": 80,
+      "issue": 67,
+      "releaseDate": "2000-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2367%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=Z%2BrfBw74xrNiYi3yhr0NjZWkLFahEbtHxiZBRHNmDBhjq2O%2FRVXs%2BLDmv0h60ypkGHWNdWyMKpekzB8jL3fA3HCVNQ8Qi6TCR2QAKlE%2F2jzK6dXG8cqE0LA1zKBBXSwte80CIDE0qZglwVOyZlfpTdajvPSdL9qlzcM3aWgh7qfcRUW9xFfmmBAXeZSO6%2BjRgR2VEOKyphFmswshtoNM6vzMAvPc6a8Qcl6AOSV9hCOiI57cMMr035kL7S6PgF%2FG1Y3i3s31Do%2F79ZuEDJYFG9SxPLZ6CZNFdze7eyc0yO%2FEfWubv47aJH7%2BFtYvqaGMOa%2FRY4AKdov2Yat6Fw%2B6tw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2367.JPG"
+    },
+    {
+      "id": 81,
+      "issue": 68,
+      "releaseDate": "2000-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2368%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=E46q%2FrWqExxoeapGLF4Mf2BdY0WvRL2GZCD8Zx59mTOeA2mUaq9L8e9U0tC56ZmbUlwybkbH9fVdcUBA83muWneecMnrBVpdCMcaJcoBWCh7fmTn2iHIyAeQgKstDzXNr2ewdJzzAqflWPw0ANLiTZLkvGwL72p0eULWMfi2Lq8qaMCAZxlw4x2oFu78Hrvfw7bko2M%2B0BaW0kSMFGOcmRhFIzEfEX1Pz8SJO5AtI1jNhp4sJ727wkIMSn1KfS0hhMxXyMicFzOJhwmnGjqUIeryB0CLcN8Aaa6lyRmp9tyxfWnbQ0k325H2Vanm7LaC7VI%2FYuNqHJhf8C0rD2l6Ig%3D%3D",
+      "thumbnailPath": "/thumbnails/%2368.JPG"
+    },
+    {
+      "id": 82,
+      "issue": 69,
+      "releaseDate": "2000-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2369%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=Q%2BW%2F5Fs%2F%2FyEwWeCL0XWEo8A7%2F0F53pXC1y7f8JzBxKfKljZysim2sy7cZkXiUNqX1Jpb2JZvpOPIvAr6ZJVOM2gEN8lcM1HJSRcyzOA8WPxy5tmifztrmOeTIPxICigJ7RghiSguVMRnKXxOf1XwIH1NtlblzJG75iB1zoAslEFNtOrQvB57LtLjfXAvY3PkT1Hv8hCSsINfRBV8eAekOjytsrCg8In7SonBTFBT%2BMZQbHQHfV2yV9%2BJRRZf61BwgtBvCr4BY6DNjZIAJXKxbEBduJ75%2BWu%2F7nuTANCeoenOSdFnrZPlnvXZpRhDcqq3OtFUxvQhj8YR9n9e3NTjhQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2369.JPG"
+    },
+    {
+      "id": 83,
+      "issue": 70,
+      "releaseDate": "2000-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2370%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=CrMBLk%2BxQAu%2B59yWktwrlgKNNXdX6efa05qMJ64JL88QSlqTwESX1CXBeI6mNa9mMi0HcDoArphqOR02h6GRDfTqaKX3ZWv5SKGTyzqCFVqlGLgZrrmHcWyoJ2GiqD9JTxZOqiOo9r3t%2Bvm4K%2BHlyTHXPMa1zKCdZDkhnm8ehHa2tGAmuEsVoMxwsM5Ksj1DZC4g3HLIUSWIfN%2BSjsSYuYhTw3SBhjoicDDHREH9%2Bcj08aog9arFtUo5xna0hoPNNj%2B%2BE%2B7uaEZ0rWsyJ4JCiWMPnZPyKdcpsBuHUKvtxV5TrJ5wcIlEte%2FzNkuX2Qh%2FITlWKNxT0stdGEStOQBwVg%3D%3D",
+      "thumbnailPath": "/thumbnails/%2370.JPG"
+    },
+    {
+      "id": 84,
+      "issue": 71,
+      "releaseDate": "2001-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2371%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=p1yvZRn7xJGPw%2FUoCGJo%2BGnkQwId28PMw28f6ImT%2FSe9AmSrfs04L5xRpt1Vx6XQLDVtiz5Zoo66%2FImxv89Dw9cwkI4b7FII7wNT64BtMNNfL%2Biv3NQxZqErxqHhrA2TlLDUNK%2FG48%2F%2FfNOQenVJL8Pw9V8uS9b2L9pSRyyk6HQS1iPqeZWDeMTgVJ2sXOvo8uH4nEDI5yyCXCWVl4s0thwAnBKemJ1pp0wQVC1NbcukPrxfUXv416%2FAPDe5LHszOtGe%2FCLqKr8h%2BeneNI5MzTK0BbUlu6KZKRb07F59avcVMYA3IOvANVC03ISYGa9ySUi%2F2Y0IFeUfUmaqvORmXQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2371.JPG"
+    },
+    {
+      "id": 85,
+      "issue": 72,
+      "releaseDate": "2001-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2372%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=AfsR31%2BW%2BZ9n9EN5HQlbe2CeYfPFKqFQ%2Bva8MlxvPuKCl14OzIICttGA6yy2azp2NKjbI14dA9Yuc4h7uhMi3mmJAxK7IC5QEajd%2BqmMPNtr%2FwhPT1JY6574PxByXiHokK8jaM8%2BJdSdxJCKGdjq7mGXYLM73g18hu2erZKVV0zlkawfNGwFVVqtTcOc7uIc40lZ%2FMTg%2BxlDFvMH0ScAY%2BvCQx1AgAK3T0tnM5pTNvvy6I1zFU7sAngqbC9LPPhxz%2Bj%2FtcTLS0TCHKL9bioYGLdJhZyn%2FKYLTet3bgnqY6OKbwU6P9hjhoPdSRFWK0SvR6OYiH0mr%2BSZHzcufM%2Bs1g%3D%3D",
+      "thumbnailPath": "/thumbnails/%2372.JPG"
+    },
+    {
+      "id": 86,
+      "issue": 73,
+      "releaseDate": "2001-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2373%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=BFnGTaKRRZX062fC88ySdZNYpGCLD5siURzxL%2BJYdkolWkrUrDbgs20G%2BYwjV0Y1%2BIVDmYmx%2BQeUR0EwwnlTYm1SRndCJNtXgXYm5NgrBeAEIMVmySaO8%2FFRgvjkLPwZRxCCoHcM%2FYXf0wOgUpuPVnlzVvQf6JUqiLi4KvY5hpFI2eHG1gs7%2FkPXBhJZX46d7NjY7wZhxYF7T2Tq0jTrFnPRPPw4mYzjGhQ107j3bgB%2FO7EjMLiZ8BH8ktnjdNfyGbDtR17%2B%2BZU8GxhjK5AIbj9WmLy1YPPnm3VRXyLQT5JJkv9tMqtUERdStItmoLJLJ%2BapjO4fjpgKbARVdy8oIg%3D%3D",
+      "thumbnailPath": "/thumbnails/%2373.JPG"
+    },
+    {
+      "id": 43,
+      "issue": 30,
+      "releaseDate": "1990-03-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2330%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=HIbNKIr87Yz%2FbzopiOesyVWRLRvO%2BIUN4X%2BrjlrJEX789%2BvzasAmYaFJe%2Fq60PevjxSb2cV96KVLK05PKhoTbsLh0iAMs0J2SEtVp4x4MJU7G59Y9CEEu9heYMGrBvkUkkJ48yOvkGcOQAnhu1WPniK8dT5Rs4RGcwrgzGs1HnAtCs3UpPWDvAmFcIvzmYYsX894c7blRxWX%2FEb4Z3dZ7iOY2lly35E2KNHXsyFr91AHPDOLQX%2B9S8Lqy%2BlSbiHwVuHExn5KnCBWUmqHa0Bnqi1slc0Hdj%2F2kzSRchrEbhsNJqtrn58uPI0TchtaiP3Bl5Mh2bGqrrXr%2BGUz0zdDPg%3D%3D",
+      "thumbnailPath": "/thumbnails/%2330.JPG"
+    },
+    {
+      "id": 44,
+      "issue": 31,
+      "releaseDate": "1990-09-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2331%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=AGzWCSaKJIr2Hu86A8JWO5JrIKKWgahGYsNCb4OE%2FCzuiKIpw1T8nVDtgAO3nEWdoauRdGOwShGnExc8QCfZ%2Fxp6YNrMIP4Jv8k7%2Fq%2BkmthgOCWeKJMwwxnjVwL9t%2FeFRRkh8snMt5hyC5%2BmcP6%2FAQ0kOkfSJCXvVHdIuEvMLDLzE3wEFSvl6ZqvKDoIlceTesLZEfuFO4qSXZg9Xwovegt8nT2fej0K308%2B9QQaVrhM2GrRVUNRig38lmC%2Bp5I4YDdWig1Kierkajk7MaUZokFdkWxc%2FAYXyUJ03NCPBltOs0A%2FCwRMvB%2B%2Fsjg8%2BZ29%2F2%2BdclgqeHcvMRSsTbJBcQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2331.JPG"
+    },
+    {
+      "id": 66,
+      "issue": 53,
+      "releaseDate": "1996-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2353%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=eB2aDkKD9i38E8n%2FBt0tZyc3NC935OI51f8cwni6QW3D8buw8xolNM%2BQ1A4F7O9jKwshYAShIHj6jen6th4Om1%2F7LrzMrg2JESVPPXMbMSLXhgOgmZ3uqhvwopzww0pg2M9P2kV7%2F83ojW93rlQr73FHuvsxq6uQW5PGoyAK1N6P%2FFLPQQd%2FoTMv2UPXgfR0p9GFa3pK1yS3hbYKgCeODx7%2FzG4GIYV9wHKlOYolIl1IvGtFVR%2FmbrOHZje%2FFaQk4WVayYOTiQSDx4igbQd2BX0UEVl4odWVVQeELZQcGoCNZYhzj40m0FEVvwbZH6uFd3iJQW7sd6HSa%2BCA%2FlGmSQ%3D%3D",
+      "thumbnailPath": "/thumbnails/%2353.JPG"
+    },
+    {
+      "id": 74,
+      "issue": 61,
+      "releaseDate": "1998-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2361%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=nwuysQPM450V7mjMHcaxuRpvN78zUKkR7ZJWJ%2FlCqoY2WIWWA0Agtr96%2FMX29Q7jF6F3WbBS7fOwQRJkSa8%2BOf6K8sVm2WebukosUE2udNu1%2BpOYQS%2Fem6ud3XGtV%2BL7g7qt8u75GAA2ndC2UMEKuMQnYVJ5R6WqPtSGfvMOytWHmjHRFd9GRq6sQMoT0T70dua86vv5QG%2Flmu3bRgvMS2bF0nT1%2BvKoOuOt1IspPNgl4MDwdFa35Kjuqop8WKjV%2BfwinNpsxyaYYj1GoKBTzYJoXWO%2BwSnN04UTMUCTBWG5hTRYcKXC8JnUihh2uRHCsliH7D2ZIf%2BNq9c7QQLSRw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2361.JPG"
+    },
+    {
+      "id": 87,
+      "issue": 74,
+      "releaseDate": "2001-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2374%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=aQ1raUNLzKgxQ2UtaGbN8i2quJv%2BMjENphEAnN9Zz2eYMY1f%2FX7%2BXiISvrXnUlLYcFELwl1YLbAd0DCNeQRdg%2BvUR4MrBrqh%2BjM1cTKFThkjlUkRKrj10OoCjfohplHWKJQi8RHk6D8pQJkxF1iKORXcsjYbj0RygMQAV2T%2BrZovuUTr%2FENfjSYt1R5KJMvB%2FZjX40fIOSHNSk4FACz4tv9jXRS3z%2FMAVYIzVcU%2BnJspSprDCF1a3GOa%2F3o3TgfQtNiIpCsR9%2F%2FZEeZzICKDJ5xjkov4dLYL3Tyk%2BU5CbdU4ho2isW1f%2Bgs5%2FHZkl5ZrCy9Gt7PRAHaab6ERxYPbuA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2374.JPG"
+    },
+    {
+      "id": 88,
+      "issue": 75,
+      "releaseDate": "2002-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2375%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=gZDnwQsMoWBKMsykERzq%2FR67I2Bq4z4FDXNPdHcx3TzEm%2BX4OTKSJ10xAtpN7ememUkmDyeiaTjFiurcxhzZA9ug7E3SDI7Q5ZkzEyOIOojNGrPo%2BMh1tX30xBIpGjy1IReyKQQ06hD4qE2PzfQs3egAc%2BGFkHgkpRKES8nISCoKZ4hFrsO2910Upj7MK3ERYzH0dpP%2BbRw3UhhFx8MTQN6%2FvrKzi2pgVtw%2BE%2BJTdXMyuSExF%2BXvUciZ%2B7ZQ6YuLXfHePwY6FaGpgmvUOauo6ZOK0vHQYzT0T6r%2BNWRIyVL4um82Yi1pJVktOnuMHuplcZF9IsrsBT14hvMs9yMu%2Bg%3D%3D",
+      "thumbnailPath": "/thumbnails/%2375.JPG"
+    },
+    {
+      "id": 60,
+      "issue": 47,
+      "releaseDate": "1995-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2347%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=otSl43Zv6Z2PBFR%2By6g3diYELUq9Y10Rt8HDFJBu0gRNGhq%2BOjbwKDC7TWwcnWdk1ajrkwiZ2WKuYhl%2FY6%2BRBRWs5AOuglnEXv1TP2eIZgOF3ytk8jcrINbRJ%2FODlJeUuK1PFOLAfNh8ZolTy1XD8L4RwWmBejCZVqegNTnu15Re2YRdgBSWp81kZhEESvxpRIwHNO71snPKJNk%2BpTUvZ2lJk8puRjR%2F8%2FxTTrkzM4%2BvkmVwcSHkqF0kspOJuphQUs3iNqXnBsOrtUV1kjdA1rSth893BSkr2KIvdqD173XheoqhFx13mbKpXBganaWl0iNhvRy2INUU6kGS%2FmnClA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2347.JPG"
+    },
+    {
+      "id": 61,
+      "issue": 48,
+      "releaseDate": "1995-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2348%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=eLQqRuCmRgMLEQUokH4g5WmTObB2rBZDFbhDHO6h1HJgdfIB%2B9z8i0qoat5iskRqzJzWvItS0nekaNvn9K1qBgbXSurhreuuxffiUm%2FekzH25mwMv%2B7FAE6gslsyHxTSWda%2B%2FLbIvLASydVmZuS9jE8yO2x09AsWul6B91CtlvZ2wm1vLQMqr%2Fzzhu%2FdlcQNqzoJA4w7jogh6edMslHbyUfffvxuPxplLP4QqgVnX4Iu9M09oeI1ger%2Fpf6wjJHTZDeqouMs9emCBlqPke2fBfsOYwZ3L9lcBTyjctLSnRre03RmpDQ16KUGaonjzQMFu%2Bn%2Bv1QxOHvh90bSrU2wrw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2348.JPG"
+    },
+    {
+      "id": 89,
+      "issue": 76,
+      "releaseDate": "2002-04-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2376%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=eAZDntdZ1jaY4sif2xhXRHbZxzLMOEqZEfHQeCP21a8jHAV7ssG3gB7i%2BfNDUNRUXZkSDUr8Hf9niJsT1l6HTgh6HsNEJwOSj6fldh%2F63y3mWgfX3XN69%2F2j%2BOZyaywUu%2FMJ2Z8G8VEb7L2sEUMtAa%2B6k4vuaF9yqFcT4NfaC%2FruQ3Fsf3xJhPAV%2FoX1V%2FdPuziMrjRtOPX7hC67qzD6PvrR9OWG%2BsdexbnigMUyyiTDu8z6I08yU%2Bu3We9jWDq4NLO%2FEmahWTW%2BCSw5KWL9x%2FZn8PTbcSPj2k5udcJpPbyPwuBgDl0ChJ1zyUetcox1GKx4Oj5JIwUUaPOhXKdRFA%3D%3D",
+      "thumbnailPath": "/thumbnails/%2376.JPG"
+    },
+    {
+      "id": 91,
+      "issue": 78,
+      "releaseDate": "2002-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2378%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=Bi7J2RevC19TwRRHklQ8h2g4V3pBJTXudYYGEYDhRMn5S4%2B4TmRb5WjZbisJg9ufNM0PkfZLa0W9zrgl0hpw4ki50NH7PBV3Sqos%2BYs91uRMHFQzsou9FiS2n70iYRxmk%2FBh4pvjCDQ96clwja8AHRaQrAxs74UbpemT6Y6oHCjBniVP5PuFPiS9D2tjQTJqnjFgrirvysRWHHSxt6zbonq5SdkKXQlekFLjBbI3G79THP9zXva8obnCfLwYbXEStS2QFmMfoybs1wcosE4%2F5pZ8Iw8E4mXb07AQcCs1WXsuRX8OtgGjHg%2BSN0NsDNOWBqYvavXnStuU8v%2FEUasBCw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2378.JPG"
+    },
+    {
+      "id": 92,
+      "issue": 79,
+      "releaseDate": "2003-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2379%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=CR25MG4PuTmgGy%2BoBg%2Frcq6VYWKYK9lOhWyYzQzkQtkCtK88Wdw%2Fs%2BIK%2FVSyoaRk4tizqmevFfJ8McgrprQ6keiQ0%2BqRfmEXnTftaSvyuqktgNKgf59ULZI5xCHozg36noClLxdbv4uaCCbCjzJNclpnliotaVInjBOXiPxs7JqxCxfLdMbhjzBatZGkaRy7CD72158GkNNcWKeQj5FPBL04Vdt2eJsyRK3YXG9c3P3o3oXePHAQ9zfP4%2FbuI4sqC0u01Xjz8ZA6zz6IdH55rUS%2B%2FaO7TpO1vXRzL4LF5WJ3wdOLN%2BrVwD8jcutvz0jm47QTGumdPFPRfm%2B%2BV1ulxw%3D%3D",
+      "thumbnailPath": "/thumbnails/%2379.JPG"
+    },
+    {
+      "id": 10,
+      "issue": 100,
+      "releaseDate": "2022-03-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/100E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=b73cFQEaWQG2o0BTY5%2FLiHGeqggiinHfHDsO94IGjr3tRuG2PRBfSw3I4KM%2Bg%2BWNt6w5mhD06xxc1SU%2FNIG4Pz9nSuCFdZ3UuJ7gBYaiaJ9MRP2Pb68E42lTPUvUDqinN8CC9gO%2FMp2BGFkcpWFxqkIIB0H37UhM4cD7frb2%2BJQHNItwxM%2BH4Vt9EDyTFa5L0E%2FPoha27ZkWnHNA3QCVGfvOoZIA%2F0qwUyHf0s4QjiWJ5llC7GzCeFCd88dj5jo0sRMbCDo%2BNg%2FAXg79QjzYFv8NY0pjeGCKAzrLIgaX6pq46LGyKwFGGVNP%2BEuLM7qONDy2DtYH%2BIPX0X5B9Ksa0A%3D%3D",
+      "thumbnailPath": "/thumbnails/100.png"
+    },
+    {
+      "id": 2,
+      "issue": 92,
+      "releaseDate": "2009-02-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/92E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=LOA7J5CX4Jv3rP4FQ2QKlRTos6jaTArqAPeT42lhLecMvoePdBHaLALiVBYm4wgvXFJ0GNOettw05v4CYu2SG8t6yVhaLUvfeomK%2FAhwrF432IatjaPqyZqtEDbHkEDH5%2BZlgIW4L7MvtxxU1uL%2B16V5yNJCYSqy3SVnQhg9bF63fr9rxxD4qjL%2Fiz7XbTL9FbNGIJOLstSDYH0IqmdnoW%2B4M6NrF5aMoaJ1DkYuOvwDqru3BrfTl5UJnWeuhIPsviLjlREc4uQev35iVT2gfgpdkD4h756R77Q9t86nuhJdeyg9HgLdwxHNwgeRtdXprBhKrGkdwX1AWjhs3YX2YQ%3D%3D",
+      "thumbnailPath": null
+    },
+    {
+      "id": 3,
+      "issue": 93,
+      "releaseDate": "2009-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/93E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=pLcV2lBBDPF3f1YscLpmomXgIWH4h0IXC0nyHZ96qK17ojp7L4uyY55S8Bep%2F2J81Yv3mp3fDSpa7wI7NeupshN4PI2r3NyYw8fRcdHTsm26GzLPkv7%2BG2tpNMZtJ2x%2Bf1zz%2BiLhCcqZzYCN4lLQyA8rRSVPZXkBZap4wWdO9UadgTvTM1IW2yn9H9mIczhLFVR2R1IgvOHq7oYEGFHpf8pa6yatoBwC4UXv9r4Cys8l3%2BWLHGy2WJeISu2ZvpVb290pLhn7S4kk%2Bqn6X0Q0gNpUeItCJxDwZmTrhWLdfc%2FGXbCS29F4p1EkHbDingQgFeJIU2Oan1rudAXeFuAolg%3D%3D",
+      "thumbnailPath": null
+    },
+    {
+      "id": 5,
+      "issue": 95,
+      "releaseDate": "2010-03-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/95F.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=JnftfAw8f7xJZ7xX6xHp%2BYcUMroRBESGjCNNQUcAsp4vGtD%2FsQcQqDbJREPwGyd1MLzjusFxXwh3fdfING28HXAFZgZW90ojuCI2fBax8aFJuDzk5XKSfVQmcM%2Br%2FhNcvJYx%2FBqviykwq8JbzXZmdrG36JrzpIRp0kfQL%2FjcRznckTHbieqnMyM%2FtWzNOBCsOrkWwaI3HTz%2BSKfKNmxu%2BRkaZABgE4C7G68NE3SLh3vC6d4JqdRsy%2F6lr5v8leqjAzQVjNZeRizRFEJQtREc6o2hqw3O%2B31ndI5qvnoUA0SzaAJp40S77L5yrpSgEmxt0JG4Rrg6nanEiYTQH5Ksaw%3D%3D",
+      "thumbnailPath": "/thumbnails/95.jpeg"
+    },
+    {
+      "id": 58,
+      "issue": 45,
+      "releaseDate": "1994-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2345%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=PZKen9pn9a0SUm%2FeuzqxWdzZfWZbI5PUpZE028uU640YUeDheeQGl%2BvJ9YHXhWQK7%2Fzs6IpDn69yPZhH%2FyQLBAkVWZU0axjVDs%2F0iwzb3%2Fenc5RuDGipCEoGWTHpz78uGreYlrKwrB1Bj67GzYj%2FD5tu3%2Bcmzel%2Fj6dCMugZGQVg%2FN2DzniLhr%2BNGhelBEDrEcFF4FG77pd59JfYC0YNxjLaJS6mzf2uw3StjeqH7ehgPLqmfScM9Ms1Tar85lsrW9dF953g88vWV3YeNOmcRothDV4ljZ0ZV8JEmMeJqDt1oWvHK1C4g1pG50PZ3WU7birdc9p%2Fuvsv4Xjsu%2BVGJg%3D%3D",
+      "thumbnailPath": "/thumbnails/%2345.JPG"
+    },
+    {
+      "id": 79,
+      "issue": 66,
+      "releaseDate": "1999-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/%2366%20-%20Megillah.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=C6ojC%2FdHCH6tk6%2B4KwxuAJOlHKLUQwh58RveEoYQKlsx5ne7TMK%2BFwZcVIS9telyYo27W%2Fet4O9lzDnVYDD%2BBtPVpR4Mddad8r%2BTZyvARlYLUiK9IUn4RlmlvVzNqLJklPzbYePaGdN%2Ft5jE6klQRZPBHK%2BKWUY9KAiosheBDw3ZoHrdAxZ9zCSaOJnAmtVjFuyOwzcmsE41OJBnDhYLwLt7q8HS9STXYesJqmnHAGB09utWSj4RtkAex0nPVSiMHnzUXSp%2FLEtWD1EgVPrj2WvETE9Pxp7ehVKPNfr3fD5TqwmUZRC26G4sOGxBMEiGbOaFyEqvTbjT4P9M96I%2FAg%3D%3D",
+      "thumbnailPath": "/thumbnails/%2366.JPG"
+    },
+    {
+      "id": 13,
+      "issue": 103,
+      "releaseDate": "2023-10-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/103E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=iCrn43tOeRa7c%2FivMKGQZ5AHt8K0W0cA%2FVEF%2B49dLZo8u6gLPUebITwlq4yOfszy7id0EDX40JFvxK8voAXo3lNlGKX1H9tUs3RjkCsfwZmgm3hyX9l146sOdWnI4jdgKxGdoVVtqR6fRyiGvUWBLBuwZ7eUENA3%2BvqVTDSz5duCD%2F8ekC%2BI3OddfambFMePLTac1b9XXWdFHVXUDFqXmXXh0sdU8VyuuguYe2NHHvgdqFB9AiR7YShXzyIicWLMQktrNnbXxbOTLNw6FUyg0j0jkA8w8GyyTjHZvbxbAfx4JOp6qJKP87oA2%2F%2FBcKwvuCS%2BpGOkFOYwqq1SZ1hx5w%3D%3D",
+      "thumbnailPath": "/thumbnails/103.png"
+    },
+    {
+      "id": 1,
+      "issue": 91,
+      "releaseDate": "2008-08-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/91E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=I9zQIrBUxtMDgXob1e%2FyMONlX8Zl9f5Rzpz2PGZQytQVWCwX1VcvNPO4Cxu%2FhyeQLVsG4qRKb768ekWYSqaH2u2pfOxx8yAMQ7ww%2BCSqqxB01ItinVrliBgiZLmb2cFQsTy7p3eFftfSVQN4SFU%2B9yWMtey1KcyDSa%2FR67j0R02nJTzDxhwzlF88vwmVDhUeAJSnvLkxj1HhAV1exFWBSitpCOTszJbithBb3uLZN7IlfOd3v%2B7lAa45p57DTyFJj9CIX%2Bu0HjzYwECkUPJXs4aer09Q1Y%2BBU74i%2BAb7l%2Fo74y67IpBgaf4lBA2GXK8Rn1WqzHZqhM5USGjFSQu19Q%3D%3D",
+      "thumbnailPath": null
+    },
+    {
+      "id": 7,
+      "issue": 97,
+      "releaseDate": "2011-01-01T05:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/97E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=dNsPQltztC%2Bx5HJY%2B4llXYMHynO8ewrxEdwKVMZyaHR6iXW5X84RvPhXOnCaX1CqLna2Ph3XvjDBJTxvOdhzI1gZntJyKjgmvU5aXGYBMNGdOBR6AGr4lJ7zhUFJA4MZKpEnYDGdmiR2enG3s%2BiX%2BskVztyx67FkSQyuc5UzEH9bOqPH%2F88ofDe%2Bx6ns38QYuinHPoo5CP1S4GJ%2FrbRCoEh2eJbrkjNYkenbmaCV%2FhDf7r3iU4XvCH6wEC0Fmmw9SzlMa0qQ0Ko8Y%2B%2B6EjPLpMYiDL3P0XFBZjIudbmE0pU1BGVI5nX5tsRDIhXkH45KMT4KtbB2gFsmj8q7y8yCdQ%3D%3D",
+      "thumbnailPath": null
+    },
+    {
+      "id": 6,
+      "issue": 96,
+      "releaseDate": "2010-08-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/96E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=lSCFB6AhKhjo9DB9HB7bCtEpgFXIV4Fc0xGDy8FkFL0ofSQIHYawikufg3AQfNQi82GzJYCVkP4ceECixjVy3DMOygtljslb2h%2FPxO2aRZsAaSkvW2GV%2F1wqXX9H8lkbVO7y%2B6IM%2BtqOWcTLSBw14I4bam8yFtYbmQp8mXWIeq%2FfUPWHTe6rTnGuYwsQBhclsfoIw9giI210aRpijXzZdnMWiMY4VNfi63MscU4dljAVRQ3wEC8FFfubZzXnfb7hHiAcR5YWBYQrFxnBNHcGbx67USUg41hR1CP45E33kkVPrInrxmZsBTS%2FkIJFz3WPIibLUcUSO%2B8sOBK0Nr8Yig%3D%3D",
+      "thumbnailPath": "/thumbnails/96.jpeg"
+    },
+    {
+      "id": 8,
+      "issue": 98,
+      "releaseDate": "2011-07-01T04:00:00.000Z",
+      "url": "https://storage.googleapis.com/megillah-353f7.appspot.com/megillah/98E.pdf?GoogleAccessId=firebase-adminsdk-zgwzw%40megillah-353f7.iam.gserviceaccount.com&Expires=32508795600&Signature=UYHKh5onqavph%2Bng4dJ7SB12%2BpMMPMRu2jhATChD5rAhfEi2bDNk09lLSGNb7oruDjP7EGQh%2B6NFqXO4v%2B1JkMOZU31cvkTKUaeg0pqwF29RDW%2FBv2RKvL%2FIyMvrGAggENFMUWq6UFEgjYaskolCdLeybrdISCUpO6sSlmLKtV3RClnDBS4KHd2%2BxReoAhLJCaIHUuzLLhZ3XzUjG0vPHxOYKkDzZ63X5VWLr26%2FKq29twH%2BM7ajsUklvDzEiMS7Vy7QuB7m8wQ%2F1RtQo6fehx6szuGSxXDz%2Bw183DgbRNkMh%2FTJTPVF1cvTp9miAnMH8LbUdCFy%2BdP6zraxYzvZjQ%3D%3D",
+      "thumbnailPath": "/thumbnails/98.jpeg"
+    }
+  ]
+}

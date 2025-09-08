@@ -1,12 +1,22 @@
 export const dynamic = "force-dynamic";
 
-import { api } from "~/trpc/server";
 import MegillaPageClient from "./_components/MegillahPageClient/MegillaPageClient";
 import Link from "next/link";
+import { db } from "../../../firebaseConfig";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { Megillah } from "../../../types";
 
 export default async function Megillah() {
-  // Megillahs
-  const megillahs = await api.megillah.index.query();
+  const megillahsCollection = collection(db, "megillahs");
+  const q = query(megillahsCollection, orderBy("issue", "desc"));
+  const querySnapshot = await getDocs(q);
+  const megillahs: Megillah[] = [];
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    // Convert date string to Date object
+    const releaseDate = data.releaseDate ? new Date(data.releaseDate) : null;
+    megillahs.push({ ...data, id: doc.id, releaseDate } as Megillah);
+  });
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">

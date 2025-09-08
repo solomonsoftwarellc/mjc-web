@@ -3,18 +3,9 @@
 import React from "react";
 import MegillahItem from "../MegillahItem/MegillahItem";
 import Link from "next/link";
+import { Megillah } from "../../../../types";
 
-function MegillaPageClient({
-  megillahs,
-}: {
-  megillahs: {
-    id: number;
-    issue: number;
-    releaseDate: Date | null;
-    url: string | null;
-    thumbnailPath: string | null;
-  }[];
-}) {
+function MegillaPageClient({ megillahs }: { megillahs: Megillah[] }) {
   return (
     <>
       <div className="container flex flex-col gap-12 px-4 py-8 ">
