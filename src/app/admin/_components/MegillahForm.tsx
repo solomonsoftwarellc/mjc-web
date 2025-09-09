@@ -35,7 +35,7 @@ export default function MegillahForm({
     if (megillahToEdit) {
       setIssue(megillahToEdit.issue.toString());
       const date = megillahToEdit.releaseDate;
-      setReleaseDate(date ? new Date(date).toISOString().split("T")[0] : "");
+      setReleaseDate(date ? new Date(date).toISOString().substring(0, 10) : "");
     } else {
       setIssue("");
       setReleaseDate("");
