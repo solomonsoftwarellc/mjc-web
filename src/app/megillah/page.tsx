@@ -16,7 +16,7 @@ export default async function MegillahPage() {
     const releaseDate = data.releaseDate ? new Date(data.releaseDate) : null;
     megillahs.push({
       ...(data as Omit<Megillah, "id" | "releaseDate">),
-      id: parseInt(doc.id, 10),
+      id: doc.id,
       releaseDate,
     });
   });

@@ -1,5 +1,5 @@
 export type Megillah = {
-  id: number;
+  id: string;
   issue: number;
   releaseDate: Date | null;
   url: string | null;
