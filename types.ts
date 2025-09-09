@@ -4,4 +4,5 @@ export type Megillah = {
   releaseDate: Date | null;
   url: string | null;
   thumbnailPath: string | null;
+  thumbnailPathOnFirebaseStorage: string | null;
 };
