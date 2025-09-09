@@ -25,7 +25,7 @@ export default function Thumbnail({ path, alt }: ThumbnailProps) {
           // Keep default image on error
         }
       };
-      fetchUrl();
+      void fetchUrl();
     }
   }, [path]);
 

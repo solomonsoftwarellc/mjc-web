@@ -13,7 +13,9 @@ export default async function MegillahPage() {
   const megillahs: Megillah[] = [];
   querySnapshot.forEach((doc) => {
     const data = doc.data();
-    const releaseDate = data.releaseDate ? new Date(data.releaseDate) : null;
+    const releaseDate = data.releaseDate
+      ? new Date(data.releaseDate as string)
+      : null;
     megillahs.push({
       ...(data as Omit<Megillah, "id" | "releaseDate">),
       id: doc.id,
