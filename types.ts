@@ -1,8 +1,9 @@
 export type Megillah = {
-  id: string;
+  id: number;
   issue: number;
   releaseDate: Date | null;
   url: string | null;
   thumbnailPath: string | null;
   thumbnailPathOnFirebaseStorage: string | null;
+  pdfPathOnFirebaseStorage?: string | null;
 };

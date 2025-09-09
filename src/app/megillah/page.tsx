@@ -2,20 +2,23 @@ export const dynamic = "force-dynamic";
 
 import MegillaPageClient from "./_components/MegillahPageClient/MegillaPageClient";
 import Link from "next/link";
-import { db } from "../../../firebaseConfig";
+import { db } from "firebaseConfig";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import { Megillah } from "../../../types";
+import type { Megillah } from "types";
 
-export default async function Megillah() {
+export default async function MegillahPage() {
   const megillahsCollection = collection(db, "megillahs");
   const q = query(megillahsCollection, orderBy("issue", "desc"));
   const querySnapshot = await getDocs(q);
   const megillahs: Megillah[] = [];
   querySnapshot.forEach((doc) => {
     const data = doc.data();
-    // Convert date string to Date object
     const releaseDate = data.releaseDate ? new Date(data.releaseDate) : null;
-    megillahs.push({ ...data, id: doc.id, releaseDate } as Megillah);
+    megillahs.push({
+      ...(data as Omit<Megillah, "id" | "releaseDate">),
+      id: parseInt(doc.id, 10),
+      releaseDate,
+    });
   });
 
   return (
