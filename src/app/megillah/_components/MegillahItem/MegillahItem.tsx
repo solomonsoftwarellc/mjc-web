@@ -3,18 +3,9 @@ import Image from "next/image";
 import { getDownloadURL, ref } from "firebase/storage";
 import { storage } from "../../../../../firebaseConfig";
 import { Skeleton } from "~/components/ui/skeleton";
+import type { Megillah } from "types";
 
-function MegillahItem({
-  megillah,
-}: {
-  megillah: {
-    id: number;
-    issue: number;
-    releaseDate: Date | null;
-    thumbnailPath: string | null;
-    thumbnailPathOnFirebaseStorage: string | null;
-  };
-}) {
+function MegillahItem({ megillah }: { megillah: Megillah }) {
   const [imageUrl, setImageUrl] = useState<string>("/thumbnails/default.png");
   const [loading, setLoading] = useState(true);
 
