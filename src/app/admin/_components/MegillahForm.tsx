@@ -94,9 +94,7 @@ export default function MegillahForm({
               </label>
               <Input
                 id="thumbnail"
-                onChange={(e) =>
-                  setThumbnail(e.target.files ? e.target.files[0] : null)
-                }
+                onChange={(e) => setThumbnail(e.target.files?.[0] ?? null)}
                 className="col-span-3"
                 type="file"
                 accept="image/*"
@@ -108,9 +106,7 @@ export default function MegillahForm({
               </label>
               <Input
                 id="pdf"
-                onChange={(e) =>
-                  setPdf(e.target.files ? e.target.files[0] : null)
-                }
+                onChange={(e) => setPdf(e.target.files?.[0] ?? null)}
                 className="col-span-3"
                 type="file"
                 accept="application/pdf"
