@@ -34,11 +34,8 @@ export default function MegillahForm({
   useEffect(() => {
     if (megillahToEdit) {
       setIssue(megillahToEdit.issue.toString());
-      setReleaseDate(
-        megillahToEdit.releaseDate
-          ? new Date(megillahToEdit.releaseDate).toISOString().split("T")[0]
-          : "",
-      );
+      const date = megillahToEdit.releaseDate;
+      setReleaseDate(date ? new Date(date).toISOString().split("T")[0] : "");
     } else {
       setIssue("");
       setReleaseDate("");
