@@ -284,18 +284,20 @@ export default function SignupSlugPage() {
           </p>
         </div>
 
-        <UploadModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          name={name}
-          setName={setName}
-          images={images}
-          setImages={setImages}
-          videoFiles={videoFiles}
-          setVideoFiles={setVideoFiles}
-          handleSubmit={handleSubmit}
-          uploadStatus={uploadStatus}
-        />
+        {Accounts[slug as keyof typeof Accounts]?.showUpload && (
+          <UploadModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            name={name}
+            setName={setName}
+            images={images}
+            setImages={setImages}
+            videoFiles={videoFiles}
+            setVideoFiles={setVideoFiles}
+            handleSubmit={handleSubmit}
+            uploadStatus={uploadStatus}
+          />
+        )}
 
         <MediaDisplay
           galleryItems={galleryItems}

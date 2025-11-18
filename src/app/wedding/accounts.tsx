@@ -6,6 +6,7 @@ export const Accounts = {
     textColor: "#b8966f",
     backgroundColor: "#efe6dd",
     displayWedding: true,
+    showUpload: false,
   },
   "lea-eman": {
     name: "Lea & Emanuel Mordekhai's Wedding",
@@ -14,6 +15,7 @@ export const Accounts = {
     textColor: "#004d00",
     backgroundColor: "white",
     displayWedding: true,
+    showUpload: false,
   },
   "test-slug": {
     name: "Test Slug",
@@ -22,6 +24,7 @@ export const Accounts = {
     textColor: "#b8966f",
     backgroundColor: "#efe6dd",
     displayWedding: false,
+    showUpload: false,
   },
   "another-one": {
     name: "Another One",
@@ -29,6 +32,7 @@ export const Accounts = {
     date: "February 16, 2025",
     textColor: "#b8966f",
     backgroundColor: "#efe6dd",
+    showUpload: false,
   },
   "another-one2": {
     name: "Another One 2",
@@ -36,6 +40,7 @@ export const Accounts = {
     date: "February 16, 2025",
     textColor: "#b8966f",
     backgroundColor: "#efe6dd",
+    showUpload: false,
   },
   "julian-shellie": {
     name: "Shellie & Julian Hajibay's Wedding",
@@ -44,5 +49,6 @@ export const Accounts = {
     textColor: "#ca9a2f",
     backgroundColor: "#fffff0",
     displayWedding: false,
+    showUpload: false,
   },
 };
