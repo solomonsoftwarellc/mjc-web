@@ -1,6 +1,4 @@
-import { LoaderIcon } from "lucide-react";
 import Link from "next/link";
-import { Suspense } from "react";
 
 export default async function Home() {
   return (
@@ -12,7 +10,7 @@ export default async function Home() {
           <br></br>
           Official Website
         </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-8">
           <Link
             className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
             href="https://kanissanews.com/"
@@ -21,6 +19,17 @@ export default async function Home() {
             <div className="text-lg">
               Weekly newsletter featuring prayer times and events of the United
               Mashadi Jewish Community of America.
+            </div>
+          </Link>
+          <Link
+            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+            href="/raffle"
+          >
+            <h3 className="text-2xl font-bold">Watch Raffle →</h3>
+            <div className="text-lg">
+              Donate as little as $1 for a chance to win a Rolex watch!
+              Authorize a pre-donation from $1-$550, get a unique random number
+              as your donation amount, and you could win big.
             </div>
           </Link>
           <Link
