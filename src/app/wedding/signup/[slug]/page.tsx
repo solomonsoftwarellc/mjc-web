@@ -164,7 +164,7 @@ export default function SignupSlugPage() {
           });
 
           uploadPromises.push(
-            fetch("https://cd.phantomcheckerapi.com/upload", {
+            fetch("https://mashadi.phantomcheckerapi.com/upload", {
               method: "POST",
               body: imageFormData,
             }),
@@ -188,7 +188,7 @@ export default function SignupSlugPage() {
             );
 
             uploadPromises.push(
-              fetch("https://cd.phantomcheckerapi.com/upload-video", {
+              fetch("https://mashadi.phantomcheckerapi.com/upload-video", {
                 method: "POST",
                 body: videoFormData,
               }),
