@@ -10,7 +10,7 @@ export default async function Home() {
           <br></br>
           Official Website
         </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-8">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
           <Link
             className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
             href="https://kanissanews.com/"
@@ -41,6 +41,16 @@ export default async function Home() {
               Collection of magazines published by the Mashadi Youth Committee,
               featuring photo and written content related to the United Mashadi
               Jewish Community of America.
+            </div>
+          </Link>
+          <Link
+            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+            href="/wedding"
+          >
+            <h3 className="text-2xl font-bold">Weddings →</h3>
+            <div className="text-lg">
+              Explore beautiful weddings from our community. View galleries and
+              celebrate with us.
             </div>
           </Link>
         </div>

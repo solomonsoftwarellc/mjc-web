@@ -54,15 +54,6 @@ type VideoStatus =
     }
   | string;
 
-type FirestoreVideoDoc = {
-  name: string;
-  fileName: string;
-  videoUid: string;
-  status: VideoStatus;
-  thumbnail?: string | null;
-  timestamp: string;
-};
-
 // Update the type definitions
 type ImageWithMetadata = {
   file: File;

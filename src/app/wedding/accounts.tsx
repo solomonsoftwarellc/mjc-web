@@ -5,6 +5,7 @@ export const Accounts = {
     date: "January 19, 2025",
     textColor: "#b8966f",
     backgroundColor: "#efe6dd",
+    displayWedding: true,
   },
   "lea-eman": {
     name: "Lea & Emanuel Mordekhai's Wedding",
@@ -12,6 +13,7 @@ export const Accounts = {
     date: "March 23rd, 2025",
     textColor: "#004d00",
     backgroundColor: "white",
+    displayWedding: true,
   },
   "test-slug": {
     name: "Test Slug",
@@ -19,6 +21,7 @@ export const Accounts = {
     date: "February 16, 2025",
     textColor: "#b8966f",
     backgroundColor: "#efe6dd",
+    displayWedding: false,
   },
   "another-one": {
     name: "Another One",
@@ -40,5 +43,6 @@ export const Accounts = {
     date: "February 16, 2025",
     textColor: "#ca9a2f",
     backgroundColor: "#fffff0",
+    displayWedding: false,
   },
 };
