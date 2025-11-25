@@ -27,7 +27,7 @@ export default async function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h3 className="text-2xl font-bold">Branches For Bracha →</h3>
+            <h3 className="text-2xl font-bold">Branches of Bracha →</h3>
             <div className="text-lg">
               Donate as little as $1 for a chance to win a Rolex watch!
               Authorize a pre-donation from $1-$550, get a unique random number
