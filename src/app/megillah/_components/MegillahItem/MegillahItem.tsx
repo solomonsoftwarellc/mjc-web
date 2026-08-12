@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { getDownloadURL, ref } from "firebase/storage";
-import { storage } from "../../../../../firebaseConfig";
-import { Skeleton } from "~/components/ui/skeleton";
 import type { Megillah } from "types";
 
-function MegillahItem({ megillah }: { megillah: Megillah }) {
-  const [imageUrl, setImageUrl] = useState<string>("/thumbnails/default.png");
-  const [loading, setLoading] = useState(true);
+type MegillahItemProps = {
+  megillah: Megillah & { thumbnailUrl?: string | null };
+  priority?: boolean;
+};
 
+export default function MegillahItem({
+  megillah,
+  priority = false,
+}: MegillahItemProps) {
   const date = megillah.releaseDate ? new Date(megillah.releaseDate) : null;
 
   const formattedDate = date
@@ -21,43 +22,23 @@ function MegillahItem({ megillah }: { megillah: Megillah }) {
 
   const title = `Issue #${megillah.issue} - ${formattedDate}`;
 
-  useEffect(() => {
-    if (megillah.thumbnailPathOnFirebaseStorage) {
-      const imageRef = ref(storage, megillah.thumbnailPathOnFirebaseStorage);
-      console.log("imageRef", imageRef);
-      getDownloadURL(imageRef)
-        .then((url) => {
-          setImageUrl(url);
-        })
-        .catch((error) => {
-          console.error("Error getting download URL:", error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    } else {
-      setLoading(false);
-    }
-  }, [megillah.thumbnailPathOnFirebaseStorage]);
-
   return (
-    <div key={megillah.id} className=" flex flex-col justify-center gap-4">
+    <div className="flex flex-col justify-center gap-4">
       <div className="aspect-ratio-box">
         <div className="aspect-ratio-box-inner">
-          {loading ? (
-            <Skeleton className="h-full w-full" />
-          ) : (
+          {megillah.thumbnailUrl ? (
             <Image
-              src={imageUrl}
-              layout="fill"
-              objectFit="contain"
-              alt={`Cover of ${megillah.issue}`}
-              className={
-                megillah.thumbnailPathOnFirebaseStorage
-                  ? ""
-                  : "transform rounded-xl border-2 border-dashed"
-              }
+              src={megillah.thumbnailUrl}
+              alt={`Cover of issue ${megillah.issue}`}
+              fill
+              sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, 22vw"
+              priority={priority}
+              className="object-contain"
             />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center rounded-xl border-2 border-dashed border-white/30 text-center text-sm text-white/60">
+              No cover
+            </div>
           )}
         </div>
       </div>
@@ -65,5 +46,3 @@ function MegillahItem({ megillah }: { megillah: Megillah }) {
     </div>
   );
 }
-
-export default MegillahItem;

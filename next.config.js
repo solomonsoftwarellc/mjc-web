@@ -6,10 +6,7 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
-  webpack: (config) => {
-    config.resolve.alias.canvas = false;
-    return config;
-  },
+  poweredByHeader: false,
   async rewrites() {
     return [
       {
@@ -19,6 +16,11 @@ const config = {
     ];
   },
   images: {
+    formats: ["image/avif", "image/webp"],
+    // Wedding banners and megillah covers are the only optimized images, and
+    // none of them render wider than a single grid column.
+    deviceSizes: [320, 480, 640, 828, 1080, 1200],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
       {
         protocol: "https",

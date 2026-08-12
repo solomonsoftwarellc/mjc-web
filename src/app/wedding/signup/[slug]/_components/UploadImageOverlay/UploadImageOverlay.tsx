@@ -1,23 +1,16 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import React, { useRef, useEffect } from "react";
-import { Accounts } from "~/app/wedding/accounts";
-
-type ImageWithMetadata = {
-  file: File;
-  timestamp?: Date;
-};
-
-type VideoWithMetadata = {
-  file: File;
-  timestamp?: Date;
-  duration?: number;
-};
+import React, { useEffect, useRef } from "react";
+import type { WeddingAccount } from "~/app/wedding/accounts";
+import type {
+  ImageWithMetadata,
+  VideoWithMetadata,
+} from "~/app/wedding/gallery-types";
 
 type UploadModalProps = {
   onClose: () => void;
   isOpen: boolean;
+  account: WeddingAccount;
   name: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
   images: ImageWithMetadata[];
@@ -28,9 +21,19 @@ type UploadModalProps = {
   uploadStatus: string | null;
 };
 
+/**
+ * Reads the capture time for an image. JPEGs carry it in EXIF, but the original
+ * implementation only ever checked that an EXIF block exists and then used the
+ * file's own mtime, so that is what we do directly.
+ */
+function readTimestamp(file: File): Date {
+  return new Date(file.lastModified);
+}
+
 export default function UploadModal({
   onClose,
   isOpen,
+  account,
   name,
   setName,
   images,
@@ -43,7 +46,6 @@ export default function UploadModal({
   const isFirstRender = useRef(true);
   const processingFiles = useRef(false);
   const hasUploaded = useRef(false);
-  const slug = useParams().slug;
 
   useEffect(() => {
     const savedName = localStorage.getItem("uploaderName");
@@ -58,28 +60,24 @@ export default function UploadModal({
     }
   }, [name]);
 
+  // Selecting files submits immediately - the picker is the only step.
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
 
-    if (!processingFiles.current && !hasUploaded.current) {
-      if (images.length > 0 || videoFiles.length > 0) {
-        hasUploaded.current = true;
-        void handleSubmit();
+    if (processingFiles.current || hasUploaded.current) return;
+    if (images.length === 0 && videoFiles.length === 0) return;
 
-        // clear the images and video files
-        setImages([]);
-        setVideoFiles([]);
-        onClose();
-      }
-    }
+    hasUploaded.current = true;
+    void handleSubmit();
+    setImages([]);
+    setVideoFiles([]);
+    onClose();
   }, [images, videoFiles, handleSubmit, onClose, setImages, setVideoFiles]);
 
-  const handleMediaChange = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ): Promise<void> => {
+  const handleMediaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) return;
 
     processingFiles.current = true;
@@ -87,60 +85,18 @@ export default function UploadModal({
 
     const files = Array.from(e.target.files);
 
-    const imageFiles = files.filter((file) => file.type.startsWith("image/"));
-    const vidFiles = files.filter((file) => file.type.startsWith("video/"));
+    const processedImages: ImageWithMetadata[] = files
+      .filter((file) => file.type.startsWith("image/"))
+      .map((file) => ({ file, timestamp: readTimestamp(file) }));
 
-    const processedImages = await Promise.all(
-      imageFiles.map(async (file) => {
-        const metadata: ImageWithMetadata = { file };
-        try {
-          const url = URL.createObjectURL(file);
-          const img = new Image();
-          img.src = url;
+    const processedVideos: VideoWithMetadata[] = files
+      .filter((file) => file.type.startsWith("video/"))
+      .map((file) => ({ file, timestamp: readTimestamp(file) }));
 
-          await new Promise((resolve) => {
-            img.onload = resolve;
-          });
-
-          URL.revokeObjectURL(url);
-
-          if (file.type === "image/jpeg" || file.type === "image/jpg") {
-            const arrayBuffer = await file.arrayBuffer();
-            const view = new DataView(arrayBuffer);
-
-            if (view.getUint16(0, false) === 0xffd8) {
-              let offset = 2;
-              while (offset < view.byteLength) {
-                if (view.getUint16(offset, false) === 0xffe1) {
-                  metadata.timestamp = new Date(file.lastModified);
-                  break;
-                }
-                offset += 2 + view.getUint16(offset + 2, false);
-              }
-            }
-          }
-
-          if (!metadata.timestamp) {
-            metadata.timestamp = new Date(file.lastModified);
-          }
-        } catch (error) {
-          console.error("Error processing image metadata:", error);
-          metadata.timestamp = new Date(file.lastModified);
-        }
-
-        return metadata;
-      }),
-    );
-
-    const processedVideos: VideoWithMetadata[] = vidFiles.map((file) => ({
-      file,
-      timestamp: new Date(file.lastModified),
-    }));
+    processingFiles.current = false;
 
     setImages((prev) => [...prev, ...processedImages]);
     setVideoFiles((prev) => [...prev, ...processedVideos]);
-
-    processingFiles.current = false;
   };
 
   const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -151,29 +107,22 @@ export default function UploadModal({
 
   if (!isOpen) return null;
 
+  const accent = { color: account.textColor };
+
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
       onClick={handleBackgroundClick}
     >
       <div
-        className={`w-full max-w-2xl rounded-lg p-6 shadow-xl`}
-        style={{
-          background: Accounts[slug as keyof typeof Accounts].backgroundColor,
-        }}
+        className="w-full max-w-2xl rounded-lg p-6 shadow-xl"
+        style={{ background: account.backgroundColor }}
       >
         <div className="flex items-center justify-between">
-          <h2
-            className="mb-4 text-2xl font-bold"
-            style={{ color: Accounts[slug as keyof typeof Accounts].textColor }}
-          >
+          <h2 className="mb-4 text-2xl font-bold" style={accent}>
             Upload Media
           </h2>
-          <button
-            type="button"
-            onClick={onClose}
-            style={{ color: Accounts[slug as keyof typeof Accounts].textColor }}
-          >
+          <button type="button" onClick={onClose} style={accent}>
             <span className="sr-only">Close Modal</span>✕
           </button>
         </div>
@@ -183,9 +132,7 @@ export default function UploadModal({
             <label
               htmlFor="name"
               className="block text-sm font-medium"
-              style={{
-                color: Accounts[slug as keyof typeof Accounts].textColor,
-              }}
+              style={accent}
             >
               Your Name
             </label>
@@ -195,62 +142,34 @@ export default function UploadModal({
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className={`mt-1 block w-full rounded-md border-[${Accounts[slug as keyof typeof Accounts].textColor}] bg-[${Accounts[slug as keyof typeof Accounts].backgroundColor}] text-[${Accounts[slug as keyof typeof Accounts].textColor}] shadow-sm
-                       focus:border-[${Accounts[slug as keyof typeof Accounts].textColor}] focus:ring-[${Accounts[slug as keyof typeof Accounts].textColor}]`}
+              className="mt-1 block w-full rounded-md border shadow-sm focus:outline-none focus:ring-2"
+              style={{
+                background: account.backgroundColor,
+                borderColor: account.textColor,
+                color: account.textColor,
+              }}
               placeholder="Enter your name"
             />
           </div>
 
           <div>
-            <label
-              className="block text-sm font-medium"
-              style={{
-                color: Accounts[slug as keyof typeof Accounts].textColor,
-              }}
-            >
+            <label className="block text-sm font-medium" style={accent}>
               Upload Photos &amp; Videos
             </label>
             <div
-              className="mt-1 flex justify-center rounded-md border-2 border-dashed
-                          px-6 pb-6 pt-5"
-              style={{
-                borderColor: Accounts[slug as keyof typeof Accounts].textColor,
-              }}
+              className="mt-1 flex justify-center rounded-md border-2 border-dashed px-6 pb-6 pt-5"
+              style={{ borderColor: account.textColor }}
             >
               <label
                 htmlFor="media-upload"
                 className="w-full cursor-pointer space-y-1 text-center"
+                style={accent}
               >
-                <div
-                  className={`flex justify-center text-sm text-[${Accounts[slug as keyof typeof Accounts].textColor}]`}
-                >
-                  <span
-                    className={`relative rounded-md bg-[${Accounts[slug as keyof typeof Accounts].backgroundColor}] font-medium text-[${Accounts[slug as keyof typeof Accounts].textColor}]
-                             focus-within:outline-none focus-within:ring-2 focus-within:ring-[${Accounts[slug as keyof typeof Accounts].textColor}]
-                             focus-within:ring-offset-2 hover:text-[${Accounts[slug as keyof typeof Accounts].textColor}]`}
-                    style={{
-                      color: Accounts[slug as keyof typeof Accounts].textColor,
-                      borderColor:
-                        Accounts[slug as keyof typeof Accounts].textColor,
-                    }}
-                  >
-                    Upload media
-                  </span>
-                  <p
-                    className="pl-1"
-                    style={{
-                      color: Accounts[slug as keyof typeof Accounts].textColor,
-                    }}
-                  >
-                    or drag and drop
-                  </p>
+                <div className="flex justify-center text-sm">
+                  <span className="font-medium">Upload media</span>
+                  <p className="pl-1">or drag and drop</p>
                 </div>
-                <p
-                  className="text-xs"
-                  style={{
-                    color: Accounts[slug as keyof typeof Accounts].textColor,
-                  }}
-                >
+                <p className="text-xs">
                   Images (PNG, JPG, GIF) &amp; Videos (MP4, MOV)
                 </p>
                 <input
@@ -266,12 +185,7 @@ export default function UploadModal({
           </div>
 
           {uploadStatus && (
-            <div
-              className="text-center text-sm"
-              style={{
-                color: Accounts[slug as keyof typeof Accounts].textColor,
-              }}
-            >
+            <div className="text-center text-sm" style={accent}>
               {uploadStatus}
             </div>
           )}
