@@ -115,6 +115,8 @@ export default function UploadModal({
   account,
 }: UploadModalProps) {
   const [name, setName] = useState("");
+  /** `name` once the guest has stopped typing; drives the automatic start. */
+  const [settledName, setSettledName] = useState("");
   const [nameError, setNameError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const { items, summary, addFiles, removeItem, clearCompleted, start, cancel } =
@@ -122,7 +124,11 @@ export default function UploadModal({
 
   useEffect(() => {
     const saved = localStorage.getItem("uploaderName");
-    if (saved) setName(saved);
+    // A remembered name needs no settle delay - it is already complete.
+    if (saved) {
+      setName(saved);
+      setSettledName(saved);
+    }
   }, []);
 
   useEffect(() => {
@@ -137,12 +143,32 @@ export default function UploadModal({
     return () => window.removeEventListener("beforeunload", warn);
   }, [summary.isRunning]);
 
+  // Wait for typing to settle before treating the name as final. Reacting to
+  // every keystroke would fire the upload on the first letter and stamp every
+  // photo with "J" instead of "Jonathan".
+  useEffect(() => {
+    if (settledName === name) return;
+    const timer = setTimeout(() => setSettledName(name), 900);
+    return () => clearTimeout(timer);
+  }, [name, settledName]);
+
+  // Picking files is the whole interaction - uploading begins straight away.
+  // This also covers the reverse order: pick files first, then type a name, and
+  // it starts once the name settles. Only untouched "queued" items trigger it,
+  // so a failed upload waits for an explicit retry.
+  useEffect(() => {
+    if (!settledName.trim() || summary.isRunning) return;
+    if (!items.some((item) => item.status === "queued")) return;
+    void start(settledName.trim());
+  }, [items, settledName, summary.isRunning, start]);
+
   if (!isOpen) return null;
 
   const accent = account.textColor;
   const pendingCount = items.filter(
     (i) => i.status === "queued" || i.status === "error",
   ).length;
+  const needsName = !name.trim() && pendingCount > 0 && !summary.isRunning;
 
   const handlePick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.length) addFiles(Array.from(event.target.files));
@@ -194,6 +220,8 @@ export default function UploadModal({
               setName(event.target.value);
               if (event.target.value.trim()) setNameError(false);
             }}
+            // Leaving the field means they are done typing; no need to wait.
+            onBlur={(event) => setSettledName(event.target.value)}
             disabled={summary.isRunning}
             placeholder="Enter your name"
             className="mt-1 block w-full rounded-md border px-3 py-2 shadow-sm outline-none focus:ring-2 disabled:opacity-60"
@@ -292,21 +320,23 @@ export default function UploadModal({
                     Done
                   </button>
                 </>
-              ) : (
+              ) : summary.isRunning || needsName || summary.failed > 0 ? (
+                // Nothing to press in the normal case - uploading is already
+                // under way. This only appears to cancel, to ask for a name, or
+                // to retry something that failed.
                 <button
                   type="button"
                   onClick={summary.isRunning ? cancel : handleStart}
-                  disabled={!summary.isRunning && pendingCount === 0}
-                  className="w-full rounded-lg px-4 py-3 font-semibold text-white disabled:opacity-50"
+                  className="w-full rounded-lg px-4 py-3 font-semibold text-white"
                   style={{ background: accent }}
                 >
                   {summary.isRunning
                     ? "Cancel"
-                    : summary.failed > 0
-                      ? `Retry ${summary.failed} failed`
-                      : `Upload ${pendingCount} file${pendingCount === 1 ? "" : "s"}`}
+                    : needsName
+                      ? "Enter your name above to start"
+                      : `Retry ${summary.failed} failed`}
                 </button>
-              )}
+              ) : null}
             </div>
 
             {summary.isRunning && (

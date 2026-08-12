@@ -159,6 +159,9 @@ export function useUploadQueue(slug: string) {
   const [items, setItems] = useState<UploadItem[]>([]);
   const [isRunning, setIsRunning] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
+  // Uploads start automatically as soon as files are picked, so start() can be
+  // re-entered before isRunning has propagated. This guard is synchronous.
+  const startingRef = useRef(false);
   // Progress fires far faster than React should re-render; batch it.
   const progressRef = useRef(new Map<string, number>());
   const flushTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -236,11 +239,14 @@ export function useUploadQueue(slug: string) {
    */
   const start = useCallback(
     async (uploaderName: string) => {
+      if (startingRef.current) return;
+
       const pending = items.filter(
         (i) => i.status === "queued" || i.status === "error",
       );
       if (pending.length === 0) return;
 
+      startingRef.current = true;
       const controller = new AbortController();
       abortRef.current = controller;
       setIsRunning(true);
@@ -444,6 +450,7 @@ export function useUploadQueue(slug: string) {
         );
       } finally {
         await wakeLock?.release().catch(() => undefined);
+        startingRef.current = false;
         setIsRunning(false);
         abortRef.current = null;
       }
