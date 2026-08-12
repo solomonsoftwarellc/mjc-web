@@ -164,9 +164,9 @@ export default function UploadModal({
     items.length > 0 && summary.done === items.length && !summary.isRunning;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-0 sm:items-center sm:p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
       <div
-        className="flex max-h-[92vh] w-full max-w-xl flex-col rounded-t-2xl shadow-xl sm:rounded-2xl"
+        className="flex max-h-[85vh] w-full max-w-xl flex-col rounded-2xl shadow-xl"
         style={{ background: account.backgroundColor, color: accent }}
       >
         <div className="flex items-center justify-between border-b border-current/10 p-4">
