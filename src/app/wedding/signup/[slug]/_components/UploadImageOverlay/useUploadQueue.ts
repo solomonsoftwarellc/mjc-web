@@ -52,6 +52,33 @@ export type QueueSummary = {
 let counter = 0;
 const nextId = () => `u${Date.now().toString(36)}-${counter++}`;
 
+/**
+ * POST JSON to our API without tripping a CORS preflight.
+ *
+ * `text/plain` keeps the request "simple", so the browser skips OPTIONS. That
+ * matters because the API hostname sits behind Cloudflare bot protection, which
+ * challenges OPTIONS - and a preflight can never solve a challenge, so the
+ * request dies before reaching the server. The server parses the text as JSON.
+ *
+ * Also bounded by a timeout: without one a hung request leaves every row
+ * sitting on "Waiting" forever with no way to tell something went wrong.
+ */
+async function postJson(url: string, payload: unknown, timeoutMs = 45000) {
+  // AbortSignal.timeout is unavailable on older phone browsers; going without
+  // it is better than throwing on the very devices we are trying to support.
+  const signal =
+    typeof AbortSignal !== "undefined" && "timeout" in AbortSignal
+      ? AbortSignal.timeout(timeoutMs)
+      : undefined;
+
+  return fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=UTF-8" },
+    body: JSON.stringify(payload),
+    signal,
+  });
+}
+
 function classify(file: File): "image" | "video" | null {
   if (file.type.startsWith("image/")) return "image";
   if (file.type.startsWith("video/")) return "video";
@@ -232,10 +259,9 @@ export function useUploadQueue(slug: string) {
         if (!force && finalizeQueue.length < 10) return;
         const batch = finalizeQueue.splice(0, finalizeQueue.length);
         try {
-          const response = await fetch(`${API}/uploads/finalize`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ slug, items: batch }),
+          const response = await postJson(`${API}/uploads/finalize`, {
+            slug,
+            items: batch,
           });
           const body = (await response.json()) as {
             results?: { clientId: string; status: string }[];
@@ -259,20 +285,16 @@ export function useUploadQueue(slug: string) {
           if (controller.signal.aborted) break;
           const slice = pending.slice(i, i + PREPARE_BATCH);
 
-          const response = await fetch(`${API}/uploads/prepare`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              slug,
-              name: uploaderName,
-              files: slice.map((item) => ({
-                clientId: item.id,
-                kind: item.kind,
-                fileName: item.file.name,
-                size: item.file.size,
-                timestamp: new Date(item.file.lastModified).toISOString(),
-              })),
-            }),
+          const response = await postJson(`${API}/uploads/prepare`, {
+            slug,
+            name: uploaderName,
+            files: slice.map((item) => ({
+              clientId: item.id,
+              kind: item.kind,
+              fileName: item.file.name,
+              size: item.file.size,
+              timestamp: new Date(item.file.lastModified).toISOString(),
+            })),
           });
 
           if (!response.ok) {
@@ -402,10 +424,14 @@ export function useUploadQueue(slug: string) {
         // forever while the summary cheerfully reports nothing failed.
         const message =
           error instanceof Error ? error.message : "Upload failed";
+        const isTimeout =
+          error instanceof DOMException && error.name === "TimeoutError";
         const reason =
-          message === "Failed to fetch"
-            ? "Could not reach the upload server. Check your connection."
-            : message;
+          isTimeout || message.includes("timed out")
+            ? "The upload server took too long to respond. Tap retry."
+            : message === "Failed to fetch"
+              ? "Could not reach the upload server. Check your connection."
+              : message;
 
         setItems((current) =>
           current.map((item) =>
