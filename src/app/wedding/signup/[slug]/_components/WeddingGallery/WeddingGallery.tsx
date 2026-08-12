@@ -30,7 +30,9 @@ export default function WeddingGallery({
   const [hasMore, setHasMore] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Weddings with uploads enabled greet guests with the upload sheet already
+  // open; the floating button reopens it after they dismiss it.
+  const [isModalOpen, setIsModalOpen] = useState(account.showUpload);
 
   useEffect(() => {
     const pageSize = page * ITEMS_PER_PAGE;
@@ -75,8 +77,6 @@ export default function WeddingGallery({
             account={account}
           />
 
-          {/* Sticky rather than auto-opening over the gallery: guests come to
-              look at photos as well as add them. */}
           {!isModalOpen && (
             <button
               type="button"
