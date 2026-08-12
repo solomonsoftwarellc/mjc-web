@@ -9,11 +9,9 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000");
+// The production domain, not VERCEL_URL - that resolves to the immutable
+// per-deployment host, which then shows up in every shared link preview.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.mashadi.io";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -23,6 +21,12 @@ export const metadata: Metadata = {
   },
   description: "Mashadi Jewish Community",
   icons: [{ rel: "icon", url: "/favicon.png" }],
+  openGraph: {
+    siteName: "MJC",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {

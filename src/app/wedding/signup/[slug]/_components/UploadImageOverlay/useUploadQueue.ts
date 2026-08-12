@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const API = "https://mashadi.phantomcheckerapi.com";
+const API =
+  process.env.NEXT_PUBLIC_UPLOAD_API ?? "https://mashadi.phantomcheckerapi.com";
 
 /** Photos are small; several at once saturates a phone's uplink nicely. */
 const IMAGE_CONCURRENCY = 4;
@@ -396,6 +397,25 @@ export function useUploadQueue(slug: string) {
         }
 
         await flushFinalize(true);
+      } catch (error) {
+        // Without this the rejection escapes and every row sits at "uploading"
+        // forever while the summary cheerfully reports nothing failed.
+        const message =
+          error instanceof Error ? error.message : "Upload failed";
+        const reason =
+          message === "Failed to fetch"
+            ? "Could not reach the upload server. Check your connection."
+            : message;
+
+        setItems((current) =>
+          current.map((item) =>
+            item.status === "uploading" ||
+            item.status === "queued" ||
+            item.status === "processing"
+              ? { ...item, status: "error", error: reason }
+              : item,
+          ),
+        );
       } finally {
         await wakeLock?.release().catch(() => undefined);
         setIsRunning(false);

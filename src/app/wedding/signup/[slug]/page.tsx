@@ -15,24 +15,42 @@ export function generateMetadata({
   params: { slug: string };
 }): Metadata {
   const account = getAccount(params.slug);
-  const title = account?.name ?? "Wedding Gallery";
-  const description = account
-    ? `Share your memories from ${account.name}`
-    : "Share your wedding memories";
-  const banner = `/wedding/${params.slug}.png`;
+  if (!account) {
+    return { title: "Wedding Gallery" };
+  }
+
+  const title = account.name;
+  const description = account.showUpload
+    ? `${account.date} · Share your photos and videos from the celebration.`
+    : `${account.date} · Photos and videos from the celebration.`;
+
+  // A flattened 1200x630 card, not the transparent banner - messaging apps
+  // composite transparency onto black. See scripts/generate-og-images.js.
+  const card = `/wedding/og/${params.slug}.png`;
+  const url = `/wedding/signup/${params.slug}`;
 
   return {
     // The couple's name stands on its own - no "| MJC" suffix here.
     title: { absolute: title },
     description,
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,
-      images: [banner],
-      url: `/wedding/signup/${params.slug}`,
+      url,
       type: "website",
+      siteName: "MJC",
+      images: [
+        { url: card, width: 1200, height: 630, alt: `${account.name} monogram` },
+      ],
     },
-    icons: { icon: banner },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [card],
+    },
+    icons: { icon: `/wedding/${params.slug}.png` },
   };
 }
 
