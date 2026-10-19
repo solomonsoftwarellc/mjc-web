@@ -2,6 +2,7 @@ import "~/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import GoogleAnalytics from "~/components/GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,7 +43,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <GoogleAnalytics />
+      </body>
     </html>
   );
 }
