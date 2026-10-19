@@ -46,7 +46,11 @@ export default function MegillahForm({
     e.preventDefault();
     const megillahData: Partial<Megillah> = {
       issue: parseInt(issue, 10),
-      releaseDate: releaseDate ? new Date(releaseDate) : null,
+      // Save as an ISO string (what the site reads), at noon UTC so the
+      // calendar day is the same in every US time zone.
+      releaseDate: releaseDate
+        ? new Date(`${releaseDate}T12:00:00.000Z`).toISOString()
+        : null,
     };
     onSubmit(megillahData, thumbnail ?? undefined, pdf ?? undefined);
   };
