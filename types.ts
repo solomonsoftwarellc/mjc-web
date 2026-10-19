@@ -1,7 +1,7 @@
 export type Megillah = {
   id: string;
   issue: number;
-  releaseDate: Date | null;
+  releaseDate: Date | string | null;
   url: string | null;
   thumbnailPath: string | null;
   thumbnailPathOnFirebaseStorage: string | null;

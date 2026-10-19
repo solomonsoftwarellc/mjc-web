@@ -4,11 +4,11 @@ import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
 import { db, storage } from "firebaseConfig";
 import type { Megillah } from "types";
+import { parseReleaseDate } from "~/lib/utils";
 import MegillahItem from "./_components/MegillahItem/MegillahItem";
 
-// Issues change a few times a year; serve from cache and refresh in the
-// background rather than re-querying Firestore on every request.
-export const revalidate = 3600;
+// Serve from cache, but refresh within a minute so admin edits show up quickly.
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Megillah",
@@ -41,9 +41,7 @@ async function getMegillahs(): Promise<ResolvedMegillah[]> {
     return {
       ...(data as Omit<Megillah, "id" | "releaseDate">),
       id: doc.id,
-      releaseDate: data.releaseDate
-        ? new Date(data.releaseDate as string)
-        : null,
+      releaseDate: parseReleaseDate(data.releaseDate),
     };
   });
 
