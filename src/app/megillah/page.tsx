@@ -6,6 +6,7 @@ import { db, storage } from "firebaseConfig";
 import type { Megillah } from "types";
 import { parseReleaseDate } from "~/lib/utils";
 import MegillahItem from "./_components/MegillahItem/MegillahItem";
+import TrackedPdfLink from "./_components/TrackedPdfLink";
 
 // Serve from cache, but refresh within a minute so admin edits show up quickly.
 export const revalidate = 60;
@@ -76,15 +77,14 @@ export default async function MegillahPage() {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {megillahs.map((megillah, index) =>
             megillah.pdfUrl ? (
-              <a
+              <TrackedPdfLink
                 key={megillah.id}
                 href={megillah.pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                issue={megillah.issue}
                 className="cursor-pointer transition-transform hover:scale-[1.02]"
               >
                 <MegillahItem megillah={megillah} priority={index < 4} />
-              </a>
+              </TrackedPdfLink>
             ) : (
               <MegillahItem
                 key={megillah.id}
