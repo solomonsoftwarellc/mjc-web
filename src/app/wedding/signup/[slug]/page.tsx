@@ -1,9 +1,25 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { EB_Garamond, Pinyon_Script } from "next/font/google";
 import { getAccount, weddingSlugs } from "../../accounts";
+import Memories from "./_components/Memories/Memories";
 import WeddingGallery from "./_components/WeddingGallery/WeddingGallery";
+
+const weddingSerif = EB_Garamond({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-wedding-serif",
+});
+
+const weddingScript = Pinyon_Script({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-wedding-script",
+});
 
 export function generateStaticParams() {
   return weddingSlugs.map((slug) => ({ slug }));
@@ -20,9 +36,10 @@ export function generateMetadata({
   }
 
   const title = account.name;
+  const date = account.dateLabel ?? account.date;
   const description = account.showUpload
-    ? `${account.date} · Share your photos and videos from the celebration.`
-    : `${account.date} · Photos and videos from the celebration.`;
+    ? `${date} · Share your photos and videos from the celebration.`
+    : `${date} · Photos and videos from the celebration.`;
 
   // A flattened 1200x630 card, not the transparent banner - messaging apps
   // composite transparency onto black. See scripts/generate-og-images.js.
@@ -54,6 +71,16 @@ export function generateMetadata({
   };
 }
 
+/** Tint the phone's browser chrome to match the memories page. */
+export function generateViewport({
+  params,
+}: {
+  params: { slug: string };
+}): Viewport {
+  const account = getAccount(params.slug);
+  return account?.couple ? { themeColor: account.backgroundColor } : {};
+}
+
 export default function SignupSlugPage({
   params,
 }: {
@@ -63,6 +90,14 @@ export default function SignupSlugPage({
 
   if (!account) {
     notFound();
+  }
+
+  if (account.couple) {
+    return (
+      <div className={`${weddingSerif.variable} ${weddingScript.variable}`}>
+        <Memories slug={params.slug} account={account} couple={account.couple} />
+      </div>
+    );
   }
 
   return (

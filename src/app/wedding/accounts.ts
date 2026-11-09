@@ -8,6 +8,16 @@ export type WeddingAccount = {
   displayWedding: boolean;
   /** Allow guests to upload photos and videos to this gallery. */
   showUpload: boolean;
+  /**
+   * The couple's first names, set in script on the cover. Its presence also
+   * opts the wedding into the memories experience (cover, camera, day tabs);
+   * weddings without it keep the original gallery page.
+   */
+  couple?: string;
+  /** Shown instead of `date` where a multi-day celebration needs a range. */
+  dateLabel?: string;
+  /** ISO dates (YYYY-MM-DD) of each day of the celebration, for the day tabs. */
+  eventDays?: string[];
 };
 
 export const Accounts = {
@@ -68,13 +78,14 @@ export const Accounts = {
   "gabrielle-noah": {
     name: "Gabrielle & Noah Namdar's Wedding",
     slug: "gabrielle-noah",
+    // Kept as a single day: the /wedding index sorts by parsing this string.
     date: "November 15, 2026",
-    // Sampled from the shell monogram: its warm sand accent is #d0b8a0, which
-    // only reaches 1.9:1 against the page and is unreadable as text. This is
-    // that same hue taken deeper, landing at 4.52:1 on the ivory below - the
-    // warmest background that still clears WCAG AA for the photo captions.
-    textColor: "#8a6a4d",
-    backgroundColor: "#faf4ec",
+    dateLabel: "November 12 - 15, 2026",
+    eventDays: ["2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15"],
+    couple: "Gabrielle & Noah",
+    // The palm green and paper white of the couple's invitation suite.
+    textColor: "#36502e",
+    backgroundColor: "#fefdfb",
     displayWedding: true,
     showUpload: true,
   },
