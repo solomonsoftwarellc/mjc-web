@@ -123,6 +123,8 @@ export default function Memories({
   );
 
   const pickDay = (next: string | null) => {
+    // Re-tapping the current tab must not clear a gallery that will not reload.
+    if (next === day) return;
     setDay(next);
     setPage(1);
     setIsLoading(true);
