@@ -10,14 +10,12 @@ export type WeddingAccount = {
   showUpload: boolean;
   /**
    * The couple's first names, set in script on the cover. Its presence also
-   * opts the wedding into the memories experience (cover, camera, day tabs);
+   * opts the wedding into the memories experience (cover, camera);
    * weddings without it keep the original gallery page.
    */
   couple?: string;
   /** Shown instead of `date` where a multi-day celebration needs a range. */
   dateLabel?: string;
-  /** ISO dates (YYYY-MM-DD) of each day of the celebration, for the day tabs. */
-  eventDays?: string[];
 };
 
 export const Accounts = {
@@ -81,7 +79,6 @@ export const Accounts = {
     // Kept as a single day: the /wedding index sorts by parsing this string.
     date: "November 15, 2026",
     dateLabel: "November 12 - 15, 2026",
-    eventDays: ["2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15"],
     couple: "Gabrielle & Noah",
     // The palm green and paper white of the couple's invitation suite.
     textColor: "#36502e",

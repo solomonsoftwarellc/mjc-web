@@ -8,7 +8,6 @@ import {
   onSnapshot,
   orderBy,
   query,
-  where,
   type FirestoreError,
 } from "firebase/firestore";
 import { db } from "firebaseConfig";
@@ -27,25 +26,6 @@ import Lightbox from "./Lightbox";
 
 const ITEMS_PER_PAGE = 50;
 
-/**
- * A "day" of the celebration runs 5am to 5am, so photos from the dance floor
- * at 1am stay with the night they belong to.
- */
-// shortcut: fixed UTC-5 (New York in winter), move the offset onto the account when a summer or non-Eastern wedding uses day tabs
-const DAY_START_UTC = "T10:00:00.000Z";
-
-function dayBounds(day: string) {
-  const start = new Date(`${day}${DAY_START_UTC}`);
-  const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
-  return [start.toISOString(), end.toISOString()] as const;
-}
-
-const weekday = (day: string, weekday: "long" | "short" = "long") =>
-  new Date(`${day}T12:00:00Z`).toLocaleDateString("en-US", {
-    weekday,
-    timeZone: "UTC",
-  });
-
 const label = "text-[11px] font-semibold uppercase tracking-[0.28em]";
 
 export default function Memories({
@@ -58,7 +38,6 @@ export default function Memories({
   couple: string;
 }) {
   const [items, setItems] = useState<GalleryEntry[]>([]);
-  const [day, setDay] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -71,19 +50,10 @@ export default function Memories({
   useEffect(() => {
     const pageSize = page * ITEMS_PER_PAGE;
     const gallery = collection(db, "weddings", slug, "gallery");
-    // The range is on the same field the query orders by, so a day tab needs
-    // no composite index.
-    const range = day
-      ? [
-          where("timestamp", ">=", dayBounds(day)[0]),
-          where("timestamp", "<", dayBounds(day)[1]),
-        ]
-      : [];
-
     // Over-fetch by one document so "is there another page?" is answered by
     // the same subscription instead of a second full query.
     const unsubscribe = onSnapshot(
-      query(gallery, ...range, orderBy("timestamp", "desc"), limit(pageSize + 1)),
+      query(gallery, orderBy("timestamp", "desc"), limit(pageSize + 1)),
       (snapshot) => {
         const docs = snapshot.docs.map(
           (doc) => ({ id: doc.id, ...doc.data() }) as GalleryEntry,
@@ -101,7 +71,7 @@ export default function Memories({
     );
 
     return unsubscribe;
-  }, [slug, page, day]);
+  }, [slug, page]);
 
   // The cover's "N memories shared" line. Purely decorative, so a failure
   // (offline, rules) just leaves it out.
@@ -121,13 +91,6 @@ export default function Memories({
       ),
     [items.length],
   );
-
-  const pickDay = (next: string | null) => {
-    setDay(next);
-    setPage(1);
-    setIsLoading(true);
-    setItems([]);
-  };
 
   const [first, second] = couple.split(" & ");
   const script = { fontFamily: "var(--font-wedding-script), cursive" };
@@ -211,29 +174,6 @@ export default function Memories({
         aria-label="Gallery"
         className="mx-auto min-h-[100svh] max-w-3xl scroll-mt-0 pb-36"
       >
-        {account.eventDays && (
-          <nav
-            aria-label="Filter by day"
-            className="sticky top-0 z-30 flex justify-center gap-8 border-b border-[color:var(--line)] bg-[var(--paper)] px-5 pt-[max(1rem,env(safe-area-inset-top))]"
-          >
-            {[null, ...account.eventDays].map((option) => (
-              <button
-                key={option ?? "all"}
-                type="button"
-                onClick={() => pickDay(option)}
-                aria-pressed={day === option}
-                className={`${label} -mb-px shrink-0 border-b pb-3 pt-1 ${
-                  day === option
-                    ? "border-[color:var(--ink)]"
-                    : "border-transparent opacity-50"
-                }`}
-              >
-                {option ? weekday(option, "short") : "All"}
-              </button>
-            ))}
-          </nav>
-        )}
-
         <div className="px-2 pt-2">
           {isLoading && items.length === 0 && (
             <div className="columns-2 gap-2 sm:columns-3" aria-hidden="true">
@@ -256,9 +196,7 @@ export default function Memories({
 
           {!isLoading && !fetchError && items.length === 0 && (
             <p className="px-6 py-24 text-center text-2xl italic opacity-70">
-              {day
-                ? `Nothing from ${weekday(day)} yet.`
-                : "The first memory is yours to share."}
+              The first memory is yours to share.
             </p>
           )}
 
