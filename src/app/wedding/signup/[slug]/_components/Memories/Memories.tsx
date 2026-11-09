@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import {
   collection,
   getCountFromServer,
@@ -51,11 +52,9 @@ const label = "text-[11px] font-semibold uppercase tracking-[0.28em]";
 export default function Memories({
   slug,
   account,
-  couple,
 }: {
   slug: string;
   account: WeddingAccount;
-  couple: string;
 }) {
   const [items, setItems] = useState<GalleryEntry[]>([]);
   const [day, setDay] = useState<string | null>(null);
@@ -129,8 +128,8 @@ export default function Memories({
     setItems([]);
   };
 
-  const [first, second] = couple.split(" & ");
-  const script = { fontFamily: "var(--font-wedding-script), cursive" };
+  const [first, second] = account.couple.split(" & ");
+  const script = { fontFamily: "var(--font-script), cursive" };
   const pill =
     "block w-full rounded-full border px-6 py-4 text-center transition-transform active:scale-[0.98]";
 
@@ -142,20 +141,23 @@ export default function Memories({
           "--ink": account.textColor,
           "--paper": account.backgroundColor,
           "--line": `color-mix(in srgb, ${account.textColor} 22%, transparent)`,
-          fontFamily: "var(--font-wedding-serif), Georgia, serif",
+          fontFamily: "var(--font-serif), Georgia, serif",
         } as React.CSSProperties
       }
     >
       {/* The front door */}
-      <section className="mx-auto flex min-h-[100svh] max-w-md flex-col items-center justify-center px-8 pb-32 pt-12 text-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`/wedding/${slug}.svg`}
-          alt=""
-          width={120}
-          height={118}
-          className="h-auto w-[7.5rem]"
-        />
+      <section className={`mx-auto flex min-h-[100svh] max-w-md flex-col items-center justify-center px-8 pt-12 text-center ${
+          account.showUpload ? "pb-32" : "pb-12"
+        }`}>
+        {account.logo && (
+          // Monograms come in every shape, so they are sized by height.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={account.logo}
+            alt=""
+            className="h-[7.5rem] w-auto max-w-[80%] object-contain"
+          />
+        )}
         <p className={`${label} mt-7 opacity-60`}>The wedding of</p>
         <h1 className="mt-3 text-6xl leading-[1.1]" style={script}>
           {first}
@@ -166,7 +168,7 @@ export default function Memories({
                   italic one matches the couple's invitation. */}
               <span
                 className="mr-3 text-[0.8em] italic"
-                style={{ fontFamily: "var(--font-wedding-serif), serif" }}
+                style={{ fontFamily: "var(--font-serif), serif" }}
               >
                 &amp;
               </span>
@@ -209,7 +211,7 @@ export default function Memories({
       <section
         ref={galleryRef}
         aria-label="Gallery"
-        className="mx-auto min-h-[100svh] max-w-3xl scroll-mt-0 pb-36"
+        className="mx-auto min-h-[100svh] max-w-3xl pb-16"
       >
         {account.eventDays && (
           <nav
@@ -319,6 +321,12 @@ export default function Memories({
           )}
         </div>
       </section>
+
+      <p className="pb-32 text-center">
+        <Link href="/wedding" className={`${label} py-3 opacity-60`}>
+          All weddings
+        </Link>
+      </p>
 
       {account.showUpload && (
         <>

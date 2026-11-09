@@ -253,7 +253,7 @@ export default function UploadModal({
               "--ink": account.textColor,
               "--paper": account.backgroundColor,
               "--line": `color-mix(in srgb, ${account.textColor} 22%, transparent)`,
-              fontFamily: "var(--font-wedding-serif), Georgia, serif",
+              fontFamily: "var(--font-serif), Georgia, serif",
             } as React.CSSProperties
           }
         >

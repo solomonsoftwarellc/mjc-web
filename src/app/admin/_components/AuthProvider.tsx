@@ -36,7 +36,11 @@ export default function AuthProvider({
   }, [user, loading, pathname, router]);
 
   if (loading) {
-    return <div>Loading...</div>; // Or a proper spinner component
+    return (
+      <p className="flex min-h-screen items-center justify-center text-sm text-muted-foreground">
+        Loading...
+      </p>
+    );
   }
 
   return <>{children}</>;

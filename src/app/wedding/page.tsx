@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiteShell, { PageTitle } from "~/components/SiteShell";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { displayedWeddings } from "./accounts";
@@ -11,54 +12,41 @@ export const metadata: Metadata = {
 
 export default function WeddingPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center gap-12 px-4 pb-16 pt-12">
-        <div className="flex w-full">
+    <SiteShell>
+      <PageTitle eyebrow="Our community" title="Weddings">
+        Photographs and films from the celebrations of our community.
+      </PageTitle>
+
+      <div className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+        {displayedWeddings.map((wedding, index) => (
           <Link
-            className="rounded-xl bg-white/10 px-4 py-3 text-lg font-bold transition-colors hover:bg-white/20"
-            href="/"
+            key={wedding.slug}
+            href={`/wedding/signup/${wedding.slug}`}
+            className="group block text-center"
           >
-            ← Home
-          </Link>
-        </div>
-
-        <h1 className="text-center text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Community Weddings
-        </h1>
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-8">
-          {displayedWeddings.map((wedding, index) => (
-            <Link
-              key={wedding.slug}
-              className="flex max-w-xs flex-col rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/20"
-              href={`/wedding/signup/${wedding.slug}`}
+            {/* Each card sits on that wedding's own paper colour, so it
+                previews the page it opens. */}
+            <div
+              className="flex aspect-[4/3] items-center justify-center rounded-sm p-10 ring-1 ring-border transition-shadow duration-300 group-hover:shadow-[0_18px_36px_-18px_rgba(20,35,59,0.4)]"
+              style={{ background: wedding.backgroundColor }}
             >
-              {/* The banners are transparent PNGs of dark ink, so they need a
-                  light backdrop to be legible over the purple gradient. Using
-                  each wedding's own palette makes the card a preview of the
-                  gallery it links to. */}
-              <div
-                className="flex aspect-[3/2] items-center justify-center overflow-hidden rounded-lg p-3"
-                style={{ background: wedding.backgroundColor }}
-              >
-                <Image
-                  src={`/wedding/${wedding.slug}.png`}
-                  alt={`${wedding.name} banner`}
-                  width={300}
-                  height={200}
-                  sizes="(max-width: 640px) 90vw, 300px"
-                  priority={index < 3}
-                  className="h-full w-auto max-w-full object-contain"
-                />
-              </div>
-              <div className="mt-auto pt-4 text-center">
-                <h2 className="text-2xl font-bold">{wedding.name} →</h2>
-                <p className="text-lg">{wedding.date}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
+              <Image
+                src={`/wedding/${wedding.slug}.png`}
+                alt=""
+                width={300}
+                height={200}
+                sizes="(max-width: 640px) 70vw, 260px"
+                priority={index < 3}
+                className="h-full w-auto max-w-full object-contain"
+              />
+            </div>
+            <h2 className="mt-6 text-3xl">{wedding.couple}</h2>
+            <p className="eyebrow mt-2 text-muted-foreground">
+              {wedding.dateLabel ?? wedding.date}
+            </p>
+          </Link>
+        ))}
       </div>
-    </main>
+    </SiteShell>
   );
 }

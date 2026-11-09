@@ -1,13 +1,29 @@
 import "~/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { EB_Garamond, Inter, Pinyon_Script } from "next/font/google";
 import GoogleAnalytics from "~/components/GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sans",
+});
+
+const serif = EB_Garamond({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-serif",
+});
+
+// Only the wedding covers use this, for the couple's names.
+const script = Pinyon_Script({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-script",
+  preload: false,
 });
 
 // The production domain, not VERCEL_URL - that resolves to the immutable
@@ -33,7 +49,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#15162c",
+  themeColor: "#faf7f1",
 };
 
 export default function RootLayout({
@@ -42,8 +58,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="font-sans">
+    <html
+      lang="en"
+      className={`${inter.variable} ${serif.variable} ${script.variable}`}
+    >
+      <body className="bg-background font-serif text-foreground antialiased">
         {children}
         <GoogleAnalytics />
       </body>
