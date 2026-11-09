@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SiteFooter } from "~/components/SiteShell";
 
 const links = [
   {
@@ -33,31 +34,54 @@ const links = [
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <h1 className="text-center text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Welcome to
-          <br />
-          the <span className="text-[hsl(280,100%,70%)]">MJC</span>
-          <br />
-          Official Website
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
+    <div className="flex min-h-screen flex-col">
+      <main className="mx-auto w-full max-w-2xl flex-1 px-6 pb-24 pt-20 sm:pt-28">
+        <div className="text-center">
+          <p className="eyebrow text-muted-foreground">Welcome to the</p>
+          <h1 className="mt-5 pl-[0.25em] text-7xl tracking-[0.25em] sm:text-8xl">
+            MJC
+          </h1>
+          <div className="mx-auto my-8 h-px w-14 bg-gold" aria-hidden="true" />
+          <p className="text-2xl italic leading-snug sm:text-3xl">
+            United Mashadi Jewish
+            <br />
+            Community of America
+          </p>
+        </div>
+
+        <nav aria-label="Sections" className="mt-16 border-t border-border">
           {links.map((link) => (
             <Link
               key={link.href}
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/20"
               href={link.href}
+              className="group flex items-start gap-6 border-b border-border py-8"
               {...(link.external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
             >
-              <h2 className="text-2xl font-bold">{link.title} →</h2>
-              <p className="text-lg">{link.description}</p>
+              <div className="flex-1">
+                <h2 className="text-3xl">{link.title}</h2>
+                <p className="mt-2 text-lg leading-relaxed text-muted-foreground">
+                  {link.description}
+                </p>
+                {link.external && (
+                  <p className="eyebrow mt-4 text-muted-foreground">
+                    {new URL(link.href).hostname}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </p>
+                )}
+              </div>
+              <span
+                aria-hidden="true"
+                className="pt-1 text-2xl text-gold transition-transform duration-300 group-hover:translate-x-1"
+              >
+                {link.external ? "↗" : "→"}
+              </span>
             </Link>
           ))}
-        </div>
-      </div>
-    </main>
+        </nav>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }

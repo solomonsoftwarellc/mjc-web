@@ -1,10 +1,10 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
 import { db, storage } from "firebaseConfig";
 import type { Megillah } from "types";
 import { parseReleaseDate } from "~/lib/utils";
+import SiteShell, { PageTitle } from "~/components/SiteShell";
 import MegillahItem from "./_components/MegillahItem/MegillahItem";
 import TrackedPdfLink from "./_components/TrackedPdfLink";
 
@@ -59,42 +59,65 @@ async function getMegillahs(): Promise<ResolvedMegillah[]> {
   );
 }
 
+function Issue({
+  megillah,
+  priority,
+  sizes,
+}: {
+  megillah: ResolvedMegillah;
+  priority: boolean;
+  sizes?: string;
+}) {
+  const item = (
+    <MegillahItem megillah={megillah} priority={priority} sizes={sizes} />
+  );
+
+  return megillah.pdfUrl ? (
+    <TrackedPdfLink
+      href={megillah.pdfUrl}
+      issue={megillah.issue}
+      className="group block"
+    >
+      {item}
+    </TrackedPdfLink>
+  ) : (
+    item
+  );
+}
+
 export default async function MegillahPage() {
-  const megillahs = await getMegillahs();
+  const [latest, ...archive] = await getMegillahs();
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="flex w-full flex-row items-center justify-start px-4 pt-4">
-        <Link
-          className="rounded-xl bg-white/10 px-4 py-3 text-2xl font-bold transition-colors hover:bg-white/20"
-          href="/"
-        >
-          Home
-        </Link>
-      </div>
+    <SiteShell>
+      <PageTitle eyebrow="Mashadi Youth Committee" title="Megillah">
+        The magazine of our community, in photographs and words. Tap a cover to
+        read the issue.
+      </PageTitle>
 
-      <div className="container flex flex-col gap-12 px-4 py-8">
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-          {megillahs.map((megillah, index) =>
-            megillah.pdfUrl ? (
-              <TrackedPdfLink
-                key={megillah.id}
-                href={megillah.pdfUrl}
-                issue={megillah.issue}
-                className="cursor-pointer transition-transform hover:scale-[1.02]"
-              >
-                <MegillahItem megillah={megillah} priority={index < 4} />
-              </TrackedPdfLink>
-            ) : (
-              <MegillahItem
-                key={megillah.id}
-                megillah={megillah}
-                priority={index < 4}
-              />
-            ),
-          )}
-        </div>
-      </div>
-    </main>
+      {latest && (
+        <section aria-label="Latest issue" className="mx-auto max-w-xs">
+          <p className="eyebrow mb-5 text-center text-gold">Latest issue</p>
+          <Issue
+            megillah={latest}
+            priority
+            sizes="(max-width: 640px) 80vw, 320px"
+          />
+        </section>
+      )}
+
+      {archive.length > 0 && (
+        <section aria-label="Past issues" className="mt-20">
+          <h2 className="eyebrow border-t border-border pt-8 text-center text-muted-foreground">
+            Past issues
+          </h2>
+          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 md:grid-cols-4">
+            {archive.map((megillah, index) => (
+              <Issue key={megillah.id} megillah={megillah} priority={index < 4} />
+            ))}
+          </div>
+        </section>
+      )}
+    </SiteShell>
   );
 }

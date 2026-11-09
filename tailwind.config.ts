@@ -18,7 +18,13 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        script: ["var(--font-script)", "cursive"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+      },
       colors: {
+        gold: "hsl(var(--gold))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

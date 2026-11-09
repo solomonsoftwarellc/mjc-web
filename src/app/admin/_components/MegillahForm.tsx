@@ -16,8 +16,34 @@ import {
 interface MegillahFormProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (megillah: Partial<Megillah>, thumbnail?: File, pdf?: File) => void;
+  onSubmit: (
+    megillah: Partial<Megillah>,
+    thumbnail?: File,
+    pdf?: File,
+  ) => Promise<void> | void;
   megillahToEdit?: Megillah | null;
+}
+
+function Field({
+  id,
+  label,
+  hint,
+  children,
+}: {
+  id: string;
+  label: string;
+  hint?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="grid gap-2">
+      <label htmlFor={id} className="text-sm font-medium">
+        {label}
+      </label>
+      {children}
+      {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+    </div>
+  );
 }
 
 export default function MegillahForm({
@@ -30,6 +56,7 @@ export default function MegillahForm({
   const [releaseDate, setReleaseDate] = useState("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [pdf, setPdf] = useState<File | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     if (megillahToEdit) {
@@ -40,9 +67,14 @@ export default function MegillahForm({
       setIssue("");
       setReleaseDate("");
     }
-  }, [megillahToEdit]);
+    // The file pickers remount empty each time the form opens, so the chosen
+    // files must reset with them - otherwise the previous issue's cover and
+    // PDF would be uploaded onto this one.
+    setThumbnail(null);
+    setPdf(null);
+  }, [megillahToEdit, isOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const megillahData: Partial<Megillah> = {
       issue: parseInt(issue, 10),
@@ -52,79 +84,82 @@ export default function MegillahForm({
         ? new Date(`${releaseDate}T12:00:00.000Z`).toISOString()
         : null,
     };
-    onSubmit(megillahData, thumbnail ?? undefined, pdf ?? undefined);
+    setIsSaving(true);
+    try {
+      await onSubmit(megillahData, thumbnail ?? undefined, pdf ?? undefined);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   if (!isOpen) return null;
 
+  const keepHint = megillahToEdit ? "Leave empty to keep the current file." : undefined;
+  const fileInput = "h-11 cursor-pointer py-2 file:mr-3 file:cursor-pointer";
+
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent>
+    <Dialog open={isOpen} onOpenChange={isSaving ? undefined : onClose}>
+      <DialogContent className="font-sans">
         <DialogHeader>
-          <DialogTitle>
-            {megillahToEdit ? "Edit Megillah" : "Add New Megillah"}
+          <DialogTitle className="font-serif text-2xl font-normal">
+            {megillahToEdit ? `Edit issue ${megillahToEdit.issue}` : "Add an issue"}
           </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="issue" className="text-right">
-                Issue
-              </label>
-              <Input
-                id="issue"
-                value={issue}
-                onChange={(e) => setIssue(e.target.value)}
-                className="col-span-3"
-                type="number"
-                required
-              />
+          <div className="grid gap-5 py-4">
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field id="issue" label="Issue number">
+                <Input
+                  id="issue"
+                  value={issue}
+                  onChange={(e) => setIssue(e.target.value)}
+                  className="h-11 text-base"
+                  type="number"
+                  inputMode="numeric"
+                  required
+                />
+              </Field>
+              <Field id="releaseDate" label="Release date">
+                <Input
+                  id="releaseDate"
+                  value={releaseDate}
+                  onChange={(e) => setReleaseDate(e.target.value)}
+                  className="h-11 text-base"
+                  type="date"
+                />
+              </Field>
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="releaseDate" className="text-right">
-                Release Date
-              </label>
-              <Input
-                id="releaseDate"
-                value={releaseDate}
-                onChange={(e) => setReleaseDate(e.target.value)}
-                className="col-span-3"
-                type="date"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="thumbnail" className="text-right">
-                Thumbnail
-              </label>
+            <Field id="thumbnail" label="Cover image" hint={keepHint}>
               <Input
                 id="thumbnail"
                 onChange={(e) => setThumbnail(e.target.files?.[0] ?? null)}
-                className="col-span-3"
+                className={fileInput}
                 type="file"
                 accept="image/*"
               />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="pdf" className="text-right">
-                PDF
-              </label>
+            </Field>
+            <Field id="pdf" label="Magazine PDF" hint={keepHint}>
               <Input
                 id="pdf"
                 onChange={(e) => setPdf(e.target.files?.[0] ?? null)}
-                className="col-span-3"
+                className={fileInput}
                 type="file"
                 accept="application/pdf"
               />
-            </div>
+            </Field>
           </div>
-          <DialogFooter>
+          <DialogFooter className="gap-2">
             <DialogClose asChild>
-              <Button type="button" variant="secondary">
+              <Button type="button" variant="outline" disabled={isSaving}>
                 Cancel
               </Button>
             </DialogClose>
-            <Button type="submit">
-              {megillahToEdit ? "Save Changes" : "Create Megillah"}
+            <Button type="submit" disabled={isSaving}>
+              {isSaving
+                ? "Saving..."
+                : megillahToEdit
+                  ? "Save changes"
+                  : "Add issue"}
             </Button>
           </DialogFooter>
         </form>

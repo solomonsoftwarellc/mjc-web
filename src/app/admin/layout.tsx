@@ -6,5 +6,10 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <AuthProvider>{children}</AuthProvider>;
+  // Dense data reads better in the sans; headings opt back into the serif.
+  return (
+    <div className="min-h-screen font-sans">
+      <AuthProvider>{children}</AuthProvider>
+    </div>
+  );
 }

@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { signOut } from "firebase/auth";
 import type { Megillah } from "types";
 import { Button } from "~/components/ui/button";
 import MegillahForm from "./MegillahForm";
 import Thumbnail from "./Thumbnail";
 import { deleteDoc, doc, setDoc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref, uploadBytes } from "firebase/storage";
-import { db, storage } from "firebaseConfig";
+import { auth, db, storage } from "firebaseConfig";
 
 export default function AdminDashboard({
   initialMegillahs,
@@ -128,77 +130,69 @@ export default function AdminDashboard({
   };
 
   return (
-    <div className="p-8">
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Manage Megillahs</h1>
-        <Button onClick={handleAdd}>Add New Megillah</Button>
-      </div>
-      <div className="overflow-x-auto rounded-lg border">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-              >
-                Thumbnail
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-              >
-                Issue
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-              >
-                Release Date
-              </th>
-              <th scope="col" className="relative px-6 py-3">
-                <span className="sr-only">Actions</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200 bg-white">
-            {megillahs.map((megillah) => (
-              <tr key={megillah.id}>
-                <td className="whitespace-nowrap px-6 py-4">
-                  <Thumbnail
-                    path={megillah.thumbnailPathOnFirebaseStorage}
-                    alt={`Thumbnail for issue ${megillah.issue}`}
-                  />
-                </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
-                  {megillah.issue}
-                </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+    <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
+      <header className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">
+        <div>
+          <p className="eyebrow text-muted-foreground">MJC admin</p>
+          <h1 className="mt-2 font-serif text-4xl">Megillah issues</h1>
+        </div>
+        <div className="flex gap-2">
+          <Button variant="ghost" asChild>
+            <Link href="/megillah">View site</Link>
+          </Button>
+          {/* AuthProvider sees the sign-out and sends the browser to the login page. */}
+          <Button variant="outline" onClick={() => void signOut(auth)}>
+            Sign out
+          </Button>
+          <Button onClick={handleAdd}>Add issue</Button>
+        </div>
+      </header>
+
+      {megillahs.length === 0 ? (
+        <p className="py-20 text-center font-serif text-xl italic text-muted-foreground">
+          No issues yet. Add the first one.
+        </p>
+      ) : (
+        <ul className="divide-y divide-border">
+          {megillahs.map((megillah) => (
+            <li
+              key={megillah.id}
+              className="flex flex-wrap items-center gap-x-5 gap-y-3 py-4"
+            >
+              <Thumbnail
+                path={megillah.thumbnailPathOnFirebaseStorage}
+                alt={`Cover of issue ${megillah.issue}`}
+              />
+              <div className="min-w-0 flex-1">
+                <p className="font-serif text-2xl">Issue {megillah.issue}</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">
                   {megillah.releaseDate
-                    ? new Date(megillah.releaseDate).toLocaleDateString()
-                    : "N/A"}
-                </td>
-                <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleEdit(megillah)}
-                    className="mr-2"
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    variant="destructive"
-                    size="sm"
-                    onClick={() => handleDelete(megillah.id)}
-                  >
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                    ? new Date(megillah.releaseDate).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })
+                    : "No release date"}
+                  {!megillah.pdfPathOnFirebaseStorage && " · No PDF"}
+                </p>
+              </div>
+              <div className="flex gap-2">
+                <Button variant="outline" onClick={() => handleEdit(megillah)}>
+                  Edit
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="text-destructive hover:bg-destructive/10 hover:text-destructive"
+                  onClick={() => handleDelete(megillah.id)}
+                >
+                  Delete
+                </Button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+
       <MegillahForm
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}
