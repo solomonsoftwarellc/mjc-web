@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   collection,
-  getCountFromServer,
   limit,
   onSnapshot,
   orderBy,
@@ -62,7 +61,6 @@ export default function Memories({
   const [hasMore, setHasMore] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState(false);
-  const [total, setTotal] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const galleryRef = useRef<HTMLElement>(null);
@@ -101,14 +99,6 @@ export default function Memories({
 
     return unsubscribe;
   }, [slug, page, day]);
-
-  // The cover's "N memories shared" line. Purely decorative, so a failure
-  // (offline, rules) just leaves it out.
-  useEffect(() => {
-    getCountFromServer(collection(db, "weddings", slug, "gallery"))
-      .then((snapshot) => setTotal(snapshot.data().count))
-      .catch(() => setTotal(null));
-  }, [slug]);
 
   const closeViewer = useCallback(() => setSelectedIndex(null), []);
   const navigate = useCallback(
@@ -202,11 +192,6 @@ export default function Memories({
           </button>
         </div>
 
-        {total !== null && total > 0 && (
-          <p className="mt-6 text-lg italic opacity-60">
-            {total.toLocaleString()} {total === 1 ? "memory" : "memories"} shared
-          </p>
-        )}
 
         {account.showUpload && (
           // A whiteboard-style scribble pointing at the round camera button

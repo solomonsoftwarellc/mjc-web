@@ -113,7 +113,7 @@ export const weddingSlugs = Object.keys(Accounts) as WeddingSlug[];
  * makes Date return NaN - which silently scrambles a sort.
  */
 const dateValue = (date: string) =>
-  new Date(date.replace(/(d)(st|nd|rd|th)/, "$1")).getTime();
+  new Date(date.replace(/(\d)(st|nd|rd|th)\b/, "$1")).getTime();
 
 /** Weddings listed on the /wedding index, newest first. */
 export const displayedWeddings: WeddingAccount[] = Object.values(Accounts)
