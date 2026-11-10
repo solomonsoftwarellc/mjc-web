@@ -148,8 +148,8 @@ export default function Memories({
       }
     >
       {/* The front door */}
-      <section className={`mx-auto flex min-h-[100svh] max-w-md flex-col items-center justify-center px-8 pt-12 text-center ${
-          account.showUpload ? "pb-32" : "pb-12"
+      <section className={`relative mx-auto flex min-h-[100svh] max-w-md flex-col items-center justify-center px-8 pt-12 text-center ${
+          account.showUpload ? "pb-48" : "pb-12"
         }`}>
         {account.logo && (
           // Monograms come in every shape, so they are sized by height.
@@ -206,6 +206,31 @@ export default function Memories({
           <p className="mt-6 text-lg italic opacity-60">
             {total.toLocaleString()} {total === 1 ? "memory" : "memories"} shared
           </p>
+        )}
+
+        {account.showUpload && (
+          // A whiteboard-style scribble pointing at the round camera button
+          // in the bar below; it scrolls away with the cover.
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-[6.6rem] flex flex-col items-center"
+          >
+            <span className="-rotate-3 whitespace-nowrap font-hand text-[1.9rem] leading-none">
+              take a photo now!
+            </span>
+            <svg
+              viewBox="0 0 40 52"
+              className="mt-1 h-12 w-10"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M15 4C8 18 25 26 20 46" />
+              <path d="M10 35L20 48L31 37" />
+            </svg>
+          </div>
         )}
       </section>
 

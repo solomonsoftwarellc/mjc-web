@@ -21,10 +21,11 @@ const config = {
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
         script: ["var(--font-script)", "cursive"],
+        hand: ["var(--font-hand)", "cursive"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       colors: {
-        gold: "hsl(var(--gold))",
+        brand: "hsl(var(--brand))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -1,7 +1,7 @@
 import "~/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
-import { EB_Garamond, Inter, Pinyon_Script } from "next/font/google";
+import { Caveat, EB_Garamond, Inter, Pinyon_Script } from "next/font/google";
 import GoogleAnalytics from "~/components/GoogleAnalytics";
 
 const inter = Inter({
@@ -23,6 +23,14 @@ const script = Pinyon_Script({
   weight: "400",
   display: "swap",
   variable: "--font-script",
+  preload: false,
+});
+
+// Handwriting for the "take a photo now" nudge on wedding covers.
+const hand = Caveat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-hand",
   preload: false,
 });
 
@@ -49,7 +57,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#faf7f1",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -60,7 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${serif.variable} ${script.variable}`}
+      className={`${inter.variable} ${serif.variable} ${script.variable} ${hand.variable}`}
     >
       <body className="bg-background font-serif text-foreground antialiased">
         {children}

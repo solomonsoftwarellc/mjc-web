@@ -97,7 +97,7 @@ export default async function MegillahPage() {
 
       {latest && (
         <section aria-label="Latest issue" className="mx-auto max-w-xs">
-          <p className="eyebrow mb-5 text-center text-gold">Latest issue</p>
+          <p className="eyebrow mb-5 text-center text-brand">Latest issue</p>
           <Issue
             megillah={latest}
             priority

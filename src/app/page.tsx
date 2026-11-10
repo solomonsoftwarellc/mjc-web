@@ -38,10 +38,17 @@ export default function Home() {
       <main className="mx-auto w-full max-w-2xl flex-1 px-6 pb-24 pt-20 sm:pt-28">
         <div className="text-center">
           <p className="eyebrow text-muted-foreground">Welcome to the</p>
-          <h1 className="mt-5 pl-[0.25em] text-7xl tracking-[0.25em] sm:text-8xl">
-            MJC
+          <h1 className="mt-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/umjca-logo.svg"
+              alt="UMJCA"
+              width={925}
+              height={714}
+              className="mx-auto h-auto w-56 sm:w-64"
+            />
           </h1>
-          <div className="mx-auto my-8 h-px w-14 bg-gold" aria-hidden="true" />
+          <div className="mx-auto my-8 h-px w-14 bg-brand" aria-hidden="true" />
           <p className="text-2xl italic leading-snug sm:text-3xl">
             United Mashadi Jewish
             <br />
@@ -73,7 +80,7 @@ export default function Home() {
               </div>
               <span
                 aria-hidden="true"
-                className="pt-1 text-2xl text-gold transition-transform duration-300 group-hover:translate-x-1"
+                className="pt-1 text-2xl text-brand transition-transform duration-300 group-hover:translate-x-1"
               >
                 {link.external ? "↗" : "→"}
               </span>

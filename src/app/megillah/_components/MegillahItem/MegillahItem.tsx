@@ -26,7 +26,7 @@ export default function MegillahItem({
   return (
     <div className="flex flex-col gap-4">
       {/* Shadowed like a magazine lying on the page. */}
-      <div className="aspect-ratio-box overflow-hidden rounded-sm bg-card shadow-[0_14px_30px_-14px_rgba(20,35,59,0.45)] ring-1 ring-border transition-transform duration-300 group-hover:-translate-y-1">
+      <div className="aspect-ratio-box overflow-hidden rounded-sm bg-card shadow-[0_14px_30px_-14px_rgba(13,34,79,0.45)] ring-1 ring-border transition-transform duration-300 group-hover:-translate-y-1">
         <div className="aspect-ratio-box-inner">
           {megillah.thumbnailUrl ? (
             <Image

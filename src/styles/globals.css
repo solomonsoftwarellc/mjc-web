@@ -4,36 +4,37 @@
 
 @layer base {
   :root {
-    /* Ivory paper, deep navy ink, thin gold rules. */
-    --background: 40 47% 96%;
-    --foreground: 217 49% 15%;
+    /* White paper with the three blues of the UMJCA logo. */
+    --background: 0 0% 100%;
+    --foreground: 221 72% 18%;
 
-    --card: 40 50% 98%;
-    --card-foreground: 217 49% 15%;
+    --card: 214 60% 99%;
+    --card-foreground: 221 72% 18%;
 
-    --popover: 40 50% 98%;
-    --popover-foreground: 217 49% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 72% 18%;
 
-    --primary: 217 49% 15%;
-    --primary-foreground: 40 47% 96%;
+    --primary: 221 72% 18%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 38 35% 90%;
-    --secondary-foreground: 217 49% 15%;
+    --secondary: 214 50% 95%;
+    --secondary-foreground: 221 72% 18%;
 
-    --muted: 38 35% 92%;
-    --muted-foreground: 217 18% 36%;
+    --muted: 214 45% 96%;
+    --muted-foreground: 221 24% 38%;
 
-    --accent: 38 35% 90%;
-    --accent-foreground: 217 49% 15%;
+    --accent: 214 50% 95%;
+    --accent-foreground: 221 72% 18%;
 
     --destructive: 0 62% 40%;
-    --destructive-foreground: 40 47% 96%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 36 28% 82%;
-    --input: 36 24% 70%;
-    --ring: 36 36% 52%;
+    --border: 216 32% 89%;
+    --input: 216 26% 76%;
+    --ring: 201 100% 35%;
 
-    --gold: 36 36% 52%;
+    /* The logo's bright blue (#0072b0), for rules and small accents. */
+    --brand: 201 100% 35%;
 
     --radius: 0.375rem;
   }
