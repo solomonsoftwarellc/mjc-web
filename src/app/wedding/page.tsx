@@ -27,7 +27,7 @@ export default function WeddingPage() {
             {/* Each card sits on that wedding's own paper colour, so it
                 previews the page it opens. */}
             <div
-              className="flex aspect-[4/3] items-center justify-center rounded-sm p-10 ring-1 ring-border transition-shadow duration-300 group-hover:shadow-[0_18px_36px_-18px_rgba(20,35,59,0.4)]"
+              className="flex aspect-[4/3] items-center justify-center rounded-sm p-10 ring-1 ring-border transition-shadow duration-300 group-hover:shadow-[0_18px_36px_-18px_rgba(13,34,79,0.4)]"
               style={{ background: wedding.backgroundColor }}
             >
               <Image

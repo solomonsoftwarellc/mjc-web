@@ -31,12 +31,13 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-6 py-12">
-      <Link href="/" className="font-serif text-3xl tracking-[0.3em]">
-        MJC
+      <Link href="/" aria-label="UMJCA home">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/umjca-logo.svg" alt="" className="h-24 w-auto" />
       </Link>
-      <div className="mx-auto my-6 h-px w-12 bg-gold" aria-hidden="true" />
+      <div className="mx-auto my-6 h-px w-12 bg-brand" aria-hidden="true" />
 
-      <div className="w-full max-w-sm rounded-lg border border-border bg-card p-8 shadow-[0_18px_40px_-24px_rgba(20,35,59,0.45)]">
+      <div className="w-full max-w-sm rounded-lg border border-border bg-card p-8 shadow-[0_18px_40px_-24px_rgba(13,34,79,0.45)]">
         <h1 className="text-center font-serif text-3xl">Admin sign in</h1>
         <form onSubmit={handleLogin} className="mt-8 grid gap-5">
           <div className="grid gap-2">

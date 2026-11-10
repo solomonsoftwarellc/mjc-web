@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { WeddingAccount } from "~/app/wedding/accounts";
 import {
   useUploadQueue,
@@ -23,6 +23,10 @@ type UploadModalProps = {
 export const CAMERA_INPUT_ID = "wedding-camera-photo";
 export const VIDEO_INPUT_ID = "wedding-camera-video";
 const LIBRARY_INPUT_ID = "wedding-media-library";
+const NAME_KEY = "uploaderName";
+const ASKED_KEY = "uploaderNameAsked";
+/** The upload server rejects a blank name, so anonymous uploads carry this. */
+const ANONYMOUS_NAME = "Guest";
 
 export const openPicker = (inputId: string) =>
   document.getElementById(inputId)?.click();
@@ -129,28 +133,33 @@ export default function UploadModal({
   account,
 }: UploadModalProps) {
   const [name, setName] = useState("");
-  /** `name` once the guest has stopped typing; drives the automatic start. */
-  const [settledName, setSettledName] = useState("");
-  const [nameError, setNameError] = useState(false);
-  /** A remembered name collapses to "Sharing as ..." until the guest edits it. */
-  const [isEditingName, setIsEditingName] = useState(true);
-  const inputRef = useRef<HTMLInputElement>(null);
+  /**
+   * Whether this guest has already been offered the (optional) name field.
+   * They are asked once, on their first upload, and never again - whether
+   * they gave a name or left it blank.
+   */
+  const [hasAnswered, setHasAnswered] = useState(false);
+  const [isEditingName, setIsEditingName] = useState(false);
   const { items, summary, addFiles, removeItem, clearCompleted, start, cancel } =
     useUploadQueue(slug);
 
   useEffect(() => {
-    const saved = localStorage.getItem("uploaderName");
-    // A remembered name needs no settle delay - it is already complete.
-    if (saved) {
-      setName(saved);
-      setSettledName(saved);
-      setIsEditingName(false);
-    }
+    const saved = localStorage.getItem(NAME_KEY);
+    if (saved) setName(saved);
+    // Anyone with a remembered name answered before the flag existed.
+    setHasAnswered(Boolean(saved) || localStorage.getItem(ASKED_KEY) === "1");
   }, []);
 
-  useEffect(() => {
-    if (name.trim()) localStorage.setItem("uploaderName", name.trim());
-  }, [name]);
+  /** Remember the answer, including "no name", so it is never asked again. */
+  const saveAnswer = () => {
+    const trimmed = name.trim();
+    if (trimmed) localStorage.setItem(NAME_KEY, trimmed);
+    else localStorage.removeItem(NAME_KEY);
+    localStorage.setItem(ASKED_KEY, "1");
+    setName(trimmed);
+    setIsEditingName(false);
+    setHasAnswered(true);
+  };
 
   // Losing the tab mid-upload would strand files, so warn first.
   useEffect(() => {
@@ -160,30 +169,20 @@ export default function UploadModal({
     return () => window.removeEventListener("beforeunload", warn);
   }, [summary.isRunning]);
 
-  // Wait for typing to settle before treating the name as final. Reacting to
-  // every keystroke would fire the upload on the first letter and stamp every
-  // photo with "J" instead of "Jonathan".
+  // Once the name question is settled, picking files is the whole
+  // interaction - uploading begins straight away. Only untouched "queued"
+  // items trigger it, so a failed upload waits for an explicit retry.
   useEffect(() => {
-    if (settledName === name) return;
-    const timer = setTimeout(() => setSettledName(name), 900);
-    return () => clearTimeout(timer);
-  }, [name, settledName]);
-
-  // Picking files is the whole interaction - uploading begins straight away.
-  // This also covers the reverse order: pick files first, then type a name, and
-  // it starts once the name settles. Only untouched "queued" items trigger it,
-  // so a failed upload waits for an explicit retry.
-  useEffect(() => {
-    if (!settledName.trim() || summary.isRunning) return;
+    if (!hasAnswered || isEditingName || summary.isRunning) return;
     if (!items.some((item) => item.status === "queued")) return;
-    void start(settledName.trim());
-  }, [items, settledName, summary.isRunning, start]);
+    void start(name.trim() || ANONYMOUS_NAME);
+  }, [items, hasAnswered, isEditingName, name, summary.isRunning, start]);
 
   const handlePick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.length) {
       addFiles(Array.from(event.target.files));
       // A shot from the camera lands here with the sheet closed; open it so
-      // the guest sees it uploading (or is asked for their name).
+      // the guest sees it uploading (or is offered the name field).
       onOpen?.();
     }
     // Allow picking the same file again after removing it.
@@ -193,18 +192,8 @@ export default function UploadModal({
   const pendingCount = items.filter(
     (i) => i.status === "queued" || i.status === "error",
   ).length;
-  const needsName = !name.trim() && pendingCount > 0 && !summary.isRunning;
-
-  const handleStart = () => {
-    if (!name.trim()) {
-      setNameError(true);
-      setIsEditingName(true);
-      inputRef.current?.focus();
-      return;
-    }
-    setNameError(false);
-    void start(name.trim());
-  };
+  /** First upload: files are chosen, waiting on the one-time name step. */
+  const isConfirming = !hasAnswered && pendingCount > 0 && !summary.isRunning;
 
   const allDone =
     items.length > 0 && summary.done === items.length && !summary.isRunning;
@@ -289,54 +278,47 @@ export default function UploadModal({
                 <p className="py-2 text-center text-lg opacity-70">
                   Your memories are in the album.
                 </p>
-              ) : !isEditingName && name.trim() ? (
+              ) : isConfirming || isEditingName ? (
+                <div className="pt-1">
+                  {isConfirming && (
+                    <p className="pb-4 text-center text-lg opacity-70">
+                      Add your name before these upload, if you would like the
+                      couple to know who shared them.
+                    </p>
+                  )}
+                  <label htmlFor="uploader-name" className={`${label} block opacity-70`}>
+                    Your name (optional)
+                  </label>
+                  <input
+                    id="uploader-name"
+                    type="text"
+                    autoComplete="name"
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                    // Editing a saved name commits when the field is left; the
+                    // first-time step commits with the Upload button instead.
+                    onBlur={isConfirming ? undefined : saveAnswer}
+                    placeholder="Leave blank to stay anonymous"
+                    className="mt-1 block w-full rounded-none border-0 border-b border-[color:var(--line)] bg-transparent px-0 py-2 text-xl outline-none placeholder:italic placeholder:opacity-50 focus:border-[color:var(--ink)]"
+                  />
+                </div>
+              ) : hasAnswered ? (
                 <p className="py-1 text-center text-lg">
-                  <span className="opacity-70">Sharing as </span>
-                  {name.trim()}
+                  <span className="opacity-70">
+                    {name ? "Sharing as " : "Sharing without a name"}
+                  </span>
+                  {name}
                   {!summary.isRunning && (
                     <button
                       type="button"
                       onClick={() => setIsEditingName(true)}
                       className="ml-2 underline decoration-[var(--line)] underline-offset-4 opacity-70"
                     >
-                      change
+                      {name ? "change" : "add one"}
                     </button>
                   )}
                 </p>
-              ) : (
-                <div className="pt-1">
-                  <label htmlFor="uploader-name" className={`${label} block opacity-70`}>
-                    Your name
-                  </label>
-                  <input
-                    ref={inputRef}
-                    id="uploader-name"
-                    type="text"
-                    autoComplete="name"
-                    value={name}
-                    onChange={(event) => {
-                      setName(event.target.value);
-                      if (event.target.value.trim()) setNameError(false);
-                    }}
-                    // Leaving the field means they are done typing; no need to wait.
-                    onBlur={(event) => {
-                      setSettledName(event.target.value);
-                      if (event.target.value.trim()) setIsEditingName(false);
-                    }}
-                    disabled={summary.isRunning}
-                    placeholder="So we know who to thank"
-                    className="mt-1 block w-full rounded-none border-0 border-b bg-transparent px-0 py-2 text-xl outline-none placeholder:italic placeholder:opacity-50 focus:border-[color:var(--ink)] disabled:opacity-60"
-                    style={{
-                      borderColor: nameError ? "#b91c1c" : "var(--line)",
-                    }}
-                  />
-                  {nameError && (
-                    <p className="mt-1 text-sm text-red-700">
-                      Please enter your name so we know who to thank.
-                    </p>
-                  )}
-                </div>
-              )}
+              ) : null}
 
               {!allDone && (
                 <>
@@ -427,22 +409,32 @@ export default function UploadModal({
                         Done
                       </button>
                     </>
-                  ) : summary.isRunning || needsName || summary.failed > 0 ? (
-                    // Nothing to press in the normal case - uploading is already
-                    // under way. This only appears to cancel, to ask for a name,
-                    // or to retry something that failed.
+                  ) : isConfirming ? (
                     <button
                       type="button"
-                      onClick={summary.isRunning ? cancel : handleStart}
+                      onClick={saveAnswer}
+                      className={`${button} bg-[var(--ink)] text-[color:var(--paper)]`}
+                    >
+                      Upload
+                    </button>
+                  ) : summary.isRunning || summary.failed > 0 ? (
+                    // Nothing to press in the normal case - uploading is already
+                    // under way. This only appears to cancel or to retry
+                    // something that failed.
+                    <button
+                      type="button"
+                      onClick={
+                        summary.isRunning
+                          ? cancel
+                          : () => void start(name.trim() || ANONYMOUS_NAME)
+                      }
                       className={`${button} ${
                         summary.isRunning ? "" : "bg-[var(--ink)] text-[color:var(--paper)]"
                       }`}
                     >
                       {summary.isRunning
                         ? "Cancel"
-                        : needsName
-                          ? "Enter your name to start"
-                          : `Retry ${summary.failed} failed`}
+                        : `Retry ${summary.failed} failed`}
                     </button>
                   ) : null}
                 </div>
