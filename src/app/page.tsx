@@ -3,20 +3,6 @@ import { SiteFooter } from "~/components/SiteShell";
 
 const links = [
   {
-    title: "Kanissa News",
-    href: "https://kanissanews.com/",
-    external: true,
-    description:
-      "Weekly newsletter featuring prayer times and events of the United Mashadi Jewish Community of America.",
-  },
-  {
-    title: "Branches of Bracha",
-    href: "https://branchesofbracha.com/",
-    external: true,
-    description:
-      "Donate as little as $1 for a chance to win a Rolex watch! Authorize a pre-donation from $1-$550, get a unique random number as your donation amount, and you could win big.",
-  },
-  {
     title: "Megillah",
     href: "/megillah",
     external: false,
@@ -29,6 +15,20 @@ const links = [
     external: false,
     description:
       "Explore beautiful weddings from our community. View galleries and celebrate with us.",
+  },
+  {
+    title: "Branches of Bracha",
+    href: "https://branchesofbracha.com/",
+    external: true,
+    description:
+      "Donate as little as $1 for a chance to win a Rolex watch! Authorize a pre-donation from $1-$550, get a unique random number as your donation amount, and you could win big.",
+  },
+  {
+    title: "Kanissa News",
+    href: "https://kanissanews.com/",
+    external: true,
+    description:
+      "Weekly newsletter featuring prayer times and events of the United Mashadi Jewish Community of America.",
   },
 ];
 

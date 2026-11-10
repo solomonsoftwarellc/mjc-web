@@ -108,10 +108,17 @@ export type WeddingSlug = keyof typeof Accounts;
 
 export const weddingSlugs = Object.keys(Accounts) as WeddingSlug[];
 
+/**
+ * Dates are written for people ("March 23rd, 2025"), and the ordinal suffix
+ * makes Date return NaN - which silently scrambles a sort.
+ */
+const dateValue = (date: string) =>
+  new Date(date.replace(/(\d)(st|nd|rd|th)\b/, "$1")).getTime();
+
 /** Weddings listed on the /wedding index, newest first. */
 export const displayedWeddings: WeddingAccount[] = Object.values(Accounts)
   .filter((account) => account.displayWedding)
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  .sort((a, b) => dateValue(b.date) - dateValue(a.date));
 
 export function getAccount(slug: string): WeddingAccount | undefined {
   return (Accounts as Record<string, WeddingAccount>)[slug];
