@@ -140,6 +140,8 @@ export default function UploadModal({
    */
   const [hasAnswered, setHasAnswered] = useState(false);
   const [isEditingName, setIsEditingName] = useState(false);
+  /** Photos and videos shot through the page, which exist nowhere else yet. */
+  const [captured, setCaptured] = useState<File[]>([]);
   const { items, summary, addFiles, removeItem, clearCompleted, start, cancel } =
     useUploadQueue(slug);
 
@@ -178,9 +180,35 @@ export default function UploadModal({
     void start(name.trim() || ANONYMOUS_NAME);
   }, [items, hasAnswered, isEditingName, name, summary.isRunning, start]);
 
+  /**
+   * Browsers will not write to the camera roll on a page's behalf, and a shot
+   * taken through the page is otherwise never kept on the phone. The share
+   * sheet can save it ("Save Image" / "Save Video"), so offer that; where
+   * sharing files is unsupported, fall back to a plain download.
+   */
+  const saveToPhone = async () => {
+    if (navigator.canShare?.({ files: captured })) {
+      // Dismissing the share sheet rejects; that is not an error.
+      await navigator.share({ files: captured }).catch(() => undefined);
+      return;
+    }
+    for (const file of captured) {
+      const url = URL.createObjectURL(file);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = file.name;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 10_000);
+    }
+  };
+
   const handlePick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.length) {
-      addFiles(Array.from(event.target.files));
+      const files = Array.from(event.target.files);
+      if (event.target.id !== LIBRARY_INPUT_ID) {
+        setCaptured((current) => [...current, ...files]);
+      }
+      addFiles(files);
       // A shot from the camera lands here with the sheet closed; open it so
       // the guest sees it uploading (or is offered the name field).
       onOpen?.();
@@ -357,6 +385,22 @@ export default function UploadModal({
                 </>
               )}
 
+              {captured.length > 0 && (
+                <div className="mt-5 text-center">
+                  <button
+                    type="button"
+                    onClick={() => void saveToPhone()}
+                    className={`${label} rounded-full border border-[color:var(--ink)] px-6 py-3.5`}
+                  >
+                    Save to my camera roll
+                  </button>
+                  <p className="mt-2 text-base italic opacity-60">
+                    Shots taken here are not kept on your phone unless you save
+                    them.
+                  </p>
+                </div>
+              )}
+
               {items.length > 0 && (
                 <ul className="mt-3 divide-y divide-[var(--line)]">
                   {items.map((item) => (
@@ -395,13 +439,21 @@ export default function UploadModal({
                 <div className="mt-4 flex gap-3">
                   {allDone ? (
                     <>
-                      <button type="button" onClick={clearCompleted} className={button}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          clearCompleted();
+                          setCaptured([]);
+                        }}
+                        className={button}
+                      >
                         Add more
                       </button>
                       <button
                         type="button"
                         onClick={() => {
                           clearCompleted();
+                          setCaptured([]);
                           onClose();
                         }}
                         className={`${button} bg-[var(--ink)] text-[color:var(--paper)]`}
