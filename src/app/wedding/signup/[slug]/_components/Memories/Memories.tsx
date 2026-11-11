@@ -65,14 +65,20 @@ export default function Memories({
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const galleryRef = useRef<HTMLElement>(null);
 
+  const firstDay = account.eventDays?.[0];
+
   useEffect(() => {
     const pageSize = page * ITEMS_PER_PAGE;
     const gallery = collection(db, "weddings", slug, "gallery");
     // The range is on the same field the query orders by, so a day tab needs
     // no composite index.
+    // The first day has no lower bound, so anything shared (or dated) before
+    // the celebration lands there instead of only under "All".
     const range = day
       ? [
-          where("timestamp", ">=", dayBounds(day)[0]),
+          ...(day === firstDay
+            ? []
+            : [where("timestamp", ">=", dayBounds(day)[0])]),
           where("timestamp", "<", dayBounds(day)[1]),
         ]
       : [];
@@ -98,7 +104,7 @@ export default function Memories({
     );
 
     return unsubscribe;
-  }, [slug, page, day]);
+  }, [slug, page, day, firstDay]);
 
   const closeViewer = useCallback(() => setSelectedIndex(null), []);
   const navigate = useCallback(
