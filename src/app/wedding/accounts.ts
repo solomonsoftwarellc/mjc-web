@@ -93,7 +93,13 @@ export const Accounts = {
     // Kept as a single day: the /wedding index sorts by parsing this string.
     date: "November 15, 2026",
     dateLabel: "November 12 - 15, 2026",
-    eventDays: ["2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15"],
+    eventDays: [
+      "2026-11-11",
+      "2026-11-12",
+      "2026-11-13",
+      "2026-11-14",
+      "2026-11-15",
+    ],
     couple: "Gabrielle & Noah",
     logo: "/wedding/gabrielle-noah.svg",
     // The palm green and paper white of the couple's invitation suite.

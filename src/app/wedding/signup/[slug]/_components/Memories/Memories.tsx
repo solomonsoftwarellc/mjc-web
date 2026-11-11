@@ -228,7 +228,7 @@ export default function Memories({
         {account.eventDays && (
           <nav
             aria-label="Filter by day"
-            className="sticky top-0 z-30 flex justify-center gap-8 border-b border-[color:var(--line)] bg-[var(--paper)] px-5 pt-[max(1rem,env(safe-area-inset-top))]"
+            className="sticky top-0 z-30 flex justify-between border-b sm:justify-center sm:gap-8 border-[color:var(--line)] bg-[var(--paper)] px-5 pt-[max(1rem,env(safe-area-inset-top))]"
           >
             {[null, ...account.eventDays].map((option) => (
               <button
