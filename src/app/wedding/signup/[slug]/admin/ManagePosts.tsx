@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import {
   collection,
-  deleteDoc,
   doc,
   onSnapshot,
   orderBy,
   query,
+  writeBatch,
 } from "firebase/firestore";
 import { db } from "firebaseConfig";
 import { Button } from "~/components/ui/button";
@@ -88,9 +88,19 @@ export default function ManagePosts({
   };
 
   const remove = async (item: GalleryEntry) => {
-    if (!window.confirm("Remove this post? This cannot be undone.")) return;
+    if (!window.confirm("Remove this post from the gallery?")) return;
+    const { id, ...post } = item;
     try {
-      await deleteDoc(doc(db, "weddings", slug, "gallery", item.id));
+      // Moved, not destroyed: the post is kept in weddings/<slug>/removed so
+      // a mistaken removal can be put back. One batch, so it is never lost
+      // halfway.
+      await writeBatch(db)
+        .set(doc(db, "weddings", slug, "removed", id), {
+          ...post,
+          removedAt: new Date().toISOString(),
+        })
+        .delete(doc(db, "weddings", slug, "gallery", id))
+        .commit();
       setError(null);
     } catch (deleteError) {
       console.error("Error removing post:", deleteError);
