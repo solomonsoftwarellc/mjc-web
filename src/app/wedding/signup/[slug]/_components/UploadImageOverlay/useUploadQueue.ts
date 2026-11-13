@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { readCaptureDate } from "./captureDate";
 
 const API =
   process.env.NEXT_PUBLIC_UPLOAD_API ?? "https://mashadi.phantomcheckerapi.com";
@@ -292,25 +291,19 @@ export function useUploadQueue(slug: string) {
           if (controller.signal.aborted) break;
           const slice = pending.slice(i, i + PREPARE_BATCH);
 
-          // The gallery is ordered by when each photo was taken, so prefer
-          // the camera's own record over the file's modified time.
-          const takenAt = await Promise.all(
-            slice.map((item) =>
-              item.kind === "image" ? readCaptureDate(item.file) : null,
-            ),
-          );
+          // The gallery is ordered by when each post was shared, not when
+          // the photo was taken.
+          const postedAt = new Date().toISOString();
 
           const response = await postJson(`${API}/uploads/prepare`, {
             slug,
             name: uploaderName,
-            files: slice.map((item, index) => ({
+            files: slice.map((item) => ({
               clientId: item.id,
               kind: item.kind,
               fileName: item.file.name,
               size: item.file.size,
-              timestamp: (
-                takenAt[index] ?? new Date(item.file.lastModified)
-              ).toISOString(),
+              timestamp: postedAt,
             })),
           });
 
