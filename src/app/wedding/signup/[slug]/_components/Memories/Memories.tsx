@@ -21,6 +21,7 @@ import {
 import UploadModal, {
   CAMERA_INPUT_ID,
   VIDEO_INPUT_ID,
+  isShabbat,
   openPicker,
 } from "../UploadImageOverlay/UploadImageOverlay";
 import Lightbox from "./Lightbox";
@@ -63,6 +64,10 @@ export default function Memories({
   const [fetchError, setFetchError] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [showShabbatNotice, setShowShabbatNotice] = useState(false);
+  /** Every way into posting goes through here; looking is never blocked. */
+  const post = (action: () => void) => () =>
+    isShabbat() ? setShowShabbatNotice(true) : action();
   const galleryRef = useRef<HTMLElement>(null);
 
   const firstDay = account.eventDays?.[0];
@@ -181,7 +186,7 @@ export default function Memories({
           {account.showUpload && (
             <button
               type="button"
-              onClick={() => openPicker(CAMERA_INPUT_ID)}
+              onClick={post(() => openPicker(CAMERA_INPUT_ID))}
               className={`${pill} ${label} border-[color:var(--ink)] bg-[var(--ink)] text-[color:var(--paper)]`}
             >
               Take a photo
@@ -355,14 +360,14 @@ export default function Memories({
             <div className="mx-auto grid h-[4.5rem] max-w-md grid-cols-3 items-center">
               <button
                 type="button"
-                onClick={() => setIsSheetOpen(true)}
+                onClick={post(() => setIsSheetOpen(true))}
                 className={`${label} h-full`}
               >
                 Upload
               </button>
               <button
                 type="button"
-                onClick={() => openPicker(CAMERA_INPUT_ID)}
+                onClick={post(() => openPicker(CAMERA_INPUT_ID))}
                 aria-label="Take a photo"
                 className="mx-auto -mt-8 h-[4.25rem] w-[4.25rem] rounded-full border border-[color:var(--ink)] bg-[var(--paper)] p-1.5 transition-transform active:scale-95"
               >
@@ -370,7 +375,7 @@ export default function Memories({
               </button>
               <button
                 type="button"
-                onClick={() => openPicker(VIDEO_INPUT_ID)}
+                onClick={post(() => openPicker(VIDEO_INPUT_ID))}
                 className={`${label} h-full`}
               >
                 Video
@@ -382,10 +387,43 @@ export default function Memories({
             isOpen={isSheetOpen}
             onOpen={() => setIsSheetOpen(true)}
             onClose={() => setIsSheetOpen(false)}
+            onShabbat={() => setShowShabbatNotice(true)}
             slug={slug}
             account={account}
           />
         </>
+      )}
+
+      {showShabbatNotice && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-6"
+          onClick={() => setShowShabbatNotice(false)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="shabbat-notice-title"
+            onClick={(event) => event.stopPropagation()}
+            className="w-full max-w-sm rounded-3xl bg-[var(--paper)] px-8 py-9 text-center shadow-2xl"
+          >
+            <h2 id="shabbat-notice-title" className="text-3xl italic">
+              Shabbat Shalom
+            </h2>
+            <p className="mt-4 text-lg opacity-70">
+              Posting is paused for Shabbat. You are welcome to look through
+              the gallery, and you can share your photos and videos again on
+              Saturday night.
+            </p>
+            <button
+              type="button"
+              autoFocus
+              onClick={() => setShowShabbatNotice(false)}
+              className={`${pill} ${label} mt-7 border-[color:var(--ink)] bg-[var(--ink)] text-[color:var(--paper)]`}
+            >
+              OK
+            </button>
+          </div>
+        </div>
       )}
 
       {selectedIndex !== null && (

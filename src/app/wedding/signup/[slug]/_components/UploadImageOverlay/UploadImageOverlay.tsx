@@ -12,6 +12,8 @@ type UploadModalProps = {
   onClose: () => void;
   /** Called when files arrive from the camera while the sheet is closed. */
   onOpen?: () => void;
+  /** Called instead of queueing when files are picked during Shabbat. */
+  onShabbat: () => void;
   slug: string;
   account: WeddingAccount;
 };
@@ -27,6 +29,13 @@ const NAME_KEY = "uploaderName";
 const ASKED_KEY = "uploaderNameAsked";
 /** The upload server rejects a blank name, so anonymous uploads carry this. */
 const ANONYMOUS_NAME = "Guest";
+
+/** Posting is paused over this Shabbat (New York time); the upload server enforces the same window. */
+const SHABBAT_START = Date.parse("2026-11-13T17:00:00-05:00");
+const SHABBAT_END = Date.parse("2026-11-14T18:00:00-05:00");
+
+export const isShabbat = () =>
+  Date.now() >= SHABBAT_START && Date.now() < SHABBAT_END;
 
 export const openPicker = (inputId: string) =>
   document.getElementById(inputId)?.click();
@@ -129,6 +138,7 @@ export default function UploadModal({
   isOpen,
   onClose,
   onOpen,
+  onShabbat,
   slug,
   account,
 }: UploadModalProps) {
@@ -179,7 +189,10 @@ export default function UploadModal({
   }, [items, hasAnswered, isEditingName, name, summary.isRunning, start]);
 
   const handlePick = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files?.length) {
+    if (event.target.files?.length && isShabbat()) {
+      onClose();
+      onShabbat();
+    } else if (event.target.files?.length) {
       addFiles(Array.from(event.target.files));
       // A shot from the camera lands here with the sheet closed; open it so
       // the guest sees it uploading (or is offered the name field).
