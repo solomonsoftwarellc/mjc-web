@@ -55,13 +55,17 @@ export default function Lightbox({
       aria-label={item.type === "video" ? "Video" : "Photo"}
       className="fixed inset-0 z-50 flex flex-col bg-[#11150f] text-[#f4efe6]"
       onTouchStart={(event) => {
-        touchStartX.current = event.touches[0]?.clientX ?? null;
+        // A second finger means a pinch, which must never count as a swipe.
+        touchStartX.current =
+          event.touches.length === 1 ? event.touches[0]!.clientX : null;
       }}
       onTouchEnd={(event) => {
         const start = touchStartX.current;
         const end = event.changedTouches[0]?.clientX;
         touchStartX.current = null;
         if (start === null || end === undefined) return;
+        // While zoomed in, a one-finger drag pans the photo.
+        if ((window.visualViewport?.scale ?? 1) > 1.01) return;
         if (Math.abs(end - start) > SWIPE_PX) onNavigate(end < start ? 1 : -1);
       }}
     >
