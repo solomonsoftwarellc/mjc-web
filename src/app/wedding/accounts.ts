@@ -108,6 +108,20 @@ export const Accounts = {
     displayWedding: true,
     showUpload: true,
   },
+  "jasmin-byron": {
+    name: "Jasmin & Byron Azizi's Wedding",
+    slug: "jasmin-byron",
+    // shortcut: placeholder date and monogram; replace both, then set
+    // displayWedding (the index sort needs a real date).
+    date: "Date to be announced",
+    couple: "Jasmin & Byron",
+    logo: "/wedding/jasmin-byron.png",
+    // Ink of the placeholder monogram on a warm paper.
+    textColor: "#5c4a36",
+    backgroundColor: "#faf7f2",
+    displayWedding: false,
+    showUpload: false,
+  },
 } satisfies Record<string, WeddingAccount>;
 
 export type WeddingSlug = keyof typeof Accounts;
