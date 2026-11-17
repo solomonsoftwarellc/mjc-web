@@ -14,11 +14,14 @@ const formatMoment = (timestamp: string) =>
 
 export default function Lightbox({
   items,
+  total,
   index,
   onClose,
   onNavigate,
 }: {
   items: GalleryEntry[];
+  /** Every post in the tab, including ones not loaded yet. */
+  total: number;
   index: number;
   onClose: () => void;
   onNavigate: (delta: -1 | 1) => void;
@@ -74,7 +77,7 @@ export default function Lightbox({
           Close
         </button>
         <span className={`${label} tabular-nums opacity-70`}>
-          {index + 1} / {items.length}
+          {index + 1} / {total}
         </span>
       </div>
 
