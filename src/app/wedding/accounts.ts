@@ -16,6 +16,8 @@ export type WeddingAccount = {
   dateLabel?: string;
   /** ISO dates (YYYY-MM-DD) of each day of the celebration, for the day tabs. */
   eventDays?: string[];
+  /** Image filling the cover behind the monogram and names. */
+  coverImage?: string;
 };
 
 export const Accounts = {
@@ -116,9 +118,11 @@ export const Accounts = {
     date: "Date to be announced",
     couple: "Jasmin & Byron",
     logo: "/wedding/jasmin-byron.png",
-    // Ink of the placeholder monogram on a warm paper.
-    textColor: "#5c4a36",
-    backgroundColor: "#faf7f2",
+    // The lace's plain centre as paper; its shadow brown taken deep enough
+    // for 6.9:1 there and 4.7:1 over the darkest lace.
+    textColor: "#4a3a2a",
+    backgroundColor: "#dfcbb8",
+    coverImage: "/wedding/jasmin-byron-lace.jpg",
     displayWedding: false,
     showUpload: false,
   },
