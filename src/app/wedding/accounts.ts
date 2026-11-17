@@ -16,6 +16,8 @@ export type WeddingAccount = {
   dateLabel?: string;
   /** ISO dates (YYYY-MM-DD) of each day of the celebration, for the day tabs. */
   eventDays?: string[];
+  /** Image filling the cover behind the monogram and names. */
+  coverImage?: string;
 };
 
 export const Accounts = {
@@ -107,6 +109,22 @@ export const Accounts = {
     backgroundColor: "#fefdfb",
     displayWedding: true,
     showUpload: true,
+  },
+  "jasmin-byron": {
+    name: "Jasmin & Byron Azizi's Wedding",
+    slug: "jasmin-byron",
+    // shortcut: placeholder date and monogram; replace both, then set
+    // displayWedding (the index sort needs a real date).
+    date: "Date to be announced",
+    couple: "Jasmin & Byron",
+    logo: "/wedding/jasmin-byron.png",
+    // The lace's plain centre as paper; its shadow brown taken deep enough
+    // for 6.9:1 there and 4.7:1 over the darkest lace.
+    textColor: "#4a3a2a",
+    backgroundColor: "#dfcbb8",
+    coverImage: "/wedding/jasmin-byron-lace.jpg",
+    displayWedding: false,
+    showUpload: false,
   },
 } satisfies Record<string, WeddingAccount>;
 

@@ -149,7 +149,10 @@ export default function Memories({
   isViewerOpen.current = selectedIndex !== null;
 
   const columnCount = useColumnCount();
-  const layout = useRef({ count: columnCount, placed: new Map<string, number>() });
+  const layout = useRef({
+    count: columnCount,
+    placed: new Map<string, number>(),
+  });
   /** Height over width of each thumbnail that has loaded. */
   const ratios = useRef(new Map<string, number>());
 
@@ -175,7 +178,12 @@ export default function Memories({
     // Over-fetch by one document so "is there another page?" is answered by
     // the same subscription instead of a second full query.
     const unsubscribe = onSnapshot(
-      query(gallery, ...range, orderBy("timestamp", "desc"), limit(pageSize + 1)),
+      query(
+        gallery,
+        ...range,
+        orderBy("timestamp", "desc"),
+        limit(pageSize + 1),
+      ),
       (snapshot) => {
         const docs = snapshot.docs.map(
           (doc) => ({ id: doc.id, ...doc.data() }) as GalleryEntry,
@@ -196,7 +204,9 @@ export default function Memories({
         const last = docs[docs.length - 1];
 
         // New uploads sit above the first post this view already knows.
-        const firstKnown = fresh.findIndex((doc) => knownIds.current.has(doc.id));
+        const firstKnown = fresh.findIndex((doc) =>
+          knownIds.current.has(doc.id),
+        );
         const arrivals =
           knownIds.current.size === 0
             ? []
@@ -339,86 +349,96 @@ export default function Memories({
       }
     >
       {/* The front door */}
-      <section className={`relative mx-auto flex min-h-[100svh] max-w-md flex-col items-center justify-center px-8 pt-12 text-center ${
-          account.showUpload ? "pb-48" : "pb-12"
-        }`}>
-        {account.logo && (
-          // Monograms come in every shape, so they are sized by height.
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={account.logo}
-            alt=""
-            className="h-[7.5rem] w-auto max-w-[80%] object-contain"
-          />
-        )}
-        <p className={`${label} mt-7 opacity-60`}>The wedding of</p>
-        <h1 className="mt-3 text-6xl leading-[1.1]" style={script}>
-          {first}
-          {second && (
-            <>
-              <br />
-              {/* The script's own ampersand reads as a squiggle; the serif
-                  italic one matches the couple's invitation. */}
-              <span
-                className="mr-3 text-[0.8em] italic"
-                style={{ fontFamily: "var(--font-serif), serif" }}
-              >
-                &amp;
-              </span>
-              {second}
-            </>
+      <div
+        className="bg-cover bg-center"
+        style={
+          account.coverImage
+            ? { backgroundImage: `url(${account.coverImage})` }
+            : undefined
+        }
+      >
+        <section
+          className={`relative mx-auto flex min-h-[100svh] max-w-md flex-col items-center justify-center px-8 pt-12 text-center ${
+            account.showUpload ? "pb-48" : "pb-12"
+          }`}
+        >
+          {account.logo && (
+            // Monograms come in every shape, so they are sized by height.
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={account.logo}
+              alt=""
+              className="h-[7.5rem] w-auto max-w-[80%] object-contain"
+            />
           )}
-        </h1>
-        <div className="my-6 h-px w-10 bg-[var(--line)]" aria-hidden="true" />
-        <p className={label}>{account.dateLabel ?? account.date}</p>
+          <p className={`${label} mt-7 opacity-60`}>The wedding of</p>
+          <h1 className="mt-3 text-6xl leading-[1.1]" style={script}>
+            {first}
+            {second && (
+              <>
+                <br />
+                {/* The script's own ampersand reads as a squiggle; the serif
+                  italic one matches the couple's invitation. */}
+                <span
+                  className="mr-3 text-[0.8em] italic"
+                  style={{ fontFamily: "var(--font-serif), serif" }}
+                >
+                  &amp;
+                </span>
+                {second}
+              </>
+            )}
+          </h1>
+          <div className="my-6 h-px w-10 bg-[var(--line)]" aria-hidden="true" />
+          <p className={label}>{account.dateLabel ?? account.date}</p>
 
-        <div className="mt-10 flex w-full flex-col gap-3">
-          {account.showUpload && (
+          <div className="mt-10 flex w-full flex-col gap-3">
+            {account.showUpload && (
+              <button
+                type="button"
+                onClick={post(() => openPicker(CAMERA_INPUT_ID))}
+                className={`${pill} ${label} border-[color:var(--ink)] bg-[var(--ink)] text-[color:var(--paper)]`}
+              >
+                Take a photo
+              </button>
+            )}
             <button
               type="button"
-              onClick={post(() => openPicker(CAMERA_INPUT_ID))}
-              className={`${pill} ${label} border-[color:var(--ink)] bg-[var(--ink)] text-[color:var(--paper)]`}
+              onClick={() =>
+                galleryRef.current?.scrollIntoView({ behavior: "smooth" })
+              }
+              className={`${pill} ${label} border-[color:var(--line)]`}
             >
-              Take a photo
+              Enter the gallery
             </button>
-          )}
-          <button
-            type="button"
-            onClick={() =>
-              galleryRef.current?.scrollIntoView({ behavior: "smooth" })
-            }
-            className={`${pill} ${label} border-[color:var(--line)]`}
-          >
-            Enter the gallery
-          </button>
-        </div>
-
-
-        {account.showUpload && (
-          // A whiteboard-style scribble pointing at the round camera button
-          // in the bar below; it scrolls away with the cover.
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-[6.6rem] flex flex-col items-center"
-          >
-            <span className="-rotate-3 whitespace-nowrap font-hand text-[1.9rem] leading-none">
-              take a photo now!
-            </span>
-            <svg
-              viewBox="0 0 40 52"
-              className="mt-1 h-12 w-10"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M15 4C8 18 25 26 20 46" />
-              <path d="M10 35L20 48L31 37" />
-            </svg>
           </div>
-        )}
-      </section>
+
+          {account.showUpload && (
+            // A whiteboard-style scribble pointing at the round camera button
+            // in the bar below; it scrolls away with the cover.
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-[6.6rem] flex flex-col items-center"
+            >
+              <span className="-rotate-3 whitespace-nowrap font-hand text-[1.9rem] leading-none">
+                take a photo now!
+              </span>
+              <svg
+                viewBox="0 0 40 52"
+                className="mt-1 h-12 w-10"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M15 4C8 18 25 26 20 46" />
+                <path d="M10 35L20 48L31 37" />
+              </svg>
+            </div>
+          )}
+        </section>
+      </div>
 
       {/* The gallery */}
       <section
@@ -429,7 +449,7 @@ export default function Memories({
         {account.eventDays && (
           <nav
             aria-label="Filter by day"
-            className="sticky top-0 z-30 flex justify-between border-b sm:justify-center sm:gap-8 border-[color:var(--line)] bg-[var(--paper)] px-5 pt-[max(1rem,env(safe-area-inset-top))]"
+            className="sticky top-0 z-30 flex justify-between border-b border-[color:var(--line)] bg-[var(--paper)] px-5 pt-[max(1rem,env(safe-area-inset-top))] sm:justify-center sm:gap-8"
           >
             {[null, ...account.eventDays].map((option) => (
               <button
@@ -630,8 +650,8 @@ export default function Memories({
               Shabbat Shalom
             </h2>
             <p className="mt-4 text-lg opacity-70">
-              Posting is paused for Shabbat. You are welcome to look through
-              the gallery, and you can share your photos and videos again on
+              Posting is paused for Shabbat. You are welcome to look through the
+              gallery, and you can share your photos and videos again on
               Saturday night.
             </p>
             <button
