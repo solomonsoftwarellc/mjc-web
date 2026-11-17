@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   collection,
+  getCountFromServer,
   limit,
   onSnapshot,
   orderBy,
@@ -126,6 +127,10 @@ export default function Memories({
   const [day, setDay] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
+  /** The page the server has answered for; behind `page` while one loads. */
+  const [loadedPage, setLoadedPage] = useState(0);
+  /** Every post in the current tab, not just the ones loaded so far. */
+  const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -166,6 +171,7 @@ export default function Memories({
         ]
       : [];
 
+    let isActive = true;
     // Over-fetch by one document so "is there another page?" is answered by
     // the same subscription instead of a second full query.
     const unsubscribe = onSnapshot(
@@ -175,6 +181,16 @@ export default function Memories({
           (doc) => ({ id: doc.id, ...doc.data() }) as GalleryEntry,
         );
         const isWindowFull = docs.length > pageSize;
+        // Growing the window first answers from the local cache with only the
+        // posts already shown, which would flash the end of the gallery.
+        if (snapshot.metadata.fromCache && !isWindowFull && page > 1) return;
+
+        if (!snapshot.metadata.fromCache) {
+          // Refreshed on every server answer so new uploads count too.
+          getCountFromServer(query(gallery, ...range))
+            .then((count) => isActive && setTotal(count.data().count))
+            .catch((error) => console.error("Error counting gallery:", error));
+        }
         const fresh = docs.slice(0, pageSize);
         const freshIds = new Set(fresh.map((doc) => doc.id));
         const last = docs[docs.length - 1];
@@ -215,6 +231,7 @@ export default function Memories({
               ]
             : fresh,
         );
+        setLoadedPage(page);
         setFetchError(false);
         setIsLoading(false);
       },
@@ -225,7 +242,10 @@ export default function Memories({
       },
     );
 
-    return unsubscribe;
+    return () => {
+      isActive = false;
+      unsubscribe();
+    };
   }, [slug, page, day, firstDay]);
 
   const visible =
@@ -248,15 +268,43 @@ export default function Memories({
     galleryRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const canLoadMore = hasMore && loadedPage === page;
+  const loadMore = useCallback(() => {
+    if (canLoadMore) setPage(page + 1);
+  }, [canLoadMore, page]);
+
+  // Load the next page as the bottom of the gallery comes near. Re-observing
+  // after every page means a short page that leaves it in view loads again.
+  const loaderRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const loader = loaderRef.current;
+    if (!loader || !canLoadMore) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => entry?.isIntersecting && loadMore(),
+      { rootMargin: "800px 0px" },
+    );
+    observer.observe(loader);
+    return () => observer.disconnect();
+  }, [canLoadMore, loadMore]);
+
+  // The viewer pages through the whole tab, so fetch ahead of its last photo.
+  useEffect(() => {
+    if (selectedIndex !== null && selectedIndex >= visible.length - 5) {
+      loadMore();
+    }
+  }, [selectedIndex, visible.length, loadMore]);
+
   const closeViewer = useCallback(() => setSelectedIndex(null), []);
   const navigate = useCallback(
     (delta: -1 | 1) =>
-      setSelectedIndex((current) =>
-        current === null || visible.length === 0
-          ? current
-          : (current + delta + visible.length) % visible.length,
-      ),
-    [visible.length],
+      setSelectedIndex((current) => {
+        if (current === null || visible.length === 0) return current;
+        const next = current + delta;
+        // Wait at the last loaded photo while more are on the way.
+        if (next >= visible.length && hasMore) return current;
+        return (next + visible.length) % visible.length;
+      }),
+    [visible.length, hasMore],
   );
 
   const pickDay = (next: string | null) => {
@@ -264,6 +312,8 @@ export default function Memories({
     if (next === day) return;
     setDay(next);
     setPage(1);
+    setLoadedPage(0);
+    setTotal(0);
     setIsLoading(true);
     setItems([]);
     setHeldIds(new Set());
@@ -500,14 +550,16 @@ export default function Memories({
           </div>
 
           {hasMore && items.length > 0 && (
-            <div className="flex justify-center px-6 pt-8">
-              <button
-                type="button"
-                onClick={() => setPage((current) => current + 1)}
-                className={`${pill} ${label} max-w-xs border-[color:var(--line)]`}
-              >
-                Show more
-              </button>
+            <div
+              ref={loaderRef}
+              role="status"
+              className="flex justify-center pt-8"
+            >
+              <span
+                aria-hidden="true"
+                className="h-7 w-7 animate-spin rounded-full border-2 border-[color:var(--line)] border-t-[color:var(--ink)]"
+              />
+              <span className="sr-only">Loading more photos</span>
             </div>
           )}
         </div>
@@ -597,6 +649,7 @@ export default function Memories({
       {selectedIndex !== null && (
         <Lightbox
           items={visible}
+          total={Math.max(total - heldCount, visible.length)}
           index={selectedIndex}
           onClose={closeViewer}
           onNavigate={navigate}
