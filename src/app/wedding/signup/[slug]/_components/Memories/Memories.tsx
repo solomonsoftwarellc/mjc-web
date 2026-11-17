@@ -47,6 +47,72 @@ const weekday = (day: string, weekday: "long" | "short" = "long") =>
     timeZone: "UTC",
   });
 
+/** Height over width assumed for a photo until it has loaded. */
+const DEFAULT_RATIO = 1.25;
+
+type Placed = { item: GalleryEntry; index: number };
+
+/**
+ * Deal the posts into columns, each new one onto the shortest column.
+ *
+ * A post keeps the column it was first given (`placed`), so loading more or a
+ * new upload never moves a photo sideways. CSS `columns` re-balances the whole
+ * wall on every change, which is what made the gallery jump.
+ */
+function dealIntoColumns(
+  items: GalleryEntry[],
+  count: number,
+  placed: Map<string, number>,
+  ratios: Map<string, number>,
+) {
+  const columns = Array.from({ length: count }, (): Placed[] => []);
+  const heights = columns.map(() => 0);
+  const grow = (column: number, item: GalleryEntry) => {
+    heights[column] =
+      (heights[column] ?? 0) + (ratios.get(item.id) ?? DEFAULT_RATIO);
+  };
+
+  for (const item of items) {
+    const column = placed.get(item.id);
+    if (column !== undefined) grow(column, item);
+  }
+
+  items.forEach((item, index) => {
+    let column = placed.get(item.id);
+    if (column === undefined) {
+      column = heights.indexOf(Math.min(...heights));
+      placed.set(item.id, column);
+      grow(column, item);
+    }
+    columns[column]?.push({ item, index });
+  });
+
+  return columns;
+}
+
+/** Two columns on a phone, three from Tailwind's `sm` breakpoint up. */
+function useColumnCount() {
+  const [count, setCount] = useState(2);
+
+  useEffect(() => {
+    const wide = window.matchMedia("(min-width: 640px)");
+    const sync = () => setCount(wide.matches ? 3 : 2);
+    sync();
+    wide.addEventListener("change", sync);
+    return () => wide.removeEventListener("change", sync);
+  }, []);
+
+  return count;
+}
+
+/**
+ * True when `item` sorts at or after `last` in the gallery query, which orders
+ * by timestamp and then document id, both descending.
+ */
+const isAtOrAfter = (item: GalleryEntry, last: GalleryEntry) =>
+  item.timestamp < last.timestamp ||
+  (item.timestamp === last.timestamp && item.id <= last.id);
+
 const label = "text-[11px] font-semibold uppercase tracking-[0.28em]";
 
 export default function Memories({
@@ -69,6 +135,18 @@ export default function Memories({
   const post = (action: () => void) => () =>
     isShabbat() ? setShowShabbatNotice(true) : action();
   const galleryRef = useRef<HTMLElement>(null);
+
+  /** Posts that arrived while the guest was looking further down. */
+  const [heldIds, setHeldIds] = useState<ReadonlySet<string>>(new Set());
+  /** Every post id this view has been sent, to tell new uploads from old. */
+  const knownIds = useRef(new Set<string>());
+  const isViewerOpen = useRef(false);
+  isViewerOpen.current = selectedIndex !== null;
+
+  const columnCount = useColumnCount();
+  const layout = useRef({ count: columnCount, placed: new Map<string, number>() });
+  /** Height over width of each thumbnail that has loaded. */
+  const ratios = useRef(new Map<string, number>());
 
   const firstDay = account.eventDays?.[0];
 
@@ -96,8 +174,47 @@ export default function Memories({
         const docs = snapshot.docs.map(
           (doc) => ({ id: doc.id, ...doc.data() }) as GalleryEntry,
         );
-        setHasMore(docs.length > pageSize);
-        setItems(docs.slice(0, pageSize));
+        const isWindowFull = docs.length > pageSize;
+        const fresh = docs.slice(0, pageSize);
+        const freshIds = new Set(fresh.map((doc) => doc.id));
+        const last = docs[docs.length - 1];
+
+        // New uploads sit above the first post this view already knows.
+        const firstKnown = fresh.findIndex((doc) => knownIds.current.has(doc.id));
+        const arrivals =
+          knownIds.current.size === 0
+            ? []
+            : firstKnown === -1
+              ? fresh
+              : fresh.slice(0, firstKnown);
+        fresh.forEach((doc) => knownIds.current.add(doc.id));
+
+        // Dropping them in above a guest who has scrolled down, or who has a
+        // photo open, would push everything they are looking at. Hold them
+        // behind the "new posts" button instead.
+        const isLookingElsewhere =
+          isViewerOpen.current ||
+          (galleryRef.current?.getBoundingClientRect().top ?? 0) < -120;
+        if (arrivals.length > 0 && isLookingElsewhere) {
+          setHeldIds(
+            (held) => new Set([...held, ...arrivals.map((doc) => doc.id)]),
+          );
+        }
+
+        setHasMore(isWindowFull);
+        // Each new upload pushes the oldest post out of the query's window.
+        // Keep the ones already on screen so the bottom of the gallery does
+        // not disappear while someone is looking at it.
+        setItems((shown) =>
+          isWindowFull && last
+            ? [
+                ...fresh,
+                ...shown.filter(
+                  (item) => !freshIds.has(item.id) && isAtOrAfter(item, last),
+                ),
+              ]
+            : fresh,
+        );
         setFetchError(false);
         setIsLoading(false);
       },
@@ -111,15 +228,35 @@ export default function Memories({
     return unsubscribe;
   }, [slug, page, day, firstDay]);
 
+  const visible =
+    heldIds.size === 0 ? items : items.filter((item) => !heldIds.has(item.id));
+  const heldCount = items.length - visible.length;
+
+  // A different column count is a different wall, so it is dealt afresh.
+  if (layout.current.count !== columnCount) {
+    layout.current = { count: columnCount, placed: new Map() };
+  }
+  const columns = dealIntoColumns(
+    visible,
+    columnCount,
+    layout.current.placed,
+    ratios.current,
+  );
+
+  const showHeld = () => {
+    setHeldIds(new Set());
+    galleryRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const closeViewer = useCallback(() => setSelectedIndex(null), []);
   const navigate = useCallback(
     (delta: -1 | 1) =>
       setSelectedIndex((current) =>
-        current === null || items.length === 0
+        current === null || visible.length === 0
           ? current
-          : (current + delta + items.length) % items.length,
+          : (current + delta + visible.length) % visible.length,
       ),
-    [items.length],
+    [visible.length],
   );
 
   const pickDay = (next: string | null) => {
@@ -129,6 +266,9 @@ export default function Memories({
     setPage(1);
     setIsLoading(true);
     setItems([]);
+    setHeldIds(new Set());
+    knownIds.current = new Set();
+    layout.current = { count: columnCount, placed: new Map() };
   };
 
   const [first, second] = account.couple.split(" & ");
@@ -259,6 +399,19 @@ export default function Memories({
           </nav>
         )}
 
+        {heldCount > 0 && (
+          // Zero height, so showing the button moves nothing underneath it.
+          <div className="pointer-events-none sticky top-[calc(env(safe-area-inset-top)+4rem)] z-20 flex h-0 justify-center">
+            <button
+              type="button"
+              onClick={showHeld}
+              className={`${label} pointer-events-auto h-11 rounded-full bg-[var(--ink)] px-6 text-[color:var(--paper)] shadow-lg transition-transform active:scale-[0.98]`}
+            >
+              {heldCount} new {heldCount === 1 ? "post" : "posts"}
+            </button>
+          </div>
+        )}
+
         <div className="px-2 pt-2">
           {isLoading && items.length === 0 && (
             <div className="columns-2 gap-2 sm:columns-3" aria-hidden="true">
@@ -287,48 +440,63 @@ export default function Memories({
             </p>
           )}
 
-          <div className="columns-2 gap-2 sm:columns-3">
-            {items.map((item, index) => {
-              const preview =
-                item.type === "image"
-                  ? thumbnailVariant(item.variants)
-                  : item.thumbnail;
+          <div className="flex items-start gap-2">
+            {columns.map((column, columnIndex) => (
+              <div
+                key={columnIndex}
+                className="flex min-w-0 flex-1 flex-col gap-2"
+              >
+                {column.map(({ item, index }) => {
+                  const preview =
+                    item.type === "image"
+                      ? thumbnailVariant(item.variants)
+                      : item.thumbnail;
 
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setSelectedIndex(index)}
-                  aria-label={`Open ${item.type === "video" ? "video" : "photo"} shared by ${item.name}`}
-                  className="relative mb-2 block w-full break-inside-avoid overflow-hidden rounded-sm bg-[var(--line)]"
-                >
-                  {preview ? (
-                    // Cloudflare already serves resized, cached variants, so
-                    // next/image would only add a second optimizer hop.
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={preview}
-                      alt=""
-                      loading={index < 6 ? "eager" : "lazy"}
-                      decoding="async"
-                      className="block h-auto min-h-24 w-full"
-                    />
-                  ) : (
-                    <span className="flex aspect-square items-center justify-center text-base italic opacity-70">
-                      {item.type === "video" ? "Video processing..." : ""}
-                    </span>
-                  )}
-                  {item.type === "video" && preview && (
-                    <span
-                      aria-hidden="true"
-                      className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 pl-0.5 text-sm text-white backdrop-blur-sm"
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setSelectedIndex(index)}
+                      aria-label={`Open ${item.type === "video" ? "video" : "photo"} shared by ${item.name}`}
+                      className="relative block w-full overflow-hidden rounded-sm bg-[var(--line)]"
                     >
-                      ▶
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+                      {preview ? (
+                        // Cloudflare already serves resized, cached variants, so
+                        // next/image would only add a second optimizer hop.
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={preview}
+                          alt=""
+                          loading={index < 6 ? "eager" : "lazy"}
+                          decoding="async"
+                          onLoad={({ currentTarget: image }) => {
+                            if (image.naturalWidth > 0) {
+                              ratios.current.set(
+                                item.id,
+                                image.naturalHeight / image.naturalWidth,
+                              );
+                            }
+                          }}
+                          className="block h-auto min-h-24 w-full"
+                        />
+                      ) : (
+                        <span className="flex aspect-square items-center justify-center text-base italic opacity-70">
+                          {item.type === "video" ? "Video processing..." : ""}
+                        </span>
+                      )}
+                      {item.type === "video" && preview && (
+                        <span
+                          aria-hidden="true"
+                          className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 pl-0.5 text-sm text-white backdrop-blur-sm"
+                        >
+                          ▶
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            ))}
           </div>
 
           {hasMore && items.length > 0 && (
@@ -428,7 +596,7 @@ export default function Memories({
 
       {selectedIndex !== null && (
         <Lightbox
-          items={items}
+          items={visible}
           index={selectedIndex}
           onClose={closeViewer}
           onNavigate={navigate}
