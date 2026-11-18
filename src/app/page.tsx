@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "~/components/Logo";
 import { SiteFooter } from "~/components/SiteShell";
 
 const links = [
@@ -37,16 +38,9 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <main className="mx-auto w-full max-w-2xl flex-1 px-6 pb-24 pt-20 sm:pt-28">
         <div className="text-center">
-          <p className="eyebrow text-muted-foreground">Welcome to the</p>
+          <p className="eyebrow text-muted-foreground">Welcome to</p>
           <h1 className="mt-6">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/umjca-logo.svg"
-              alt="UMJCA"
-              width={925}
-              height={714}
-              className="mx-auto h-auto w-56 sm:w-64"
-            />
+            <Logo layout="stacked" className="text-6xl sm:text-7xl" />
           </h1>
           <div className="mx-auto my-8 h-px w-14 bg-brand" aria-hidden="true" />
           <p className="text-2xl italic leading-snug sm:text-3xl">

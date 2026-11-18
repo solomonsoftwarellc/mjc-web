@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "~/components/Logo";
 
 export function SiteFooter() {
   return (
@@ -13,9 +14,8 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-6">
-        <Link href="/" aria-label="UMJCA home">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/umjca-logo.svg" alt="" className="h-14 w-auto" />
+        <Link href="/" aria-label="mashadi.io home">
+          <Logo className="text-3xl" />
         </Link>
         <Link href="/" className="eyebrow py-2 text-muted-foreground hover:text-foreground">
           Home

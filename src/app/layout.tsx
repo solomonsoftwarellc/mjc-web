@@ -45,7 +45,13 @@ export const metadata: Metadata = {
     template: "%s | MJC",
   },
   description: "Mashadi Jewish Community",
-  icons: [{ rel: "icon", url: "/favicon.png" }],
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png", sizes: "256x256" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     siteName: "MJC",
     locale: "en_US",
