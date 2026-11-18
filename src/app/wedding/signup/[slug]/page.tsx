@@ -29,7 +29,7 @@ export function generateMetadata({
   const url = `/wedding/signup/${params.slug}`;
 
   return {
-    // The couple's name stands on its own - no "| MJC" suffix here.
+    // The couple's name stands on its own - no "| mashadi.io" suffix here.
     title: { absolute: title },
     description,
     alternates: { canonical: url },
@@ -38,7 +38,7 @@ export function generateMetadata({
       description,
       url,
       type: "website",
-      siteName: "MJC",
+      siteName: "mashadi.io",
       images: [
         { url: card, width: 1200, height: 630, alt: `${account.name} monogram` },
       ],

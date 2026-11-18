@@ -133,7 +133,7 @@ export default function AdminDashboard({
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
       <header className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">
         <div>
-          <p className="eyebrow text-muted-foreground">MJC admin</p>
+          <p className="eyebrow text-muted-foreground">mashadi.io admin</p>
           <h1 className="mt-2 font-serif text-4xl">Megillah issues</h1>
         </div>
         <div className="flex gap-2">

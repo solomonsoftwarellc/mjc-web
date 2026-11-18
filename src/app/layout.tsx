@@ -41,10 +41,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.mashadi.io";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "MJC",
-    template: "%s | MJC",
+    default: "mashadi.io",
+    template: "%s | mashadi.io",
   },
-  description: "Mashadi Jewish Community",
+  description: "A home online for the Mashadi Jewish community.",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    siteName: "MJC",
+    siteName: "mashadi.io",
     locale: "en_US",
     type: "website",
   },
