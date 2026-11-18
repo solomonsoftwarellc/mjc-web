@@ -42,12 +42,6 @@ export default function Home() {
           <h1 className="mt-6">
             <Logo layout="stacked" className="text-6xl sm:text-7xl" />
           </h1>
-          <div className="mx-auto my-8 h-px w-14 bg-brand" aria-hidden="true" />
-          <p className="text-2xl italic leading-snug sm:text-3xl">
-            A home online for the
-            <br />
-            Mashadi Jewish community
-          </p>
         </div>
 
         <nav aria-label="Sections" className="mt-16 border-t border-border">

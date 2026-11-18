@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     default: "mashadi.io",
     template: "%s | mashadi.io",
   },
-  description: "A home online for the Mashadi Jewish community.",
+  description: "mashadi.io",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
