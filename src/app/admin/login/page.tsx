@@ -7,6 +7,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "firebaseConfig";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
+import Logo from "~/components/Logo";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -31,9 +32,8 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-6 py-12">
-      <Link href="/" aria-label="UMJCA home">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/umjca-logo.svg" alt="" className="h-24 w-auto" />
+      <Link href="/" aria-label="mashadi.io home">
+        <Logo layout="stacked" className="text-4xl" />
       </Link>
       <div className="mx-auto my-6 h-px w-12 bg-brand" aria-hidden="true" />
 

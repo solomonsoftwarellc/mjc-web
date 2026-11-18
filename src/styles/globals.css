@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* White paper with the three blues of the UMJCA logo. */
+    /* White paper with the navy and blues of the mashadi.io logo. */
     --background: 0 0% 100%;
     --foreground: 221 72% 18%;
 
@@ -33,7 +33,7 @@
     --input: 216 26% 76%;
     --ring: 201 100% 35%;
 
-    /* The logo's bright blue (#0072b0), for rules and small accents. */
+    /* The bright blue of the logo's dot (#0072b0), for rules and small accents. */
     --brand: 201 100% 35%;
 
     --radius: 0.375rem;
