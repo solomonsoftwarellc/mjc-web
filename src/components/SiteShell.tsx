@@ -4,7 +4,7 @@ import Logo from "~/components/Logo";
 export function SiteFooter() {
   return (
     <footer className="eyebrow border-t border-border px-6 py-8 text-center text-muted-foreground">
-      United Mashadi Jewish Community of America
+      mashadi.io · An independent community site
     </footer>
   );
 }

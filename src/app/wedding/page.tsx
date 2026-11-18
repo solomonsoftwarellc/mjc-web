@@ -7,7 +7,7 @@ import { displayedWeddings } from "./accounts";
 export const metadata: Metadata = {
   title: "Community Weddings",
   description:
-    "Photo and video galleries from weddings of the United Mashadi Jewish Community of America.",
+    "Photo and video galleries from weddings in the Mashadi Jewish community.",
 };
 
 export default function WeddingPage() {
