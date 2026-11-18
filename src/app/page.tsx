@@ -8,7 +8,7 @@ const links = [
     href: "/megillah",
     external: false,
     description:
-      "Collection of magazines published by the Mashadi Youth Committee, featuring photo and written content related to the United Mashadi Jewish Community of America.",
+      "Collection of magazines published by the Mashadi Youth Committee, featuring photos and writing from the Mashadi Jewish community.",
   },
   {
     title: "Wedding Pictures",
@@ -29,7 +29,7 @@ const links = [
     href: "https://kanissanews.com/",
     external: true,
     description:
-      "Weekly newsletter featuring prayer times and events of the United Mashadi Jewish Community of America.",
+      "Weekly newsletter with prayer times and community events.",
   },
 ];
 
@@ -44,9 +44,9 @@ export default function Home() {
           </h1>
           <div className="mx-auto my-8 h-px w-14 bg-brand" aria-hidden="true" />
           <p className="text-2xl italic leading-snug sm:text-3xl">
-            United Mashadi Jewish
+            A home online for the
             <br />
-            Community of America
+            Mashadi Jewish community
           </p>
         </div>
 
